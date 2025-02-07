@@ -43,17 +43,35 @@ import {
               alt="OSP"
               src={iconImage}
             />
-            <Typography
+            <div
               style={{
-                fontSize: "30px",
-                fontFamily: "fantasy",
-                color: "white",
-                marginLeft: -12,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginRight: 1,
               }}
             >
-              OSP
-            </Typography>
-            <Typography
+              <Typography
+                style={{
+                  marginBottom:-15,
+                  fontSize: "20px",
+                  fontFamily: "fantasy",
+                  color: "white",
+                }}
+              >
+                DeliveryAgent
+              </Typography>
+              <Typography
+                style={{
+                  fontSize: "30px",
+                  fontFamily: "fantasy",
+                  color: "white",
+                }}
+              >
+                OSP
+              </Typography>
+            </div>
+            {/* <Typography
               style={{
                 width: "150px",
                 fontSize: "13px",
@@ -66,7 +84,7 @@ import {
             >
               Shop with us <br />
               save your time
-            </Typography>
+            </Typography> */}
             <Container
               sx={{
                 display: "flex",
@@ -87,7 +105,7 @@ import {
                 <Button
                   variant="text"
                   onClick={() => {
-                    navigate("/userdash");
+                    navigate("/deliveryagentdash");
                   }}
                   style={{
                     fontSize: "20px",
@@ -161,7 +179,7 @@ import {
                 <Button
                   variant="text"
                   onClick={() => {
-                    navigate("/user/recipes");
+                    //navigate("/user/recipes");
                   }}
                   style={{
                     marginLeft: -50,

@@ -4,6 +4,10 @@ const DashboardMerchant = () => {
   return (
     <div>
         <NavbarMerchant/>
+        <br />
+        <br />
+        <br />
+        <br />
         THIS IS MERCHANT DASHBOARD
     </div>
   )

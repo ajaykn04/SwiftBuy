@@ -17,7 +17,8 @@ import {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);  uncommend this to use this function...and mod other neccesseries...(check all commendeds)
+    const [loading, setLoading] = useState(false);
   
     
   
@@ -41,9 +42,7 @@ import {
         {loading ? (
           <center>Loading...</center>
         ) : (
-            <Typography>
-                This is USER DASHBOARD
-            </Typography>
+            "THIS IS USER DASHBOARD"
             
         //   <Carousel
         //     autoPlay

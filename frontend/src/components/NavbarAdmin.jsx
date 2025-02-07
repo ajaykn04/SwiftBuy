@@ -43,17 +43,35 @@ import {
               alt="OSP"
               src={iconImage}
             />
-            <Typography
+            <div
               style={{
-                fontSize: "30px",
-                fontFamily: "fantasy",
-                color: "white",
-                marginLeft: -12,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginRight: 1,
               }}
             >
-              OSP
-            </Typography>
-            <Typography
+              <Typography
+                style={{
+                  marginBottom:-15,
+                  fontSize: "20px",
+                  fontFamily: "fantasy",
+                  color: "white",
+                }}
+              >
+                Admin
+              </Typography>
+              <Typography
+                style={{
+                  fontSize: "30px",
+                  fontFamily: "fantasy",
+                  color: "white",
+                }}
+              >
+                OSP
+              </Typography>
+            </div>
+            {/* <Typography
               style={{
                 width: "150px",
                 fontSize: "13px",
@@ -66,7 +84,7 @@ import {
             >
               Shop with us <br />
               save your time
-            </Typography>
+            </Typography> */}
             <Container
               sx={{
                 display: "flex",
@@ -77,7 +95,7 @@ import {
             >
               <Container
                 sx={{
-                  ml:10,  //comon 1
+                  ml: 10, //comon 1
                   display: "flex",
                   justifyContent: "flex-start",
                   gap: "3rem",
@@ -87,7 +105,7 @@ import {
                 <Button
                   variant="text"
                   onClick={() => {
-                    navigate("/userdash");
+                    navigate("/admindash");
                   }}
                   style={{
                     fontSize: "20px",
@@ -105,9 +123,8 @@ import {
                     HOME
                   </Typography>
                 </Button>
-                
               </Container>
-  
+
               <Container
                 sx={{
                   ml: -25, //comon 1
@@ -122,7 +139,7 @@ import {
                   variant="outlined"
                   placeholder="Search for Products"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)} 
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   sx={{
                     maxWidth: "400px",
@@ -149,7 +166,7 @@ import {
                   }}
                 />
               </Container>
-  
+
               <Container
                 sx={{
                   display: "flex",
@@ -161,7 +178,7 @@ import {
                 <Button
                   variant="text"
                   onClick={() => {
-                    navigate("/user/recipes");
+                    //navigate("/user/recipes");
                   }}
                   style={{
                     marginLeft: -50,
@@ -182,9 +199,7 @@ import {
                 </Button>
                 <Button
                   variant="text"
-                  onClick={() => {
-                    
-                  }}
+                  onClick={() => {}}
                   style={{
                     fontSize: "20px",
                     fontFamily: "fantasy",
@@ -203,7 +218,7 @@ import {
                 </Button>
               </Container>
             </Container>
-  
+
             <IconButton>
               <Avatar
                 sx={{ width: "25px", height: "25px" }}

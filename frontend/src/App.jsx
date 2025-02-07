@@ -8,6 +8,7 @@ import DashboardDeliveryagent from "./components/DashboardDeliveryagent";
 import colors from "./colors";
 import { AppContext } from "./AppContext";
 import { useState } from "react";
+import Profile from "./components/Profile";
 
 function App() {
   const [data, setData] = useState({
@@ -31,6 +32,7 @@ function App() {
             <Route path="/userdash" element={<DashboardUser />} />
             <Route path="/merchantdash" element={<DashboardMerchant />}/>
             <Route path="/deliveryagentdash" element={<DashboardDeliveryagent/>}/>
+            <Route path="/profile" element={<Profile/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>
