@@ -123,6 +123,29 @@ import {
                     HOME
                   </Typography>
                 </Button>
+
+                <Button
+                  variant="text"
+                  onClick={() => {
+                    navigate("/product/add");
+                  }}
+                  style={{
+                    marginLeft: -50,
+                    fontSize: "20px",
+                    fontFamily: "fantasy",
+                    color: "black",
+                  }}
+                >
+                  <Typography
+                    style={{
+                      fontFamily: "fantasy",
+                      fontSize: "20px",
+                      color: "orange",
+                    }}
+                  >
+                    Add Product
+                  </Typography>
+                </Button>
                 
               </Container>
   

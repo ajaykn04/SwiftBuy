@@ -9,6 +9,7 @@ import colors from "./colors";
 import { AppContext } from "./AppContext";
 import { useState } from "react";
 import Profile from "./components/Profile";
+import ProductAdd from "./components/ProductAdd";
 
 function App() {
   const [data, setData] = useState({
@@ -33,6 +34,7 @@ function App() {
             <Route path="/merchantdash" element={<DashboardMerchant />}/>
             <Route path="/deliveryagentdash" element={<DashboardDeliveryagent/>}/>
             <Route path="/profile" element={<Profile/>}/>
+            <Route path="/product/add" element={<ProductAdd/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

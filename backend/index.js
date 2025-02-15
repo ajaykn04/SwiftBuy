@@ -12,11 +12,12 @@ const PORT = 3000;
 
 var CryptoJS = require('crypto-js');
 var userModel = require("./models/user");
+var productModel = require("./models/product");
 
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'images/recipes/');
+        cb(null, 'images/products');
     },
     filename: (req, file, cb) => {
         cb(null, crypto.randomBytes(8).toString('hex').slice(0, 8) + path.extname(file.originalname));
@@ -70,7 +71,8 @@ app.get("/user/get/:email/:password", async (req, res) => {
 app.post("/user/register/", async (req, res) => {
     try {
         var user = req.body;
-        user.role = "user";
+        user.admin = false;
+        user.merchant = false;
         user.password = CryptoJS.SHA256(user.password).toString(CryptoJS.enc.Hex)
         var existing_user = await userModel.findOne({email: user.email});
         if (!existing_user) {
@@ -115,10 +117,10 @@ app.delete("/user/delete/", async (req, res) => {
         var id = req.body._id;
         var del = await userModel.findByIdAndDelete(id);
         if (del != null) {
-            var delrecipes = await recipeModel.find({owner: id})
-            await recipeModel.deleteMany({owner: id});
-            for (let i = 0; i < delrecipes.length; i++) {
-                fs.unlink(delrecipes[i].image, () => {
+            var delproducts = await productModel.find({owner: id})
+            await productModel.deleteMany({owner: id});
+            for (let i = 0; i < delproducts.length; i++) {
+                fs.unlink(delproducts[i].image, () => {
                 });
             }
             res.send({message: "Account Deleted"});
@@ -132,6 +134,50 @@ app.delete("/user/delete/", async (req, res) => {
         res.send({message: "Failed To Delete Account"});
     }
 })
+
+
+app.post("/product/add/", upload.single('file'), async (req, res) => {
+    try {
+        var product = req.body;
+        product.reviews = [];
+        product.rating = 0;
+        product.featured = false;
+        req.body.image = ""
+        req.body.keywords = req.body.keywords.split(",")
+        product = await productModel(product).save();
+        var img_path = `${req.file.destination}/${product._id}${path.extname(req.file.filename)}`;
+        fs.rename(req.file.path, img_path, () => { })
+        product.image = `${img_path}`;
+        product.save();
+        res.send({ message: "Product Added" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+app.get("/product/viewall", async (req, res) => {
+    try {
+        var data = await productModel.find();
+        res.send(data)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.get("/product/view/:pid", async (req, res) => {
+    try {
+        var id = req.params.pid
+        var data = await productModel.findOne({_id: id});
+        res.send(data)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 
 
 app.listen(PORT, () => {
