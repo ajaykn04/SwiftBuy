@@ -97,7 +97,7 @@ const ProductAdd = () => {
           }
           formData.append("_id", toeditproduct.state.value._id);
           await axios.put("http://localhost:3000/product/edit/", formData);
-          navigate("/user/products");
+          navigate("/merchant/products");
         } catch (error) {
           console.error(error);
         }
@@ -111,7 +111,7 @@ const ProductAdd = () => {
           formData.append("merchant_name", data.username);
 
           await axios.post(`http://localhost:3000/product/add/`, formData);
-          navigate("/user/products");
+          navigate("/merchant/products");
         } catch (error) {
           console.error(error);
         }

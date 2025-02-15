@@ -24,7 +24,7 @@ import {
     const handleKeyDown = (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        navigate("/recipes", { state: { query: searchQuery } }); 
+        navigate("/search/products", { state: { query: searchQuery } }); 
       }
     };
   
@@ -179,7 +179,7 @@ import {
                 <Button
                   variant="text"
                   onClick={() => {
-                    //navigate("/user/recipes");
+                    //navigate("/user/products");
                   }}
                   style={{
                     marginLeft: -50,

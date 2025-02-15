@@ -10,6 +10,7 @@ import { AppContext } from "./AppContext";
 import { useState } from "react";
 import Profile from "./components/Profile";
 import ProductAdd from "./components/ProductAdd";
+import MyProduct from "./components/MyProduct";
 
 function App() {
   const [data, setData] = useState({
@@ -35,6 +36,7 @@ function App() {
             <Route path="/deliveryagentdash" element={<DashboardDeliveryagent/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/product/add" element={<ProductAdd/>}/>
+            <Route path="/merchant/products" element={<MyProduct/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

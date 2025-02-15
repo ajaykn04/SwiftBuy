@@ -24,7 +24,7 @@ import {
     const handleKeyDown = (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        navigate("/products", { state: { query: searchQuery } }); 
+        navigate("/search/products", { state: { query: searchQuery } }); 
       }
     };
   
