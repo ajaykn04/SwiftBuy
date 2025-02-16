@@ -11,6 +11,7 @@ import { useState } from "react";
 import Profile from "./components/Profile";
 import ProductAdd from "./components/ProductAdd";
 import MyProduct from "./components/MyProduct";
+import SearchProduct from "./components/SearchProduct";
 
 function App() {
   const [data, setData] = useState({
@@ -37,6 +38,7 @@ function App() {
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/product/add" element={<ProductAdd/>}/>
             <Route path="/merchant/products" element={<MyProduct/>}/>
+            <Route path="/search/products" element={<SearchProduct/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

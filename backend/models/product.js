@@ -14,7 +14,7 @@ var productSchema = mongoose.Schema({
     name: String,
     description: String,
     price: Number,
-    categories: [String],
+    category: String,
     keywords: [String],
     image: String,
     featured: Boolean,

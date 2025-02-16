@@ -25,6 +25,8 @@ import {
       if (event.key === "Enter") {
         event.preventDefault();
         navigate("/search/products", { state: { query: searchQuery } }); 
+      window.location.reload(true);
+
       }
     };
   
@@ -163,8 +165,13 @@ import {
                   variant="outlined"
                   placeholder="Search for Products"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)} 
-                  onKeyDown={handleKeyDown}
+                  onChange={(e) => setSearchQuery(e.target.value.trimStart())} 
+                  onKeyDown={() => {
+                    if (searchQuery.trim() !== "") {
+                      handleKeyDown(event);
+                    }
+                  }}
+                  
                   sx={{
                     maxWidth: "400px",
                     backgroundColor: "#F3F4F6",

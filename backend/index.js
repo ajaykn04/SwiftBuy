@@ -146,10 +146,11 @@ app.post("/product/add/", upload.single('file'), async (req, res) => {
         req.body.keywords = req.body.keywords.split(",")
         product = await productModel(product).save();
         var img_path = `${req.file.destination}/${product._id}${path.extname(req.file.filename)}`;
-        fs.rename(req.file.path, img_path, () => { })
+        fs.rename(req.file.path, img_path, () => {
+        })
         product.image = `${img_path}`;
         product.save();
-        res.send({ message: "Product Added" })
+        res.send({message: "Product Added"})
 
     } catch (error) {
         console.log(error);
@@ -181,7 +182,7 @@ app.get("/product/view/:pid", async (req, res) => {
 app.get("/merchant/products/:id", async (req, res) => {
     try {
         var id = req.params.id;
-        var data = await productModel.find({ merchant_id: id });
+        var data = await productModel.find({merchant_id: id});
         res.send(data)
 
     } catch (error) {
@@ -194,19 +195,30 @@ app.delete("/product/delete/:id", async (req, res) => {
         var id = req.params.id;
         var del = await productModel.findByIdAndDelete(id);
         if (del != null) {
-            fs.unlink(del.image, ()=> {});
-            res.send({ message: "Product Deleted" });
-        }
-        else {
+            fs.unlink(del.image, () => {
+            });
+            res.send({message: "Product Deleted"});
+        } else {
             res.status(404);
-            res.send({ message: "Failed To Delete Product" });
+            res.send({message: "Failed To Delete Product"});
         }
 
     } catch (error) {
         res.status(404);
-        res.send({ message: "Failed To Delete Product" });
+        res.send({message: "Failed To Delete Product"});
     }
 })
+
+app.get("/product/search/:word", async (req, res) => {
+    try {
+        var word = req.params.word
+        var data = await productModel.find({ name: new RegExp(".*" + word + ".*", "i") })
+        res.send(data)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 
