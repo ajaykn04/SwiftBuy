@@ -118,7 +118,7 @@ const MyProduct = () => {
                   height: "325px",
                 }}
               >
-                <IconButton
+                {/* <IconButton
                   sx={{
                     position: "fixed",
                     ml: "160px",
@@ -131,12 +131,12 @@ const MyProduct = () => {
                   }}
                 >
                   <EditIcon />
-                </IconButton>
+                </IconButton> */}
                 <IconButton
                   sx={{
                     position: "fixed",
-                    ml: "205px",
-                    mt: "280px",
+                    ml: 24,
+                    mt: 35,
                     color: "white",
                     zIndex: 1,
                   }}
@@ -198,6 +198,20 @@ const MyProduct = () => {
                     >
                       {product.name}
                     </Typography>
+
+                    <Typography
+                      variant="subtitle1"
+                      fontFamily={"cursive"}
+                      sx={{
+                        ml: 18,
+                        mt: -3.4,
+                        color: "yellow",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      ₹{product.price}
+                    </Typography>
+
                     <Rating
                       name={`rating-${index}`}
                       value={product.rating || 0}
@@ -206,7 +220,6 @@ const MyProduct = () => {
                       sx={{
                         ml: -2,
                         mb: 1,
-                        mt: 1,
                         "& .MuiRating-iconFilled": {
                           color: "#FFAD18",
                         },
@@ -219,18 +232,7 @@ const MyProduct = () => {
                       }}
                     />
 
-                    <Typography
-                      variant="subtitle1"
-                      fontFamily={"cursive"}
-                      sx={{
-                        ml: -1.5,
-                        mt: 1,
-                        color: "white",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {product.price}
-                    </Typography>
+                    
 
                   </Container>
                 </Button>

@@ -189,6 +189,25 @@ app.get("/merchant/products/:id", async (req, res) => {
     }
 });
 
+app.delete("/product/delete/:id", async (req, res) => {
+    try {
+        var id = req.params.id;
+        var del = await productModel.findByIdAndDelete(id);
+        if (del != null) {
+            fs.unlink(del.image, ()=> {});
+            res.send({ message: "Product Deleted" });
+        }
+        else {
+            res.status(404);
+            res.send({ message: "Failed To Delete Product" });
+        }
+
+    } catch (error) {
+        res.status(404);
+        res.send({ message: "Failed To Delete Product" });
+    }
+})
+
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 
 app.listen(PORT, () => {
