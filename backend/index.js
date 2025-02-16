@@ -167,17 +167,6 @@ app.get("/product/viewall", async (req, res) => {
     }
 });
 
-app.get("/merchant/product/:id", async (req, res) => {
-    try {
-        var id = req.params.id;
-        var data = await productModel.find({ merchant_id: id });
-        res.send(data)
-
-    } catch (error) {
-        console.log(error);
-    }
-});
-
 app.get("/product/view/:pid", async (req, res) => {
     try {
         var id = req.params.pid
