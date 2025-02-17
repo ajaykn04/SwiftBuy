@@ -116,7 +116,7 @@ const Products = () => {
                     ₹{product.price}
                   </TableCell>
                   <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
-                    {product.ownername}
+                    {product.merchant_name}
                   </TableCell>
                   <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
                     {product.category}
