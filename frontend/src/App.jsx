@@ -12,6 +12,8 @@ import Profile from "./components/Profile";
 import ProductAdd from "./components/ProductAdd";
 import MyProduct from "./components/MyProduct";
 import SearchProduct from "./components/SearchProduct";
+import Users from "./components/Users";
+import Products from "./components/Products";
 
 function App() {
   const [data, setData] = useState({
@@ -39,6 +41,8 @@ function App() {
             <Route path="/product/add" element={<ProductAdd/>}/>
             <Route path="/merchant/products" element={<MyProduct/>}/>
             <Route path="/search/products" element={<SearchProduct/>}/>
+            <Route path="/admin/users" element={<Users/>}/>
+            <Route path="/admin/products" element={<Products/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

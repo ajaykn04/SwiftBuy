@@ -124,6 +124,28 @@ import {
                     HOME
                   </Typography>
                 </Button>
+                <Button
+                  variant="text"
+                  onClick={() => {
+                    navigate("/admin/users");
+                  }}
+                  style={{
+                    marginLeft: -50,
+                    fontSize: "20px",
+                    fontFamily: "fantasy",
+                    color: "black",
+                  }}
+                >
+                  <Typography
+                    style={{
+                      fontFamily: "fantasy",
+                      fontSize: "20px",
+                      color: "orange",
+                    }}
+                  >
+                    USERS
+                  </Typography>
+                </Button>
               </Container>
 
               <Container
@@ -183,7 +205,7 @@ import {
                 <Button
                   variant="text"
                   onClick={() => {
-                    //navigate("/admin/products");
+                    navigate("/admin/products");
                   }}
                   style={{
                     marginLeft: -50,
