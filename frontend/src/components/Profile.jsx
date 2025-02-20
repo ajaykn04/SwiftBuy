@@ -20,6 +20,7 @@ const Profile = () => {
   });
   const [generalError, setGeneralError] = useState("");
   const [whoami, setWhoami] = useState("");
+  const api_key=import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem("userData"));
@@ -53,7 +54,7 @@ const Profile = () => {
           email: data.email,
           role: data.role,
         };
-        await axios.put(`http://localhost:3000/user/edit/`, updatedProfile);
+        await axios.put(`${api_key}/user/edit/`, updatedProfile);
         console.log("Profile Updated");
         localStorage.setItem("userData", JSON.stringify(updatedProfile));
         navigate("/userdash");
@@ -172,7 +173,7 @@ const Profile = () => {
             variant="text"
             sx={{ mt: 2 }}
             onClick={async () => {
-              await axios.delete(`http://localhost:3000/user/delete/`, {
+              await axios.delete(`${api_key}/user/delete/`, {
                 data: data,
               });
               navigate("/");

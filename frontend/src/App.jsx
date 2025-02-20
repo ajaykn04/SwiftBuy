@@ -36,10 +36,7 @@ function App() {
             <Route path="/admindash" element={<DashboardAdmin />} />
             <Route path="/userdash" element={<DashboardUser />} />
             <Route path="/merchantdash" element={<DashboardMerchant />} />
-            <Route
-              path="/deliveryagentdash"
-              element={<DashboardDeliveryagent />}
-            />
+            <Route path="/deliveryagentdash" element={<DashboardDeliveryagent />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/add" element={<ProductAdd />} />
             <Route path="/merchant/products" element={<MyProduct />} />

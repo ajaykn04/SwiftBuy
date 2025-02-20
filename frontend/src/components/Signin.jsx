@@ -12,6 +12,7 @@ const Signin = () => {
     place: "",
     age: "",
   });
+  const api_key=import.meta.env.VITE_API_KEY;
   const [errors, setErrors] = useState({
     username: false,
     email: false,
@@ -58,7 +59,7 @@ const Signin = () => {
   const submitHandler = async () => {
     if (validateFields()) {
       try {
-        await axios.post(`http://localhost:3000/user/register/`, cred);
+        await axios.post(`${api_key}/user/register/`, cred);
         console.log("user added");
         navigate("/");
       } catch (error) {

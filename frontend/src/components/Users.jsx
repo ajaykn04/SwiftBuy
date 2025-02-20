@@ -13,12 +13,12 @@ import {
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-
+  const api_key=import.meta.env.VITE_API_KEY;
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user/viewall");
-        const filteredUsers = response.data.filter((user) => !user.admin);
+        const response = await axios.get(`${api_key}/user/viewall`);
+        const filteredUsers = response.data.filter((user) => user.role!=="admin");
         setUsers(filteredUsers);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -112,7 +112,7 @@ const Users = () => {
                       style={{ backgroundColor: "red" }}
                       onClick={async () => {
                         await axios.delete(
-                          `http://localhost:3000/user/delete/`,
+                          `${api_key}/user/delete/`,
                           {
                             data: users,
                           }

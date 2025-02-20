@@ -22,7 +22,7 @@ const SearchProduct = () => {
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
   const searchvalue = useLocation();
-
+  const api_key=import.meta.env.VITE_API_KEY;
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem("userData"));
     if (savedData) {
@@ -33,7 +33,7 @@ const SearchProduct = () => {
   useEffect(() => {
     if (data._id) {
       console.log(searchvalue.state.query);
-      const apiUrl = `http://localhost:3000/product/search/${searchvalue.state.query}`;
+      const apiUrl = `${api_key}/product/search/${searchvalue.state.query}`;
       axios
         .get(apiUrl)
         .then((response) => {
@@ -143,7 +143,7 @@ const SearchProduct = () => {
                     }}
                   >
                     <img
-                      src={`http://localhost:3000/${product.image}`}
+                      src={`${api_key}/${product.image}`}
                       alt={product.name}
                       style={{
                         marginLeft: "-39px",

@@ -12,6 +12,7 @@ const DashboardUser = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   // const [loading, setLoading] = useState(true);  uncommend this to use this function...and mod other neccesseries...(check all commendeds)
   const [loading, setLoading] = useState(false);
+  const api_key=import.meta.env.VITE_API_KEY;
 
   // setLoading(false);
 
@@ -118,7 +119,7 @@ const DashboardUser = () => {
         //                     }}
         //                   >
         //                     <img
-        //                       src={`http://localhost:3000/${product.image}`}
+        //                       src={`${api_key}/${product.image}`}
         //                       style={{
         //                         height: "auto",
         //                         width: "100%",

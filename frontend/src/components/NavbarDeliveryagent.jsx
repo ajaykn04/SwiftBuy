@@ -20,7 +20,7 @@ const StyledToolbar = styled(Toolbar)`
 `;
 const NavbarDeliveryagent = () => {
   const navigate = useNavigate();
-
+  const api_key=import.meta.env.VITE_API_KEY;
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();

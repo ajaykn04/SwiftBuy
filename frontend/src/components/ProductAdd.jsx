@@ -26,7 +26,7 @@ const ProductAdd = () => {
     image: "",
   });
   const toeditproduct = useLocation();
-
+  const api_key=import.meta.env.VITE_API_KEY;
   useEffect(() => {
     if (toeditproduct.state != null) {
       setProduct({
@@ -96,7 +96,7 @@ const ProductAdd = () => {
             formData.append(key, product[key]);
           }
           formData.append("_id", toeditproduct.state.value._id);
-          await axios.put("http://localhost:3000/product/edit/", formData);
+          await axios.put(`${api_key}/product/edit/`, formData);
           navigate("/merchant/products");
         } catch (error) {
           console.error(error);
@@ -110,7 +110,7 @@ const ProductAdd = () => {
           formData.append("merchant_id", data._id);
           formData.append("merchant_name", data.username);
 
-          await axios.post(`http://localhost:3000/product/add/`, formData);
+          await axios.post(`${api_key}/product/add/`, formData);
           navigate("/merchant/products");
         } catch (error) {
           console.error(error);

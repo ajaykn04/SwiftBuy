@@ -11,6 +11,7 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: false, password: false });
   const [generalError, setGeneralError] = useState("");
   const navigate = useNavigate();
+  const api_key=import.meta.env.VITE_API_KEY;
 
   const inputHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -31,7 +32,7 @@ const Login = () => {
     if (validateFields()) {
       try {
         const login = await axios.get(
-          `http://localhost:3000/user/get/${user.email}/${user.password}`
+          `${api_key}/user/get/${user.email}/${user.password}`
         );
         const userData = {
           username: login.data.username,

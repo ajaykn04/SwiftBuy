@@ -21,6 +21,7 @@ const MyProduct = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
+  const api_key=import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem("userData"));
@@ -31,7 +32,7 @@ const MyProduct = () => {
 
   useEffect(() => {
     if (data._id) {
-      const apiUrl = `http://localhost:3000/merchant/products/${data._id}`;
+      const apiUrl = `${api_key}/merchant/products/${data._id}`;
       axios
         .get(apiUrl)
         .then((response) => {
@@ -53,7 +54,7 @@ const MyProduct = () => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3000/product/delete/${productId}`);
+      await axios.delete(`${api_key}/product/delete/${productId}`);
       setProducts((prevProducts) =>
         prevProducts.filter((r) => r._id !== productId)
       );
@@ -175,7 +176,7 @@ const MyProduct = () => {
                     }}
                   >
                     <img
-                      src={`http://localhost:3000/${product.image}`}
+                      src={`${api_key}/${product.image}`}
                       alt={product.name}
                       style={{
                         marginLeft: "-39px",
