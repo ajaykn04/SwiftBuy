@@ -51,7 +51,7 @@ const Profile = () => {
           age: data.age,
           _id: data._id,
           email: data.email,
-          role: data.role
+          role: data.role,
         };
         await axios.put(`http://localhost:3000/user/edit/`, updatedProfile);
         console.log("Profile Updated");
@@ -72,13 +72,15 @@ const Profile = () => {
   return (
     <div>
       {data.role === "admin" ? (
-  <NavbarAdmin/>
-) : data.role === "merchant" ? (
-  <NavbarMerchant/>
-) : data.role === "deliveryagent" ? (
-  <NavbarDeliveryagent/>
-) : <Navbar />}
-      
+        <NavbarAdmin />
+      ) : data.role === "merchant" ? (
+        <NavbarMerchant />
+      ) : data.role === "deliveryagent" ? (
+        <NavbarDeliveryagent />
+      ) : (
+        <Navbar />
+      )}
+
       <Box
         sx={{
           display: "flex",

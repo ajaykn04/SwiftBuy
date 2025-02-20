@@ -16,7 +16,6 @@ import NavbarDeliveryagent from "./NavbarDeliveryagent";
 import Navbar from "./Navbar";
 
 const SearchProduct = () => {
-
   const { data, setData } = useContext(AppContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -33,7 +32,7 @@ const SearchProduct = () => {
 
   useEffect(() => {
     if (data._id) {
-      console.log(searchvalue.state.query)
+      console.log(searchvalue.state.query);
       const apiUrl = `http://localhost:3000/product/search/${searchvalue.state.query}`;
       axios
         .get(apiUrl)
@@ -50,19 +49,17 @@ const SearchProduct = () => {
     }
   }, [data, setData]);
 
-  
-
-  
-
   return (
     <div>
       {data.role === "admin" ? (
-  <NavbarAdmin/>
-) : data.role === "merchant" ? (
-  <NavbarMerchant/>
-) : data.role === "deliveryagent" ? (
-  <NavbarDeliveryagent/>
-) : <Navbar />}
+        <NavbarAdmin />
+      ) : data.role === "merchant" ? (
+        <NavbarMerchant />
+      ) : data.role === "deliveryagent" ? (
+        <NavbarDeliveryagent />
+      ) : (
+        <Navbar />
+      )}
       {loading ? (
         <center>
           <br />
@@ -120,8 +117,8 @@ const SearchProduct = () => {
                     overflow: "hidden",
                     borderColor: "white",
                     borderRadius: "15px",
-                    width:"255px",
-                    height:"325px",
+                    width: "255px",
+                    height: "325px",
                     "&:hover": {
                       borderColor: "darkorange",
                     },
@@ -201,9 +198,6 @@ const SearchProduct = () => {
                         },
                       }}
                     />
-
-                    
-
                   </Container>
                 </Button>
               </Paper>
@@ -212,7 +206,7 @@ const SearchProduct = () => {
         </Grid>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default SearchProduct
+export default SearchProduct;

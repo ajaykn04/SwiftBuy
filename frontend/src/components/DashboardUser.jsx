@@ -1,49 +1,36 @@
-import {
-    Box,
-    Button,
-    Container,
-    Grid,
-    Paper,
-    Typography
-  } from "@mui/material";
-  import React, { useState, useEffect } from "react";
-  import Navbar from "./Navbar";
-  import { useNavigate } from "react-router-dom";
-  import "react-responsive-carousel/lib/styles/carousel.min.css";
-  import { Carousel } from "react-responsive-carousel";
-  import axios from "axios";
-  
-  const DashboardUser = () => {
-    const navigate = useNavigate();
-    const [products, setProducts] = useState([]);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    // const [loading, setLoading] = useState(true);  uncommend this to use this function...and mod other neccesseries...(check all commendeds)
-    const [loading, setLoading] = useState(false);
-  
-    
-  
-    // setLoading(false);
-  
-    
-  
-   
-  
-    const handleSlideChange = (index) => {
-      setSelectedIndex(index);
-    };
-  
-    return (
-      <div>
-        <Navbar />
-        <br />
-        <br />
-        <br />
-        <br />
-        {loading ? (
-          <center>Loading...</center>
-        ) : (
-            "THIS IS USER DASHBOARD"
-            
+import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import axios from "axios";
+
+const DashboardUser = () => {
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  // const [loading, setLoading] = useState(true);  uncommend this to use this function...and mod other neccesseries...(check all commendeds)
+  const [loading, setLoading] = useState(false);
+
+  // setLoading(false);
+
+  const handleSlideChange = (index) => {
+    setSelectedIndex(index);
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <br />
+      <br />
+      <br />
+      <br />
+      {loading ? (
+        <center>Loading...</center>
+      ) : (
+        "THIS IS USER DASHBOARD"
+
         //   <Carousel
         //     autoPlay
         //     interval={2500}
@@ -120,7 +107,7 @@ import {
         //                 >
         //                   <Button
         //                     onClick={() => {
-                              
+
         //                     }}
         //                     variant="outlined"
         //                     style={{
@@ -147,10 +134,9 @@ import {
         //       </div>
         //     ))}
         //   </Carousel>
-        )}
-      </div>
-    );
-  };
-  
-  export default DashboardUser;
-  
+      )}
+    </div>
+  );
+};
+
+export default DashboardUser;

@@ -88,7 +88,7 @@ const Signin = () => {
             alt="Login Icon"
             style={{
               width: "180px",
-              marginLeft:'-25px',
+              marginLeft: "-25px",
               marginBottom: "-1rem",
               marginTop: "-2.5rem",
             }}
@@ -98,7 +98,7 @@ const Signin = () => {
             variant="h3"
             color="white"
             style={{
-              marginBottom:'0px'
+              marginBottom: "0px",
             }}
             gutterBottom
           >

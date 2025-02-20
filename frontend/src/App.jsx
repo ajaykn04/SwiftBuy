@@ -35,14 +35,17 @@ function App() {
             <Route path="/signin" element={<Signin />} />
             <Route path="/admindash" element={<DashboardAdmin />} />
             <Route path="/userdash" element={<DashboardUser />} />
-            <Route path="/merchantdash" element={<DashboardMerchant />}/>
-            <Route path="/deliveryagentdash" element={<DashboardDeliveryagent/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/product/add" element={<ProductAdd/>}/>
-            <Route path="/merchant/products" element={<MyProduct/>}/>
-            <Route path="/search/products" element={<SearchProduct/>}/>
-            <Route path="/admin/users" element={<Users/>}/>
-            <Route path="/admin/products" element={<Products/>}/>
+            <Route path="/merchantdash" element={<DashboardMerchant />} />
+            <Route
+              path="/deliveryagentdash"
+              element={<DashboardDeliveryagent />}
+            />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/product/add" element={<ProductAdd />} />
+            <Route path="/merchant/products" element={<MyProduct />} />
+            <Route path="/search/products" element={<SearchProduct />} />
+            <Route path="/admin/users" element={<Users />} />
+            <Route path="/admin/products" element={<Products />} />
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

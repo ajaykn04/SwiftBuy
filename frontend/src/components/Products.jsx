@@ -13,8 +13,7 @@ import {
 import axios from "axios";
 
 const Products = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -97,15 +96,24 @@ const Products = () => {
                 <TableRow key={index}>
                   <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
                     <Button
-                    style={{color:"black",marginTop:-10,marginBottom:-10,marginLeft:-15}}
-                    onClick={()=>{
-                      //navigate("/detproduct", { state: product })
-                    }}
+                      style={{
+                        color: "black",
+                        marginTop: -10,
+                        marginBottom: -10,
+                        marginLeft: -15,
+                      }}
+                      onClick={() => {
+                        //navigate("/detproduct", { state: product })
+                      }}
                     >
                       <img
                         src={`http://localhost:3000/${product.image}`}
                         alt={product.name}
-                        style={{ width: "2vw", height: "6vh", cursor: "pointer" }}
+                        style={{
+                          width: "2vw",
+                          height: "6vh",
+                          cursor: "pointer",
+                        }}
                       />
                     </Button>
                   </TableCell>
@@ -143,7 +151,7 @@ const Products = () => {
         </Table>
       </TableContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

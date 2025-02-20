@@ -16,8 +16,7 @@ import { AppContext } from "../AppContext";
 import NavbarMerchant from "./NavbarMerchant";
 
 const MyProduct = () => {
-
-    const { data, setData } = useContext(AppContext);
+  const { data, setData } = useContext(AppContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -150,8 +149,8 @@ const MyProduct = () => {
                     overflow: "hidden",
                     borderColor: "white",
                     borderRadius: "15px",
-                    width:"255px",
-                    height:"325px",
+                    width: "255px",
+                    height: "325px",
                     "&:hover": {
                       borderColor: "darkorange",
                     },
@@ -231,9 +230,6 @@ const MyProduct = () => {
                         },
                       }}
                     />
-
-                    
-
                   </Container>
                 </Button>
               </Paper>
@@ -245,4 +241,4 @@ const MyProduct = () => {
   );
 };
 
-export default MyProduct
+export default MyProduct;

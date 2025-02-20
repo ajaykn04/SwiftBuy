@@ -12,8 +12,7 @@ import {
 } from "@mui/material";
 
 const Users = () => {
-
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -132,7 +131,7 @@ const Users = () => {
         </Table>
       </TableContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Users
+export default Users;
