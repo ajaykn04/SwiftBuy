@@ -18,7 +18,7 @@ import wishlistImage from "/heart.png";
 const StyledToolbar = styled(Toolbar)`
   background-color: black;
 `;
-const Navbar = () => {
+const NavbarUser = () => {
   const navigate = useNavigate();
   const api_key=import.meta.env.VITE_API_KEY;
   const handleKeyDown = (event) => {
@@ -44,48 +44,30 @@ const Navbar = () => {
             alt="OSP"
             src={iconImage}
           />
-          <div
+          <Typography
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              marginRight: 1,
+              fontSize: "30px",
+              fontFamily: "fantasy",
+              color: "white",
+              marginLeft: -12,
             }}
           >
-            <Typography
-              style={{
-                marginBottom: -15,
-                fontSize: "20px",
-                fontFamily: "fantasy",
-                color: "white",
-              }}
-            >
-              Admin
-            </Typography>
-            <Typography
-              style={{
-                fontSize: "30px",
-                fontFamily: "fantasy",
-                color: "white",
-              }}
-            >
-              OSP
-            </Typography>
-          </div>
-          {/* <Typography
-              style={{
-                width: "150px",
-                fontSize: "13px",
-                fontFamily: "fantasy",
-                color: "white",
-                textAlign: "center",
-                display: "flex",
-                lineHeight: "1.2",
-              }}
-            >
-              Shop with us <br />
-              save your time
-            </Typography> */}
+            OSP
+          </Typography>
+          <Typography
+            style={{
+              width: "150px",
+              fontSize: "13px",
+              fontFamily: "fantasy",
+              color: "white",
+              textAlign: "center",
+              display: "flex",
+              lineHeight: "1.2",
+            }}
+          >
+            Shop with us <br />
+            save your time
+          </Typography>
           <Container
             sx={{
               display: "flex",
@@ -106,7 +88,7 @@ const Navbar = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admindash");
+                  navigate("/userdash");
                 }}
                 style={{
                   fontSize: "20px",
@@ -122,28 +104,6 @@ const Navbar = () => {
                   }}
                 >
                   HOME
-                </Typography>
-              </Button>
-              <Button
-                variant="text"
-                onClick={() => {
-                  navigate("/admin/users");
-                }}
-                style={{
-                  marginLeft: -50,
-                  fontSize: "20px",
-                  fontFamily: "fantasy",
-                  color: "black",
-                }}
-              >
-                <Typography
-                  style={{
-                    fontFamily: "fantasy",
-                    fontSize: "20px",
-                    color: "orange",
-                  }}
-                >
-                  USERS
                 </Typography>
               </Button>
             </Container>
@@ -205,7 +165,7 @@ const Navbar = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admin/products");
+                  //navigate("/user/orders");
                 }}
                 style={{
                   marginLeft: -50,
@@ -221,7 +181,7 @@ const Navbar = () => {
                     color: "orange",
                   }}
                 >
-                  PRODUCTS
+                  My Orders
                 </Typography>
               </Button>
               <Button
@@ -262,4 +222,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarUser;

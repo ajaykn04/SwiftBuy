@@ -13,7 +13,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { AppContext } from "../AppContext";
-import NavbarMerchant from "./NavbarMerchant";
+import Navbar from "./Navbar";
 
 const MyProduct = () => {
   const { data, setData } = useContext(AppContext);
@@ -66,7 +66,7 @@ const MyProduct = () => {
 
   return (
     <div>
-      <NavbarMerchant />
+      <Navbar />
       {loading ? (
         <center>
           <br />

@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import NavbarMerchant from "./NavbarMerchant";
+import Navbar from "./Navbar";
 import { AppContext } from "../AppContext";
 import styles from "../styles";
 
@@ -121,7 +121,7 @@ const ProductAdd = () => {
 
   return (
     <div>
-      <NavbarMerchant />
+      <Navbar />
       <Box
         sx={{
           mt: 13.7,

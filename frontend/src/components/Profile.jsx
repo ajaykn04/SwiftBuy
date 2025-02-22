@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../styles";
 import Navbar from "./Navbar";
-import NavbarAdmin from "./NavbarAdmin";
-import NavbarMerchant from "./NavbarMerchant";
-import NavbarDeliveryagent from "./NavbarDeliveryagent";
 import { AppContext } from "../AppContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -72,16 +69,7 @@ const Profile = () => {
 
   return (
     <div>
-      {data.role === "admin" ? (
-        <NavbarAdmin />
-      ) : data.role === "merchant" ? (
-        <NavbarMerchant />
-      ) : data.role === "deliveryagent" ? (
-        <NavbarDeliveryagent />
-      ) : (
-        <Navbar />
-      )}
-
+      <Navbar />
       <Box
         sx={{
           display: "flex",

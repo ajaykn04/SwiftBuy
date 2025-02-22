@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavbarAdmin from "./NavbarAdmin";
+import Navbar from "./Navbar";
 import axios from "axios";
 import {
   Button,
@@ -30,7 +30,7 @@ const Users = () => {
 
   return (
     <div>
-      <NavbarAdmin />
+      <Navbar />
       <TableContainer style={{ marginTop: "10vh" }}>
         <Table>
           <TableHead>

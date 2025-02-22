@@ -1,10 +1,10 @@
 import React from "react";
-import NavbarMerchant from "./NavbarMerchant";
+import Navbar from "./Navbar";
 const DashboardMerchant = () => {
   const api_key=import.meta.env.VITE_API_KEY;
   return (
     <div>
-      <NavbarMerchant />
+      <Navbar />
       <br />
       <br />
       <br />

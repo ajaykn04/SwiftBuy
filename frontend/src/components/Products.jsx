@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavbarAdmin from "./NavbarAdmin";
+import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -33,7 +33,7 @@ const Products = () => {
 
   return (
     <div>
-      <NavbarAdmin />
+      <Navbar />
       <TableContainer style={{ marginTop: "10vh" }}>
         <Table>
           <TableHead>

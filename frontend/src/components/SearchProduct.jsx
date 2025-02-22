@@ -10,11 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { AppContext } from "../AppContext";
-import NavbarMerchant from "./NavbarMerchant";
-import NavbarAdmin from "./NavbarAdmin";
-import NavbarDeliveryagent from "./NavbarDeliveryagent";
 import Navbar from "./Navbar";
-import Hai from "./hai";
 
 const SearchProduct = () => {
   const { data, setData } = useContext(AppContext);
@@ -52,16 +48,7 @@ const SearchProduct = () => {
 
   return (
     <div>
-      {/* {data.role === "admin" ? (
-        <NavbarAdmin />
-      ) : data.role === "merchant" ? (
-        <NavbarMerchant />
-      ) : data.role === "deliveryagent" ? (
-        <NavbarDeliveryagent />
-      ) : (
-        <Navbar />
-      )} */}
-      <Hai/>
+      <Navbar />
       {loading ? (
         <center>
           <br />

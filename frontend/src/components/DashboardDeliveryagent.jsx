@@ -1,11 +1,11 @@
 import React from "react";
-import NavbarDeliveryagent from "./NavbarDeliveryagent";
+import Navbar from "./Navbar";
 
 const DashboardDeliveryagent = () => {
   const api_key=import.meta.env.VITE_API_KEY;
   return (
     <div>
-      <NavbarDeliveryagent />
+      <Navbar />
       <br />
       <br />
       <br />
