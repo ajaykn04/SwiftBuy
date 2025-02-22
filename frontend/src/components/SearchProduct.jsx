@@ -14,6 +14,7 @@ import NavbarMerchant from "./NavbarMerchant";
 import NavbarAdmin from "./NavbarAdmin";
 import NavbarDeliveryagent from "./NavbarDeliveryagent";
 import Navbar from "./Navbar";
+import Hai from "./hai";
 
 const SearchProduct = () => {
   const { data, setData } = useContext(AppContext);
@@ -51,7 +52,7 @@ const SearchProduct = () => {
 
   return (
     <div>
-      {data.role === "admin" ? (
+      {/* {data.role === "admin" ? (
         <NavbarAdmin />
       ) : data.role === "merchant" ? (
         <NavbarMerchant />
@@ -59,33 +60,24 @@ const SearchProduct = () => {
         <NavbarDeliveryagent />
       ) : (
         <Navbar />
-      )}
+      )} */}
+      <Hai/>
       {loading ? (
         <center>
           <br />
           <br />
           <br />
           <br />
-          Loading...
+          Searching for {searchvalue.state.query}
         </center>
       ) : empty ? (
         <center>
-          <Typography style={{ marginTop: "50vh" }}>
-            You don't have any Products,&nbsp;
-            <Button
-              sx={{
-                textTransform: "none",
-                padding: 0,
-              }}
-              style={{ color: "transparent" }}
-              onClick={() => {
-                navigate("/product/add");
-              }}
-            >
-              <Typography style={{ color: "orange" }}>
-                Create new Product
-              </Typography>
-            </Button>
+          <Typography style={{ fontSize: 17,marginTop: "50vh" }}>
+            No results found🫠
+            {/* No results found😓<br />
+            No results found😰<br />
+            No results found🥺<br />
+            No results found🥹 */}
           </Typography>
         </center>
       ) : (
