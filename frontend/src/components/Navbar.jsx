@@ -7,6 +7,7 @@ import { AppContext } from '../AppContext';
 
 const Navbar = () => {
     const data = useContext(AppContext);
+    console.log(data.data.role)
   return (
     <div>
       {data.role === "admin" ? (
