@@ -10,11 +10,11 @@ const Navbar = () => {
     console.log(data.data.role)
   return (
     <div>
-      {data.role === "admin" ? (
+      {data.data.role === "admin" ? (
         <NavbarAdmin />
-      ) : data.role === "merchant" ? (
+      ) : data.data.role === "merchant" ? (
         <NavbarMerchant />
-      ) : data.role === "deliveryagent" ? (
+      ) : data.data.role === "deliveryagent" ? (
         <NavbarDeliveryagent />
       ) : (
         <NavbarUser />
