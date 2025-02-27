@@ -110,8 +110,8 @@ const Products = () => {
                         src={`${api_key}/${product.image}`}
                         alt={product.name}
                         style={{
-                          width: "2vw",
-                          height: "6vh",
+                          width: "auto",
+                          height: 65,
                           cursor: "pointer",
                         }}
                       />
