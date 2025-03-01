@@ -11,11 +11,6 @@ import {
   ListItem,
   Paper,
   Rating,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
   Typography,
 } from "@mui/material";
 import { AppContext } from "../AppContext";
@@ -289,7 +284,8 @@ const SearchProduct = () => {
                       fontFamily={"cursive"}
                       sx={{
                         ml: 18,
-                        mt: -3.4,
+                        mt: .5,
+                        mb:-2.9,
                         color: "yellow",
                         fontWeight: "bold",
                       }}
@@ -305,6 +301,7 @@ const SearchProduct = () => {
                       sx={{
                         ml: -2,
                         mb: 1,
+                        mt:-.5,
                         "& .MuiRating-iconFilled": {
                           color: "#FFAD18",
                         },
