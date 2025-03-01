@@ -6,7 +6,7 @@ import NavbarUser from './NavbarUser';
 
 const Navbar = () => {
     const data = JSON.parse(localStorage.getItem("userData"));
-    console.log(data.username)
+    console.log(data)
   return (
     <div>
       {data.role === "admin" ? (

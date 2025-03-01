@@ -14,6 +14,7 @@ import MyProduct from "./components/MyProduct";
 import SearchProduct from "./components/SearchProduct";
 import Users from "./components/Users";
 import Products from "./components/Products";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [data, setData] = useState({
@@ -33,10 +34,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signin" element={<Signin />} />
-            <Route path="/admindash" element={<DashboardAdmin />} />
-            <Route path="/userdash" element={<DashboardUser />} />
-            <Route path="/merchantdash" element={<DashboardMerchant />} />
-            <Route path="/deliveryagentdash" element={<DashboardDeliveryagent />} />
+            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/add" element={<ProductAdd />} />
             <Route path="/merchant/products" element={<MyProduct />} />

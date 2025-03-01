@@ -54,7 +54,7 @@ const Profile = () => {
         await axios.put(`${api_key}/user/edit/`, updatedProfile);
         console.log("Profile Updated");
         localStorage.setItem("userData", JSON.stringify(updatedProfile));
-        navigate("/userdash");
+        navigate("/dashboard");
       } catch (error) {
         console.error(error);
         setGeneralError("An error occurred while updating the profile.");

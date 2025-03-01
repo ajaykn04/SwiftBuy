@@ -88,7 +88,7 @@ const NavbarUser = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/userdash");
+                  navigate("/dashboard");
                 }}
                 style={{
                   fontSize: "20px",
@@ -101,7 +101,7 @@ const NavbarUser = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/userdash" ? "underline" : "none"
+                    textDecoration: location.pathname === "/dashboard" ? "underline" : "none"
                   }}
                 >
                   HOME

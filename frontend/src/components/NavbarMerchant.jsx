@@ -106,7 +106,7 @@ const NavbarMerchant = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/merchantdash");
+                  navigate("/dashboard");
                 }}
                 style={{
                   fontSize: "20px",
@@ -119,7 +119,7 @@ const NavbarMerchant = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/merchantdash" ? "underline" : "none"
+                    textDecoration: location.pathname === "/dashboard" ? "underline" : "none"
                   }}
                 >
                   HOME

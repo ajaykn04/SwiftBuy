@@ -106,7 +106,7 @@ const NavbarDeliveryagent = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/deliveryagentdash");
+                  navigate("/dashboard");
                 }}
                 style={{
                   fontSize: "20px",
@@ -119,7 +119,7 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/deliveryagentdash" ? "underline" : "none"
+                    textDecoration: location.pathname === "/dashboard" ? "underline" : "none"
                   }}
                 >
                   HOME

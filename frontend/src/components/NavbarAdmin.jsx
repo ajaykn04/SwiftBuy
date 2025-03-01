@@ -106,7 +106,7 @@ const Navbar = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admindash");
+                  navigate("/dashboard");
                 }}
                 style={{
                   fontSize: "20px",
@@ -119,7 +119,7 @@ const Navbar = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/admindash" ? "underline" : "none"
+                    textDecoration: location.pathname === "/dashboard" ? "underline" : "none"
                   }}
                 >
                   HOME

@@ -27,7 +27,7 @@ const SearchProduct = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
-  const [test, setTest] = useState(true);
+  const [test, setTest] = useState(false);
   const searchvalue = useLocation();
   const api_key=import.meta.env.VITE_API_KEY;
   useEffect(() => {

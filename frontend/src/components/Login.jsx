@@ -45,16 +45,7 @@ const Login = () => {
         };
         setData(userData);
         localStorage.setItem("userData", JSON.stringify(userData));
-
-        if (userData.role == "admin") {
-          navigate("/admindash", { state: login.data });
-        } else if (userData.role == "merchant") {
-          navigate("/merchantdash", { state: login.data });
-        } else if (userData.role == "deliveryagent") {
-          navigate("/deliveryagentdash", { state: login.data });
-        } else {
-          navigate("/userdash", { state: login.data });
-        }
+        navigate("/dashboard", { state: login.data });
       } catch (error) {
         console.error(error);
         setGeneralError("Invalid Email or Password");
