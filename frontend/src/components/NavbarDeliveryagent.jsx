@@ -119,6 +119,7 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/deliveryagentdash" ? "underline" : "none"
                   }}
                 >
                   HOME
@@ -197,6 +198,7 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    //textDecoration: location.pathname === "" ? "underline" : "none"
                   }}
                 >
                   My Orders
@@ -216,6 +218,7 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    //textDecoration: location.pathname === "" ? "underline" : "none"
                   }}
                 >
                   My Cart

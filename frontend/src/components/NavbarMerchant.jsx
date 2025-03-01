@@ -119,6 +119,7 @@ const NavbarMerchant = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/merchantdash" ? "underline" : "none"
                   }}
                 >
                   HOME
@@ -142,6 +143,7 @@ const NavbarMerchant = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/product/add" ? "underline" : "none"
                   }}
                 >
                   Add Product
@@ -220,6 +222,7 @@ const NavbarMerchant = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/merchant/products" ? "underline" : "none"
                   }}
                 >
                   My Products
@@ -239,6 +242,7 @@ const NavbarMerchant = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    //textDecoration: location.pathname === "" ? "underline" : "none"
                   }}
                 >
                   My Cart

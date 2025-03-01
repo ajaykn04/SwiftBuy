@@ -119,6 +119,7 @@ const Navbar = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/admindash" ? "underline" : "none"
                   }}
                 >
                   HOME
@@ -141,6 +142,7 @@ const Navbar = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/admin/users" ? "underline" : "none"
                   }}
                 >
                   USERS
@@ -219,6 +221,7 @@ const Navbar = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/admin/products" ? "underline" : "none"
                   }}
                 >
                   PRODUCTS
@@ -238,6 +241,7 @@ const Navbar = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    //textDecoration: location.pathname === "" ? "underline" : "none"
                   }}
                 >
                   My Cart

@@ -93,7 +93,7 @@ const NavbarUser = () => {
                 style={{
                   fontSize: "20px",
                   fontFamily: "fantasy",
-                  color: "black",
+                  color: "black"
                 }}
               >
                 <Typography
@@ -101,6 +101,7 @@ const NavbarUser = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    textDecoration: location.pathname === "/userdash" ? "underline" : "none"
                   }}
                 >
                   HOME
@@ -179,6 +180,7 @@ const NavbarUser = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    //textDecoration: location.pathname === "" ? "underline" : "none"
                   }}
                 >
                   My Orders
@@ -198,6 +200,7 @@ const NavbarUser = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
+                    //textDecoration: location.pathname === "" ? "underline" : "none"
                   }}
                 >
                   My Cart
