@@ -11,6 +11,7 @@ import SearchProduct from "./components/SearchProduct";
 import Users from "./components/Users";
 import Products from "./components/Products";
 import Dashboard from "./components/Dashboard";
+import DetailedProduct from "./components/DetailedProduct";
 
 function App() {
   const [data, setData] = useState({
@@ -37,6 +38,7 @@ function App() {
             <Route path="/search/products" element={<SearchProduct />} />
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/products" element={<Products />} />
+            <Route path="/detproduct" element={<DetailedProduct/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

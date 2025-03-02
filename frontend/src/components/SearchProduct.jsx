@@ -232,7 +232,7 @@ const SearchProduct = () => {
                     },
                   }}
                   onClick={() => {
-                    //navigate("/detproduct", { state: product });
+                    navigate("/detproduct", { state: product });
                   }}
                   style={{
                     fontSize: "20px",

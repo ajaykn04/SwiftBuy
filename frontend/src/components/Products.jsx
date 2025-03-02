@@ -103,7 +103,7 @@ const Products = () => {
                         marginLeft: -15,
                       }}
                       onClick={() => {
-                        //navigate("/detproduct", { state: product })
+                        navigate("/detproduct", { state: product })
                       }}
                     >
                       <img
