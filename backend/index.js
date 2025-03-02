@@ -220,6 +220,57 @@ app.get("/product/search/:word", async (req, res) => {
     }
 });
 
+app.post("/product/addreview/:productId", async (req, res) => {
+    try {
+        var id = req.params.productId;
+        var review = req.body;
+        var product = await productModel.findById(id);
+        product.reviews.unshift(review)
+        let total = 0
+        for (let i=0;i<product.reviews.length;i++){
+            total += product.reviews[i].rating;
+        }
+        product.rating = total / product.reviews.length;
+        await product.save();
+        res.send({ message: "Review Added" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.delete("/product/delreview/:productId/:userId", async (req, res) => {
+    try {
+        var recid = req.params.productId;
+        var userid = req.params.userId;
+        var product = await productModel.findById(recid);
+        product.reviews = product.reviews.filter(review => review.userId != userid)
+        let total = 0
+        for (let i=0;i<product.reviews.length;i++){
+            total += product.reviews[i].rating;
+        }
+        product.rating = total / product.reviews.length;
+        await product.save();
+        res.send({ message: "Review Deleted" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.get("/product/getreviews/:productId", async (req, res) => {
+    try {
+        var id = req.params.productId;
+        var product = await productModel.findById(id);
+        res.send(product.reviews);
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 
 app.listen(PORT, () => {
