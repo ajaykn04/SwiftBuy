@@ -12,27 +12,20 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { AppContext } from "../AppContext";
 import Navbar from "./Navbar";
 
 const MyProduct = () => {
-  const { data, setData } = useContext(AppContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("userData"));
-    if (savedData) {
-      setData(savedData);
-    }
-  }, [setData]);
+  const data = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
     if (data._id) {
-      const apiUrl = `${api_key}/merchant/products/${data._id}`;
+      const apiUrl = `${api_url}/merchant/products/${data._id}`;
       axios
         .get(apiUrl)
         .then((response) => {
@@ -46,7 +39,7 @@ const MyProduct = () => {
           setLoading(false);
         });
     }
-  }, [data, setData]);
+  }, []);
 
   const updateValue = (value) => {
     navigate("/product/add", { state: { value } });
@@ -54,7 +47,7 @@ const MyProduct = () => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`${api_key}/product/delete/${productId}`);
+      await axios.delete(`${api_url}/product/delete/${productId}`);
       setProducts((prevProducts) =>
         prevProducts.filter((r) => r._id !== productId)
       );
@@ -176,7 +169,7 @@ const MyProduct = () => {
                     }}
                   >
                     <img
-                      src={`${api_key}/${product.image}`}
+                      src={`${api_url}/${product.image}`}
                       alt={product.name}
                       style={{
                         marginLeft: "-39px",

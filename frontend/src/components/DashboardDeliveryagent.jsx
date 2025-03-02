@@ -2,7 +2,8 @@ import React from "react";
 import Navbar from "./Navbar";
 
 const DashboardDeliveryagent = () => {
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
+  
   return (
     <div>
       <Navbar />

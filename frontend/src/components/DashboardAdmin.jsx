@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navbar from "./Navbar";
 
 const DashboardAdmin = () => {
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
   
   return (
     <div>

@@ -15,12 +15,12 @@ import axios from "axios";
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${api_key}/product/viewall`
+          `${api_url}/product/viewall`
         );
         setProducts(response.data);
       } catch (error) {
@@ -107,7 +107,7 @@ const Products = () => {
                       }}
                     >
                       <img
-                        src={`${api_key}/${product.image}`}
+                        src={`${api_url}/${product.image}`}
                         alt={product.name}
                         style={{
                           width: "auto",
@@ -135,7 +135,7 @@ const Products = () => {
                       style={{ backgroundColor: "red" }}
                       onClick={async () => {
                         await axios.delete(
-                          `${api_key}/product/delete/${product._id}`
+                          `${api_url}/product/delete/${product._id}`
                         );
                         window.location.reload(true);
                         console.log("Product Successfully Deleted");

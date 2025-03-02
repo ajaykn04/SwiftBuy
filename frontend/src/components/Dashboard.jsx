@@ -6,7 +6,6 @@ import DashboardUser from './DashboardUser';
 
 const Dashboard = () => {
     const data = JSON.parse(localStorage.getItem("userData"));
-    console.log(data)
   return (
     <div>
       {data.role === "admin" ? (

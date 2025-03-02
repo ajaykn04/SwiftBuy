@@ -13,29 +13,24 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import { AppContext } from "../AppContext";
+
 import Navbar from "./Navbar";
 
 const SearchProduct = () => {
-  const { data, setData } = useContext(AppContext);
+  
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
   const [test, setTest] = useState(false);
   const searchvalue = useLocation();
-  const api_key=import.meta.env.VITE_API_KEY;
-  useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("userData"));
-    if (savedData) {
-      setData(savedData);
-    }
-  }, [setData]);
+  const api_url=import.meta.env.VITE_API_URL;
+  const data = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
-    if (data._id) {
+    // if (data._id) {
       console.log(searchvalue.state.query);
-      const apiUrl = `${api_key}/product/search/${searchvalue.state.query}`;
+      const apiUrl = `${api_url}/product/search/${searchvalue.state.query}`;
       axios
         .get(apiUrl)
         .then((response) => {
@@ -48,8 +43,8 @@ const SearchProduct = () => {
         .finally(() => {
           setLoading(false);
         });
-    }
-  }, [data, setData]);
+    // }
+  }, []);
 
   return (
     <div>
@@ -87,7 +82,7 @@ const SearchProduct = () => {
       //       <Grid container spacing={2} alignItems="center">
       //         {/* Product Image */}
       //         <Grid item xs={3}>
-      //           <img src={`${api_key}/${product.image}`} alt={product.name} width="100%" />
+      //           <img src={`${api_url}/${product.image}`} alt={product.name} width="100%" />
       //         </Grid>
   
       //         {/* Product Name */}
@@ -130,7 +125,7 @@ const SearchProduct = () => {
         >
           <Box>
             <img
-              src={`${api_key}/${product.image}`}
+              src={`${api_url}/${product.image}`}
               alt={product.name}
               style={{
                 width: 180,
@@ -179,7 +174,7 @@ const SearchProduct = () => {
             style={{ backgroundColor: "orangered" }}
             onClick={async () => {
               // await axios.delete(
-              //   `${api_key}/product/delete/${product._id}`
+              //   `${api_url}/product/delete/${product._id}`
               // );
               // window.location.reload(true);
               // console.log("Product Successfully Deleted");
@@ -256,7 +251,7 @@ const SearchProduct = () => {
                     }}
                   >
                     <img
-                      src={`${api_key}/${product.image}`}
+                      src={`${api_url}/${product.image}`}
                       alt={product.name}
                       style={{
                         marginLeft: "-39px",

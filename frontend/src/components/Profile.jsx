@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "../styles";
 import Navbar from "./Navbar";
-import { AppContext } from "../AppContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const Profile = () => {
-  const { data, setData } = useContext(AppContext);
+  const [data, setData] = useState({
+    username: "",
+    age: "",
+    place: "",
+    _id: "",
+    email: "",
+    role: "",
+  });
   const navigate = useNavigate();
   const [errors, setErrors] = useState({
     username: false,
@@ -16,15 +22,13 @@ const Profile = () => {
     place: false,
   });
   const [generalError, setGeneralError] = useState("");
-  const [whoami, setWhoami] = useState("");
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("userData"));
-    if (savedData) {
-      setData(savedData);
+    if (JSON.parse(localStorage.getItem("userData"))) {
+      setData(JSON.parse(localStorage.getItem("userData")));
     }
-  }, [setData]);
+  }, []);
   const inputHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
@@ -51,7 +55,7 @@ const Profile = () => {
           email: data.email,
           role: data.role,
         };
-        await axios.put(`${api_key}/user/edit/`, updatedProfile);
+        await axios.put(`${api_url}/user/edit/`, updatedProfile);
         console.log("Profile Updated");
         localStorage.setItem("userData", JSON.stringify(updatedProfile));
         navigate("/dashboard");
@@ -161,7 +165,7 @@ const Profile = () => {
             variant="text"
             sx={{ mt: 2 }}
             onClick={async () => {
-              await axios.delete(`${api_key}/user/delete/`, {
+              await axios.delete(`${api_url}/user/delete/`, {
                 data: data,
               });
               navigate("/");

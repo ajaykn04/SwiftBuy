@@ -13,11 +13,11 @@ import {
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${api_key}/user/viewall`);
+        const response = await axios.get(`${api_url}/user/viewall`);
         const filteredUsers = response.data.filter((user) => user.role!=="admin");
         setUsers(filteredUsers);
       } catch (error) {
@@ -112,7 +112,7 @@ const Users = () => {
                       style={{ backgroundColor: "red" }}
                       onClick={async () => {
                         await axios.delete(
-                          `${api_key}/user/delete/`,
+                          `${api_url}/user/delete/`,
                           {
                             data: users,
                           }

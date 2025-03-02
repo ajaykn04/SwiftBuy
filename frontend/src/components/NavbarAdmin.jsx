@@ -20,7 +20,7 @@ const StyledToolbar = styled(Toolbar)`
 `;
 const Navbar = () => {
   const navigate = useNavigate();
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -72,20 +72,6 @@ const Navbar = () => {
               OSP
             </Typography>
           </div>
-          {/* <Typography
-              style={{
-                width: "150px",
-                fontSize: "13px",
-                fontFamily: "fantasy",
-                color: "white",
-                textAlign: "center",
-                display: "flex",
-                lineHeight: "1.2",
-              }}
-            >
-              Shop with us <br />
-              save your time
-            </Typography> */}
           <Container
             sx={{
               display: "flex",
@@ -109,6 +95,8 @@ const Navbar = () => {
                   navigate("/dashboard");
                 }}
                 style={{
+                  marginLeft:-40,
+                  marginRight:0,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -125,13 +113,14 @@ const Navbar = () => {
                   HOME
                 </Typography>
               </Button>
+              
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admin/users");
+                  navigate("/product/add");
                 }}
                 style={{
-                  marginLeft: -50,
+                  marginLeft: 0,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -142,17 +131,17 @@ const Navbar = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/admin/users" ? "underline" : "none"
+                    textDecoration: location.pathname === "/product/add" ? "underline" : "none"
                   }}
                 >
-                  USERS
+                  ADD PRODUCT
                 </Typography>
               </Button>
             </Container>
-
+            
             <Container
               sx={{
-                ml: -25, //comon 1
+                ml: -16, //comon 1
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -207,10 +196,35 @@ const Navbar = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admin/products");
+                  navigate("/admin/users");
                 }}
                 style={{
                   marginLeft: -50,
+                  marginRight:25,
+                  fontSize: "20px",
+                  fontFamily: "fantasy",
+                  color: "black",
+                }}
+              >
+                <Typography
+                  style={{
+                    fontFamily: "fantasy",
+                    fontSize: "20px",
+                    color: "orange",
+                    textDecoration: location.pathname === "/admin/users" ? "underline" : "none"
+                  }}
+                >
+                  USERS
+                </Typography>
+              </Button>
+              
+              <Button
+                variant="text"
+                onClick={() => {
+                  navigate("/admin/products");
+                }}
+                style={{
+                  marginLeft: -25,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -227,26 +241,7 @@ const Navbar = () => {
                   PRODUCTS
                 </Typography>
               </Button>
-              <Button
-                variant="text"
-                onClick={() => {}}
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "fantasy",
-                  color: "black",
-                }}
-              >
-                <Typography
-                  style={{
-                    fontFamily: "fantasy",
-                    fontSize: "20px",
-                    color: "orange",
-                    //textDecoration: location.pathname === "" ? "underline" : "none"
-                  }}
-                >
-                  My Cart
-                </Typography>
-              </Button>
+
             </Container>
           </Container>
 

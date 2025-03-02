@@ -13,7 +13,6 @@ import {
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import { AppContext } from "../AppContext";
 import styles from "../styles";
 
 const ProductAdd = () => {
@@ -26,7 +25,7 @@ const ProductAdd = () => {
     image: "",
   });
   const toeditproduct = useLocation();
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
   useEffect(() => {
     if (toeditproduct.state != null) {
       setProduct({
@@ -42,14 +41,9 @@ const ProductAdd = () => {
   }, []);
 
   const navigate = useNavigate();
-  const { data, setData } = useContext(AppContext);
+  const data = JSON.parse(localStorage.getItem("userData"));
 
-  useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("userData"));
-    if (savedData) {
-      setData(savedData);
-    }
-  }, [setData]);
+  
 
   const [image, setImage] = useState();
   const [errors, setErrors] = useState({
@@ -96,7 +90,7 @@ const ProductAdd = () => {
             formData.append(key, product[key]);
           }
           formData.append("_id", toeditproduct.state.value._id);
-          await axios.put(`${api_key}/product/edit/`, formData);
+          await axios.put(`${api_url}/product/edit/`, formData);
           navigate("/merchant/products");
         } catch (error) {
           console.error(error);
@@ -110,7 +104,7 @@ const ProductAdd = () => {
           formData.append("merchant_id", data._id);
           formData.append("merchant_name", data.username);
 
-          await axios.post(`${api_key}/product/add/`, formData);
+          await axios.post(`${api_url}/product/add/`, formData);
           navigate("/merchant/products");
         } catch (error) {
           console.error(error);
@@ -132,7 +126,7 @@ const ProductAdd = () => {
         }}
       >
         <Box sx={styles.box_style}>
-          <img
+          {/* <img
             src="/logo1.png"
             alt="Login Icon"
             style={{
@@ -140,12 +134,14 @@ const ProductAdd = () => {
               marginBottom: "-.5rem",
               marginTop: "-2.5rem",
             }}
-          />
+          /> */}
           <Typography
             fontFamily={"fantasy"}
             variant="h4"
             color="white"
-            gutterBottom
+            mb={2}
+            mt={-2}
+            // gutterBottom
           >
             ADD PRODUCT
           </Typography>
@@ -186,7 +182,7 @@ const ProductAdd = () => {
           />
           <TextField
             required
-            style={{ marginTop: 3 }}
+            style={{ marginTop: 3,marginBottom:18 }}
             fullWidth
             multiline
             rows={4}

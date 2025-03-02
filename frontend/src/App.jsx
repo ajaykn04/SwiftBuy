@@ -1,10 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Signin from "./components/Signin";
-import DashboardAdmin from "./components/DashboardAdmin";
-import DashboardUser from "./components/DashboardUser";
-import DashboardMerchant from "./components/DashboardMerchant";
-import DashboardDeliveryagent from "./components/DashboardDeliveryagent";
 import colors from "./colors";
 import { AppContext } from "./AppContext";
 import { useState } from "react";

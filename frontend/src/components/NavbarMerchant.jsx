@@ -20,7 +20,7 @@ const StyledToolbar = styled(Toolbar)`
 `;
 const NavbarMerchant = () => {
   const navigate = useNavigate();
-  const api_key=import.meta.env.VITE_API_KEY;
+  const api_url=import.meta.env.VITE_API_URL;
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -72,20 +72,6 @@ const NavbarMerchant = () => {
               OSP
             </Typography>
           </div>
-          {/* <Typography
-              style={{
-                width: "150px",
-                fontSize: "13px",
-                fontFamily: "fantasy",
-                color: "white",
-                textAlign: "center",
-                display: "flex",
-                lineHeight: "1.2",
-              }}
-            >
-              Shop with us <br />
-              save your time
-            </Typography> */}
           <Container
             sx={{
               display: "flex",
@@ -109,6 +95,8 @@ const NavbarMerchant = () => {
                   navigate("/dashboard");
                 }}
                 style={{
+                  marginLeft:-40,
+                  marginRight:0,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -132,7 +120,7 @@ const NavbarMerchant = () => {
                   navigate("/product/add");
                 }}
                 style={{
-                  marginLeft: -50,
+                  marginLeft: 0,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -146,14 +134,14 @@ const NavbarMerchant = () => {
                     textDecoration: location.pathname === "/product/add" ? "underline" : "none"
                   }}
                 >
-                  Add Product
+                  ADD PRODUCT
                 </Typography>
               </Button>
             </Container>
 
             <Container
               sx={{
-                ml: -25, //comon 1
+                ml: -16, //comon 1
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -212,6 +200,7 @@ const NavbarMerchant = () => {
                 }}
                 style={{
                   marginLeft: -50,
+                  marginRight:25,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -228,10 +217,12 @@ const NavbarMerchant = () => {
                   My Products
                 </Typography>
               </Button>
+
               <Button
                 variant="text"
                 onClick={() => {}}
                 style={{
+                  marginLeft: -25,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
