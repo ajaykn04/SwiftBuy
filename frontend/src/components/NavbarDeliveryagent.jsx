@@ -206,7 +206,7 @@ const NavbarDeliveryagent = () => {
               </Button>
               <Button
                 variant="text"
-                onClick={() => {}}
+                onClick={() => {navigate("/mycart")}}
                 style={{
                   fontSize: "20px",
                   fontFamily: "fantasy",
@@ -218,7 +218,7 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    //textDecoration: location.pathname === "" ? "underline" : "none"
+                    textDecoration: location.pathname === "/mycart" ? "underline" : "none"
                   }}
                 >
                   My Cart

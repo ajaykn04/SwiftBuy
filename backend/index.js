@@ -73,6 +73,7 @@ app.post("/user/register/", async (req, res) => {
         var user = req.body;
         user.admin = false;
         user.merchant = false;
+        user.cart = [];
         user.password = CryptoJS.SHA256(user.password).toString(CryptoJS.enc.Hex)
         var existing_user = await userModel.findOne({email: user.email});
         if (!existing_user) {
@@ -269,6 +270,32 @@ app.get("/product/getreviews/:productId", async (req, res) => {
     }
 });
 
+app.post("/product/addtocart/:userId/:productId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var user = await userModel.findById(userId);
+        user.cart.unshift({"product": productId, "quantity": 1});
+
+        await user.save();
+        res.send({ message: "Product Added To Cart" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+app.get("/user/getcart/:userId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var user = await userModel.findById(userId);
+        await user.populate("cart.product")
+
+        res.send(user.cart)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));

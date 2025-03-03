@@ -220,7 +220,7 @@ const NavbarMerchant = () => {
 
               <Button
                 variant="text"
-                onClick={() => {}}
+                onClick={() => {navigate("/mycart")}}
                 style={{
                   marginLeft: -25,
                   fontSize: "20px",
@@ -233,7 +233,7 @@ const NavbarMerchant = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    //textDecoration: location.pathname === "" ? "underline" : "none"
+                    textDecoration: location.pathname === "/mycart" ? "underline" : "none"
                   }}
                 >
                   My Cart

@@ -68,6 +68,8 @@ const DetailedProduct = () => {
     }));
   };
 
+  
+
   const submitHandler = async () => {
     try {
       const updatedReview = {
@@ -181,11 +183,16 @@ const DetailedProduct = () => {
                   backgroundColor: "orange",
                   // "&:hover": { backgroundColor: "darkorange" },
                 }}
-                onClick={submitHandler}
+                onClick={async ()=>{
+                  try {
+                    await axios.post(`${api_url}/product/addtocart/${data._id}/${productData._id}`);
+                  } catch (error) {
+                    console.error("Error adding product to cart:", error);
+                  }
+                }}
               >
                 ADD TO CART
               </Button>
-
               <Button
                 variant="contained"
                 style={{ marginTop: 20,marginLeft: 40 }}
@@ -196,7 +203,7 @@ const DetailedProduct = () => {
                   backgroundColor: "orangered",
                   // "&:hover": { backgroundColor: "darkorange" },
                 }}
-                onClick={submitHandler}
+                // onClick={submitHandler}
               >
                 BUY NOW
               </Button>

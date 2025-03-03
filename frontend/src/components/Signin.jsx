@@ -30,6 +30,7 @@ const Signin = () => {
     password: user.password,
     place: user.place,
     age: user.age,
+    role: "user"
   };
 
   const inputHandler = (e) => {

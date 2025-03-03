@@ -12,6 +12,7 @@ import Users from "./components/Users";
 import Products from "./components/Products";
 import Dashboard from "./components/Dashboard";
 import DetailedProduct from "./components/DetailedProduct";
+import MyCart from "./components/MyCart";
 
 function App() {
   const [data, setData] = useState({
@@ -39,6 +40,7 @@ function App() {
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/products" element={<Products />} />
             <Route path="/detproduct" element={<DetailedProduct/>}/>
+            <Route path="/mycart" element={<MyCart/>}/>
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>
