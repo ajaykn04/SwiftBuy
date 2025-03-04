@@ -11,16 +11,13 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import iconImage from "/logo1.png";
-import profileImage from "/defaultlogin.png";
-import wishlistImage from "/heart.png";
 
 const StyledToolbar = styled(Toolbar)`
   background-color: black;
 `;
 const NavbarDeliveryagent = () => {
   const navigate = useNavigate();
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -42,7 +39,7 @@ const NavbarDeliveryagent = () => {
           <Avatar
             sx={{ width: 55, height: 55, mr: 3, mt: -4, mb: -4 }}
             alt="OSP"
-            src={iconImage}
+            src="/logo1.png"
           />
           <div
             style={{
@@ -119,7 +116,8 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/dashboard" ? "underline" : "none"
+                    textDecoration:
+                      location.pathname === "/dashboard" ? "underline" : "none",
                   }}
                 >
                   HOME
@@ -206,7 +204,9 @@ const NavbarDeliveryagent = () => {
               </Button>
               <Button
                 variant="text"
-                onClick={() => {navigate("/mycart")}}
+                onClick={() => {
+                  navigate("/mycart");
+                }}
                 style={{
                   fontSize: "20px",
                   fontFamily: "fantasy",
@@ -218,7 +218,8 @@ const NavbarDeliveryagent = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/mycart" ? "underline" : "none"
+                    textDecoration:
+                      location.pathname === "/mycart" ? "underline" : "none",
                   }}
                 >
                   My Cart
@@ -228,14 +229,10 @@ const NavbarDeliveryagent = () => {
           </Container>
 
           <IconButton>
-            <Avatar
-              sx={{ width: "25px", height: "25px" }}
-              alt="Profile"
-              src={wishlistImage}
-            />
+            <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
           </IconButton>
           <IconButton onClick={handleProfileClick}>
-            <Avatar alt="Profile" src={profileImage} />
+            <Avatar alt="Profile" src="/defaultlogin.png" />
           </IconButton>
         </StyledToolbar>
       </AppBar>

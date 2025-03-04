@@ -11,16 +11,14 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import iconImage from "/logo1.png";
-import profileImage from "/defaultlogin.png";
-import wishlistImage from "/heart.png";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const StyledToolbar = styled(Toolbar)`
   background-color: black;
 `;
 const NavbarUser = () => {
   const navigate = useNavigate();
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -42,7 +40,7 @@ const NavbarUser = () => {
           <Avatar
             sx={{ width: 55, height: 55, mr: 3, mt: -4, mb: -4 }}
             alt="OSP"
-            src={iconImage}
+            src="/logo1.png"
           />
           <Typography
             style={{
@@ -78,7 +76,7 @@ const NavbarUser = () => {
           >
             <Container
               sx={{
-                ml: 10, //comon 1
+                ml: 15, //comon 1
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "3rem",
@@ -93,7 +91,7 @@ const NavbarUser = () => {
                 style={{
                   fontSize: "20px",
                   fontFamily: "fantasy",
-                  color: "black"
+                  color: "black",
                 }}
               >
                 <Typography
@@ -101,7 +99,8 @@ const NavbarUser = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/dashboard" ? "underline" : "none"
+                    textDecoration:
+                      location.pathname === "/dashboard" ? "underline" : "none",
                   }}
                 >
                   HOME
@@ -169,7 +168,7 @@ const NavbarUser = () => {
                   //navigate("/user/orders");
                 }}
                 style={{
-                  marginLeft: -50,
+                  // marginLeft: -50,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
@@ -186,9 +185,11 @@ const NavbarUser = () => {
                   My Orders
                 </Typography>
               </Button>
-              <Button
+              {/* <Button
                 variant="text"
-                onClick={() => {navigate("/mycart")}}
+                onClick={() => {
+                  navigate("/mycart");
+                }}
                 style={{
                   fontSize: "20px",
                   fontFamily: "fantasy",
@@ -200,24 +201,33 @@ const NavbarUser = () => {
                     fontFamily: "fantasy",
                     fontSize: "20px",
                     color: "orange",
-                    textDecoration: location.pathname === "/mycart" ? "underline" : "none"
+                    textDecoration:
+                      location.pathname === "/mycart" ? "underline" : "none",
                   }}
                 >
                   My Cart
                 </Typography>
-              </Button>
+              </Button> */}
             </Container>
           </Container>
 
-          <IconButton>
-            <Avatar
-              sx={{ width: "25px", height: "25px" }}
-              alt="Profile"
-              src={wishlistImage}
+          <IconButton
+            onClick={() => {
+              navigate("/mycart");
+            }}
+          >
+            <ShoppingCartIcon
+              style={{ color: "white" }}
+              sx={{ mr: 1.2, fontSize: 28 }}
+              alt="Wishlist"
             />
           </IconButton>
+
+          <IconButton>
+            <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
+          </IconButton>
           <IconButton onClick={handleProfileClick}>
-            <Avatar alt="Profile" src={profileImage} />
+            <Avatar alt="Profile" src="/defaultlogin.png" />
           </IconButton>
         </StyledToolbar>
       </AppBar>
