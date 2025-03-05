@@ -11,8 +11,8 @@ const DashboardUser = () => {
   const [products, setProducts] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  
-  const api_url=import.meta.env.VITE_API_URL;
+
+  const api_url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     axios
@@ -43,110 +43,108 @@ const DashboardUser = () => {
       ) : (
         // "THIS IS USER DASHBOARD"
 
-          <Carousel
-            autoPlay
-            interval={2500}
-            infiniteLoop
-            showThumbs={false}
-            showStatus={false}
-            stopOnHover={false}
-            showIndicators={true}
-            swipeable={true}
-            centerMode={true}
-            centerSlidePercentage={36.5}
-            selectedItem={selectedIndex}
-            onChange={handleSlideChange}
-          >
-            {products.map((product, index) => (
-              <div
-                key={index}
-                style={{
-                  padding: "50px",
-                  transform: index === selectedIndex ? "scale(1.1)" : "scale(.9)",
-                  transition: "transform 0.5s ease-in-out",
-                }}
+        <Carousel
+          autoPlay
+          interval={2500}
+          infiniteLoop
+          showThumbs={false}
+          showStatus={false}
+          stopOnHover={false}
+          showIndicators={true}
+          swipeable={true}
+          centerMode={true}
+          centerSlidePercentage={36.5}
+          selectedItem={selectedIndex}
+          onChange={handleSlideChange}
+        >
+          {products.map((product, index) => (
+            <div
+              key={index}
+              style={{
+                padding: "50px",
+                transform: index === selectedIndex ? "scale(1.1)" : "scale(.9)",
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={15}
+                md={4}
+                lg={2.3}
+                sx={{ mt: -4, ml: 1.1 }}
               >
-                <Grid
-                  item
-                  xs={12}
-                  sm={15}
-                  md={4}
-                  lg={2.3}
-                  sx={{ mt: -4, ml: 1.1 }}
+                <Paper
+                  elevation={3}
+                  sx={{
+                    padding: 1,
+                    backgroundColor: "currentcolor",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
                 >
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      padding: 1,
+                  <Container
+                    style={{
                       backgroundColor: "currentcolor",
+                      flex: 1,
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
-                    <Container
-                      style={{
-                        backgroundColor: "currentcolor",
-                        flex: 1,
+                    <Box
+                      sx={{
+                        backgroundColor: "black",
+                        height: "40vh",
+                        borderRadius: "2.5vw",
+                        width: "35vw",
+                        boxShadow: "4px 4px 4px rgb(47, 37, 25)",
                         display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
                         alignItems: "center",
+                        justifyContent: "center",
+                        overflow: "hidden",
                       }}
                     >
                       <Box
+                        className="carousel-item"
                         sx={{
-                          backgroundColor: "black",
-                          height: "40vh",
-                          borderRadius: "2.5vw",
-                          width: "35vw",
-                          boxShadow: "4px 4px 4px rgb(47, 37, 25)",
+                          height: "100%",
+                          width: "100%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          overflow: "hidden",
                         }}
                       >
-                        <Box
-                          className="carousel-item"
-                          sx={{
-                            height: "100%",
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
+                        <Button
+                          onClick={() => {}}
+                          variant="outlined"
+                          style={{
+                            padding: 0,
+                            border: "none",
+                            background: "transparent",
+                            color: "black",
                           }}
                         >
-                          <Button
-                            onClick={() => {
-
-                            }}
-                            variant="outlined"
+                          <img
+                            src="/loading.jpg"
+                            // src={`${api_url}/${product.image}`}
                             style={{
-                              padding: 0,
-                              border: "none",
-                              background: "transparent",
-                              color: "black",
+                              height: "auto",
+                              width: "100%",
+                              objectFit: "cover",
                             }}
-                          >
-                            <img
-                              src="/loading.jpg"
-                              // src={`${api_url}/${product.image}`}
-                              style={{
-                                height: "auto",
-                                width: "100%",
-                                objectFit: "cover",
-                              }}
-                            />
-                          </Button>
-                        </Box>
+                          />
+                        </Button>
                       </Box>
-                    </Container>
-                  </Paper>
-                </Grid>
-              </div>
-            ))}
-          </Carousel>
+                    </Box>
+                  </Container>
+                </Paper>
+              </Grid>
+            </div>
+          ))}
+        </Carousel>
       )}
     </div>
   );

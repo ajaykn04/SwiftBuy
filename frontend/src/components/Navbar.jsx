@@ -1,11 +1,32 @@
-import React from 'react'
-import NavbarAdmin from './NavbarAdmin';
-import NavbarMerchant from './NavbarMerchant';
-import NavbarDeliveryagent from './NavbarDeliveryagent';
-import NavbarUser from './NavbarUser';
+import React, { useEffect, useState } from "react";
+import NavbarAdmin from "./NavbarAdmin";
+import NavbarMerchant from "./NavbarMerchant";
+import NavbarDeliveryagent from "./NavbarDeliveryagent";
+import NavbarUser from "./NavbarUser";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const data = JSON.parse(localStorage.getItem("userData"));
+  const data = JSON.parse(localStorage.getItem("userData"));
+  const navigate = useNavigate();
+
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    try {
+      console.log(data.role);
+    } catch (error) {
+      setHasError(true);
+    }
+  }, [data]);
+
+  if (hasError || !data?.role) {
+    navigate("/ninakkenthinte_sookeda🙄");
+    setTimeout(() => {
+      navigate("/");
+    }, 5000);
+    return null;
+  }
+
   return (
     <div>
       {data.role === "admin" ? (
@@ -18,7 +39,7 @@ const Navbar = () => {
         <NavbarUser />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -32,15 +32,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/signin" element={<Signin />} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/product/add" element={<ProductAdd />} />
             <Route path="/merchant/products" element={<MyProduct />} />
             <Route path="/search/products" element={<SearchProduct />} />
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/products" element={<Products />} />
-            <Route path="/detproduct" element={<DetailedProduct/>}/>
-            <Route path="/mycart" element={<MyCart/>}/>
+            <Route path="/detproduct" element={<DetailedProduct />} />
+            <Route path="/mycart" element={<MyCart />} />
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

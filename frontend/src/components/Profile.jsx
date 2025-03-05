@@ -22,7 +22,7 @@ const Profile = () => {
     place: false,
   });
   const [generalError, setGeneralError] = useState("");
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData"))) {

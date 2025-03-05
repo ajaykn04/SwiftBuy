@@ -15,13 +15,11 @@ import axios from "axios";
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          `${api_url}/product/viewall`
-        );
+        const response = await axios.get(`${api_url}/product/viewall`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -103,7 +101,7 @@ const Products = () => {
                         marginLeft: -15,
                       }}
                       onClick={() => {
-                        navigate("/detproduct", { state: product })
+                        navigate("/detproduct", { state: product });
                       }}
                     >
                       <img

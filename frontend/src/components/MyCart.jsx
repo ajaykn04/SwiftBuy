@@ -13,29 +13,27 @@ import {
 import Navbar from "./Navbar";
 
 const MyCart = () => {
-
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
-      const apiUrl = `${api_url}/user/getcart/${data._id}`;
-      axios
-        .get(apiUrl)
-        .then((response) => {
-          setProducts(response.data);
-          setEmpty(response.data.length === 0);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    const apiUrl = `${api_url}/user/getcart/${data._id}`;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setProducts(response.data);
+        setEmpty(response.data.length === 0);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
     // }
   }, []);
 
@@ -52,7 +50,7 @@ const MyCart = () => {
         </center>
       ) : empty ? (
         <center>
-          <Typography style={{ fontSize: 17,marginTop: "50vh" }}>
+          <Typography style={{ fontSize: 17, marginTop: "50vh" }}>
             Your cart is empty
           </Typography>
         </center>
@@ -139,8 +137,8 @@ const MyCart = () => {
                       fontFamily={"cursive"}
                       sx={{
                         ml: 18,
-                        mt: .5,
-                        mb:-2.9,
+                        mt: 0.5,
+                        mb: -2.9,
                         color: "yellow",
                         fontWeight: "bold",
                       }}
@@ -156,7 +154,7 @@ const MyCart = () => {
                       sx={{
                         ml: -2,
                         mb: 1,
-                        mt:-.5,
+                        mt: -0.5,
                         "& .MuiRating-iconFilled": {
                           color: "#FFAD18",
                         },
@@ -176,7 +174,7 @@ const MyCart = () => {
         </Grid>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default MyCart
+export default MyCart;

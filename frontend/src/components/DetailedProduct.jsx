@@ -290,7 +290,7 @@ const DetailedProduct = () => {
                 alignItems: "flex-start",
                 marginTop: 210,
                 overflowY: "auto",
-                overflowX:"hidden",
+                overflowX: "hidden",
                 maxHeight: 960,
                 minWidth: 650,
                 scrollbarWidth: "thin",
@@ -317,13 +317,13 @@ const DetailedProduct = () => {
                     marginTop: 10,
                     fontFamily: "cursive",
                     whiteSpace: "pre-line",
-                    maxWidth:500
+                    maxWidth: 500,
                   }}
                 >
                   {productData.description}
                 </Typography>
               </Box>
-              <Box sx={{ mt:10,ml: 5 }}>
+              <Box sx={{ mt: 10, ml: 5 }}>
                 {" "}
                 {/*view all review*/}
                 {reviews.map((comment, index) => (

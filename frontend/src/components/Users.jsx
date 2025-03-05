@@ -13,12 +13,14 @@ import {
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`${api_url}/user/viewall`);
-        const filteredUsers = response.data.filter((user) => user.role!=="admin");
+        const filteredUsers = response.data.filter(
+          (user) => user.role !== "admin"
+        );
         setUsers(filteredUsers);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -111,12 +113,9 @@ const Users = () => {
                       variant="contained"
                       style={{ backgroundColor: "red" }}
                       onClick={async () => {
-                        await axios.delete(
-                          `${api_url}/user/delete/`,
-                          {
-                            data: users,
-                          }
-                        );
+                        await axios.delete(`${api_url}/user/delete/`, {
+                          data: users,
+                        });
                         window.location.reload(true);
                         console.log("User Successfully Deleted");
                       }}

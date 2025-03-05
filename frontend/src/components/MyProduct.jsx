@@ -19,7 +19,7 @@ const MyProduct = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
 
   const data = JSON.parse(localStorage.getItem("userData"));
 

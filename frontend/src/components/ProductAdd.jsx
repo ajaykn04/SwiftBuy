@@ -25,7 +25,7 @@ const ProductAdd = () => {
     image: "",
   });
   const toeditproduct = useLocation();
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     if (toeditproduct.state != null) {
       setProduct({
@@ -42,8 +42,6 @@ const ProductAdd = () => {
 
   const navigate = useNavigate();
   const data = JSON.parse(localStorage.getItem("userData"));
-
-  
 
   const [image, setImage] = useState();
   const [errors, setErrors] = useState({
@@ -182,7 +180,7 @@ const ProductAdd = () => {
           />
           <TextField
             required
-            style={{ marginTop: 3,marginBottom:18 }}
+            style={{ marginTop: 3, marginBottom: 18 }}
             fullWidth
             multiline
             rows={4}

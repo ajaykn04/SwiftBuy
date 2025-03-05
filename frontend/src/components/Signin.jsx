@@ -12,7 +12,7 @@ const Signin = () => {
     place: "",
     age: "",
   });
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
   const [errors, setErrors] = useState({
     username: false,
     email: false,
@@ -30,7 +30,7 @@ const Signin = () => {
     password: user.password,
     place: user.place,
     age: user.age,
-    role: "user"
+    role: "user",
   };
 
   const inputHandler = (e) => {

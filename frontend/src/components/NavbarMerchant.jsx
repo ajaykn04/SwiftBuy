@@ -222,7 +222,6 @@ const NavbarMerchant = () => {
                   My Products
                 </Typography>
               </Button>
-
             </Container>
           </Container>
 

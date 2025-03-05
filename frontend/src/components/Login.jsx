@@ -11,7 +11,7 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: false, password: false });
   const [generalError, setGeneralError] = useState("");
   const navigate = useNavigate();
-  const api_url=import.meta.env.VITE_API_URL;
+  const api_url = import.meta.env.VITE_API_URL;
 
   const inputHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
