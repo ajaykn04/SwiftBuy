@@ -331,7 +331,7 @@ const DetailedProduct = () => {
                     <Divider
                       sx={{
                         border: "1px solid #1b1b1b",
-                        width: "40%",
+                        width: 600,
                         ml: -5,
                         marginTop: -2,
                         mb: 5,
@@ -366,7 +366,7 @@ const DetailedProduct = () => {
                       sx={{
                         marginBottom: 5,
                         mt: -1,
-                        width: "35%",
+                        width: 520,
                         wordWrap: "break-word",
                         whiteSpace: "normal",
                       }}
