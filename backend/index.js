@@ -297,6 +297,36 @@ app.get("/user/getcart/:userId", async (req, res) => {
     }
 });
 
+app.delete("/user/cart/delitem/:userId/:productId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var user = await userModel.findById(userId);
+        user.cart = user.cart.filter(entry => entry.product != productId);
+        await user.save();
+        res.send({ message: "Product Deleted" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.post("/user/cart/updateitemquantity/:userId/:productId/:quantity", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var quantity = parseInt(req.params.quantity);
+        var user = await userModel.findById(userId);
+        var item = user.cart.find(entry => entry.product == productId);
+        item.quantity = quantity;
+        await user.save();
+        res.send({ message: "Quantity Updated" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 

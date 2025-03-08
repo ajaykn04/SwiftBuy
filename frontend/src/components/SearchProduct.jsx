@@ -21,7 +21,7 @@ const SearchProduct = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
-  const [test, setTest] = useState(false);
+  const [test, setTest] = useState(true);
   const searchvalue = useLocation();
   const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
@@ -67,110 +67,110 @@ const SearchProduct = () => {
           </Typography>
         </center>
       ) : test ? (
-        //   <Box sx={{ maxWidth: 900, mx: "auto", p: 2 }}>
-        //   {products.map((product,index) => (
-        //     <Box key={index} sx={{ mb: 2 }}>
-        //       <Grid container spacing={2} alignItems="center">
-        //         {/* Product Image */}
-        //         <Grid item xs={3}>
-        //           <img src={`${api_url}/${product.image}`} alt={product.name} width="100%" />
-        //         </Grid>
-
-        //         {/* Product Name */}
-        //         <Grid item xs={6}>
-        //           <Typography variant="h6">{product.name}</Typography>
-        //         </Grid>
-
-        //         {/* Price & Discount */}
-        //         <Grid item xs={3}>
-        //           <Typography variant="h6" color="primary">100</Typography>
-        //         </Grid>
-        //       </Grid>
-        //       <Divider sx={{ mt: 2 }} />
-        //     </Box>
-        //   ))}
-        // </Box>
-
         <List sx={{ marginTop: "10vh" }}>
           {products.map((product, index) => (
-            <ListItem
+            <Box
               key={index}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "16px",
-                borderBottom: "1px solid gray",
+                maxWidth: 1500,
+                mx: "auto", 
               }}
             >
-              <Box>
-                <img
-                  src={`${api_url}/${product.image}`}
-                  alt={product.name}
-                  style={{
-                    width: 180,
-                    height: 180,
-                    cursor: "pointer",
-                  }}
-                />
-              </Box>
-
-              <Typography
-                sx={{
-                  fontFamily: "sans-serif",
-                  color: "white",
-                  fontSize: 25,
-                  ml: -23,
-                  mt: -18,
-                }}
-              >
-                {product.name}
-              </Typography>
-
-              <Typography sx={{ fontFamily: "cursive", color: "yellow" }}>
-                ₹{product.price}
-              </Typography>
-
-              <Typography sx={{ fontFamily: "cursive", color: "white" }}>
-                {product.merchant_name}
-              </Typography>
-
-              <Typography sx={{ fontFamily: "cursive", color: "white" }}>
-                {product.category}
-              </Typography>
-
-              <Box
+              <ListItem
+                key={index}
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: "#222",
-                  color: "white",
-                  borderRadius: "8px",
-                  padding: "4px 8px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  width: "fit-content",
+                  justifyContent: "flex-start",
+                  padding: "16px",
+                  borderBottom: "1px solid gray",
                 }}
               >
-                <Typography sx={{ mr: 0.5, color: "#FFAD18" }}>
-                  {product.rating || 0} ⭐
-                </Typography>
-              </Box>
+                <Button
+                  key={index}
+                  component="div"
+                  sx={{
+                    all: "inherit",
+                    width: "100%",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                    border: "none",
+                    "&:hover .productname": {
+                      color: "darkorange",
+                    },
+                  }}
+                  style={{ color: "orange" }}
+                  onClick={() => {
+                    navigate("/detproduct", { state: product });
+                  }}
+                >
+                  <Box>
+                    <img
+                      src={`${api_url}/${product.image}`}
+                      alt={product.name}
+                      style={{
+                        width: 150,
+                        height: "auto",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </Box>
+                  <Box sx={{ mt: 8, ml: 6 }}>
+                    <Typography
+                      className="productname"
+                      sx={{
+                        fontFamily: "fantasy",
+                        color: "white",
+                        fontSize: 32,
+                        mt: -10,
+                      }}
+                    >
+                      {product.name}
+                    </Typography>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Box
+                        sx={{
+                          mt: 1,
+                          display: "flex",
+                          alignItems: "center",
+                          backgroundColor: "#222",
+                          color: "white",
+                          borderRadius: "8px",
+                          padding: "4px 8px",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                          width: "fit-content",
+                        }}
+                      >
+                        <Typography sx={{ mr: 0.5, color: "#FFAD18" }}>
+                          {parseFloat(product.rating.toFixed(1)) || 0} ⭐
+                        </Typography>
+                      </Box>
+                      <Typography
+                        sx={{
+                          color: "white",
+                          fontFamily: "cursive",
+                          ml: 1,
+                          mt: 0.8,
+                        }}
+                      >
+                        {product.reviews.length === 0
+                          ? "No Rating"
+                          : product.reviews.length === 1
+                          ? "1 Rating"
+                          : `${product.reviews.length} Ratings`}
+                      </Typography>
+                    </Box>
 
-              <Button
-                variant="contained"
-                style={{ backgroundColor: "orangered" }}
-                onClick={async () => {
-                  // await axios.delete(
-                  //   `${api_url}/product/delete/${product._id}`
-                  // );
-                  // window.location.reload(true);
-                  // console.log("Product Successfully Deleted");
-                }}
-              >
-                Buy Now
-              </Button>
-            </ListItem>
+                    <Typography
+                      sx={{ mt: 1.5, fontFamily: "cursive", color: "yellow" }}
+                    >
+                      ₹{product.price}
+                    </Typography>
+                  </Box>
+                </Button>
+              </ListItem>
+            </Box>
           ))}
         </List>
       ) : (
