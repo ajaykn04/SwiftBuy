@@ -89,62 +89,60 @@ const Products = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((product, index) => {
-              return (
-                <TableRow key={index}>
-                  <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
-                    <Button
+            {products.map((product, index) => (
+              <TableRow key={index}>
+                <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
+                  <Button
+                    style={{
+                      color: "black",
+                      marginTop: -10,
+                      marginBottom: -10,
+                      marginLeft: -15,
+                    }}
+                    onClick={() => {
+                      navigate("/detproduct", { state: product });
+                    }}
+                  >
+                    <img
+                      src={`${api_url}/${product.image}`}
+                      alt={product.name}
                       style={{
-                        color: "black",
-                        marginTop: -10,
-                        marginBottom: -10,
-                        marginLeft: -15,
+                        width: "auto",
+                        height: 65,
+                        cursor: "pointer",
                       }}
-                      onClick={() => {
-                        navigate("/detproduct", { state: product });
-                      }}
-                    >
-                      <img
-                        src={`${api_url}/${product.image}`}
-                        alt={product.name}
-                        style={{
-                          width: "auto",
-                          height: 65,
-                          cursor: "pointer",
-                        }}
-                      />
-                    </Button>
-                  </TableCell>
-                  <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
-                    {product.name}
-                  </TableCell>
-                  <TableCell sx={{ fontFamily: "cursive", color: "yellow" }}>
-                    ₹{product.price}
-                  </TableCell>
-                  <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
-                    {product.merchant_name}
-                  </TableCell>
-                  <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
-                    {product.category}
-                  </TableCell>
-                  <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
-                    <Button
-                      variant="contained"
-                      style={{ backgroundColor: "red" }}
-                      onClick={async () => {
-                        await axios.delete(
-                          `${api_url}/product/delete/${product._id}`
-                        );
-                        window.location.reload(true);
-                        console.log("Product Successfully Deleted");
-                      }}
-                    >
-                      DELETE
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+                    />
+                  </Button>
+                </TableCell>
+                <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
+                  {product.name}
+                </TableCell>
+                <TableCell sx={{ fontFamily: "cursive", color: "yellow" }}>
+                  ₹{product.price}
+                </TableCell>
+                <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
+                  {product.merchant_name}
+                </TableCell>
+                <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
+                  {product.category}
+                </TableCell>
+                <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
+                  <Button
+                    variant="contained"
+                    style={{ backgroundColor: "red" }}
+                    onClick={async () => {
+                      await axios.delete(
+                        `${api_url}/product/delete/${product._id}`
+                      );
+                      window.location.reload(true);
+                      console.log("Product Successfully Deleted");
+                    }}
+                  >
+                    DELETE
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
