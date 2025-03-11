@@ -20,7 +20,7 @@ const Navbar = () => {
   }, [data]);
 
   if (hasError || !data?.role) {
-    navigate("/ninakkenthinte_sookeda🙄");
+    navigate("/maryathaku_login_chey");
     setTimeout(() => {
       navigate("/");
     }, 5000);
