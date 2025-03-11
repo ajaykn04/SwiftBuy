@@ -29,7 +29,6 @@ const upload = multer({storage: storage});
 app.use(express.json());
 app.use(cors());
 
-
 app.get("/user/viewall", async (req, res) => {
     try {
         var data = await userModel.find();
@@ -269,13 +268,18 @@ app.get("/product/getreviews/:productId", async (req, res) => {
         console.log(error);
     }
 });
-
 app.post("/product/addtocart/:userId/:productId", async (req, res) => {
     try {
         var userId = req.params.userId;
         var productId = req.params.productId;
         var user = await userModel.findById(userId);
-        user.cart.unshift({"product": productId, "quantity": 1});
+        var cartItem = user.cart.find(item => item.product == productId);
+        if (cartItem == undefined){
+            user.cart.unshift({"product": productId, "quantity": 1});
+        }
+        else{
+            cartItem.quantity += 1
+        }
 
         await user.save();
         res.send({ message: "Product Added To Cart" })
