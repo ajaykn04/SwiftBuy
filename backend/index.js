@@ -13,7 +13,7 @@ const PORT = 3000;
 var CryptoJS = require('crypto-js');
 var userModel = require("./models/user");
 var productModel = require("./models/product");
-
+var orderModel = require("./models/order")
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -331,6 +331,51 @@ app.post("/user/cart/updateitemquantity/:userId/:productId/:quantity", async (re
     }
 });
 
+
+app.get("/orders/viewall", async (req, res) => {
+    try {
+        var data = await orderModel.find();
+        res.send(data)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.post("/product/buy/:userId/:productId/:quantity", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var productDetails = await productModel.findById(productId)
+        var quantity = parseInt(req.params.quantity);
+        var user = await userModel.findById(userId);
+        var order = {
+            "name": productDetails.name,
+            "userId": userId,
+            "amount": productDetails.price * quantity,
+            "quantity": quantity,
+            "status": "Processing",
+            "image": productDetails.image,
+            "product": productId
+        }
+        order = await orderModel(order).save()
+        res.send({ message: "Product Order Placed" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.get("/user/orders/:userId", async (req, res) => {
+    try {
+        var userId = req.params.userId
+        var data = await orderModel.find({userId: userId})
+        res.send(data)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 
