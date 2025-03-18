@@ -35,8 +35,12 @@ const MyCart = () => {
     axios
       .get(apiUrl)
       .then((response) => {
-        setProducts(response.data);
-        setEmpty(response.data.length === 0);
+        const updatedProducts = response.data.map((product) => ({
+          ...product,
+          available: "", // Adding the 'available' property
+        }));
+        setProducts(updatedProducts);
+        setEmpty(updatedProducts.length === 0);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -500,20 +504,27 @@ const MyCart = () => {
                             color: "white",
                           }}
                           onClick={async () => {
-                            try {
-                              product.quantity += 1;
-                              await axios.post(
-                                `${api_url}/user/cart/updateitemquantity/${data._id}/${product.product._id}/${product.quantity}`
-                              );
-                              window.location.reload(true);
-                            } catch (error) {
-                              console.error(error);
+                            if (product.quantity >= product.product.stock) {
+                              product.available="Not available"
+                              console.log(product.available)
+                            } else {
+                              try {
+                                product.quantity += 1;
+                                await axios.post(
+                                  `${api_url}/user/cart/updateitemquantity/${data._id}/${product.product._id}/${product.quantity}`
+                                );
+                                window.location.reload(true);
+                              } catch (error) {
+                                console.error(error);
+                              }
+                              console.log(product.available)
                             }
                           }}
                         >
                           +
                         </Button>
                       </Box>
+                      <Typography sx={{ color: "red" }}>{product.available}</Typography>
                     </TableCell>
                     <TableCell>
                       <Typography
