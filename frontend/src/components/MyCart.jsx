@@ -142,6 +142,9 @@ const MyCart = () => {
                             height: "auto",
                             cursor: "pointer",
                           }}
+                          onClick={() => {
+                            navigate("/detproduct", { state: product.product });
+                          }}
                         />
                       </Box>
                       <Box sx={{ mt: 13.5, ml: 6 }}>
