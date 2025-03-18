@@ -165,7 +165,7 @@ const NavbarUser = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  //navigate("/user/orders");
+                  navigate("/user/orders");
                 }}
                 style={{
                   // marginLeft: -50,

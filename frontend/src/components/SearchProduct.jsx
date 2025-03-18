@@ -28,7 +28,6 @@ const SearchProduct = () => {
 
   useEffect(() => {
     // if (data._id) {
-    console.log(searchvalue.state.query);
     const apiUrl = `${api_url}/product/search/${searchvalue.state.query}`;
     axios
       .get(apiUrl)

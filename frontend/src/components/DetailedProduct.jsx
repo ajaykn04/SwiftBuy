@@ -40,7 +40,6 @@ const DetailedProduct = () => {
     }
   }, [state?._id]);
 
-  console.log(productData);
 
   useEffect(() => {
     if (productData?._id) {
@@ -204,7 +203,16 @@ const DetailedProduct = () => {
                     backgroundColor: "orangered",
                     // "&:hover": { backgroundColor: "darkorange" },
                   }}
-                  // onClick={submitHandler}
+                  onClick={async () => {
+                    try {
+                      await axios.post(
+                        `${api_url}/product/buy/${data._id}/${productData._id}/1`
+                      );
+                      console.log("order confirmed");
+                    } catch (error) {
+                      console.error("Error ordering product :", error);
+                    }
+                  }}
                 >
                   BUY NOW
                 </Button>

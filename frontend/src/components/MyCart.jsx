@@ -45,8 +45,6 @@ const MyCart = () => {
       });
     // }
   }, []);
-  // console.log(products);
-  // console.log(data)
 
   return (
     <div>
