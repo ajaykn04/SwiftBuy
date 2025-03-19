@@ -157,9 +157,10 @@ const NavbarMerchant = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  if (searchQuery.trim() !== "") {
-                    handleKeyDown(event);
-                  }
+                  // if (searchQuery.trim() !== "") {
+                  //   handleKeyDown(event);
+                  // }
+                  handleKeyDown(event);
                 }}
                 sx={{
                   maxWidth: "400px",

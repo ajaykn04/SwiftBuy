@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const StyledToolbar = styled(Toolbar)`
   background-color: black;
@@ -93,7 +94,7 @@ const NavbarDeliveryagent = () => {
           >
             <Container
               sx={{
-                ml: 10, //comon 1
+                ml: 20, 
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "3rem",
@@ -127,7 +128,7 @@ const NavbarDeliveryagent = () => {
 
             <Container
               sx={{
-                ml: -25, //comon 1
+                ml: -35, //comon 1
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -135,18 +136,20 @@ const NavbarDeliveryagent = () => {
               }}
             >
               <TextField
-                fullWidth
+                
                 variant="outlined"
                 placeholder="Search for Products"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  if (searchQuery.trim() !== "") {
-                    handleKeyDown(event);
-                  }
+                  // if (searchQuery.trim() !== "") {
+                  //   handleKeyDown(event);
+                  // }
+                  handleKeyDown(event);
                 }}
                 sx={{
                   maxWidth: "400px",
+                  minWidth: "400px",
                   backgroundColor: "#F3F4F6",
                   borderRadius: "25px",
                   "& .MuiOutlinedInput-root": {
@@ -182,7 +185,7 @@ const NavbarDeliveryagent = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  //navigate("/user/products");
+                  navigate("/user/orders");
                 }}
                 style={{
                   marginLeft: -50,
@@ -202,31 +205,21 @@ const NavbarDeliveryagent = () => {
                   My Orders
                 </Typography>
               </Button>
-              <Button
-                variant="text"
-                onClick={() => {
-                  navigate("/mycart");
-                }}
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "fantasy",
-                  color: "black",
-                }}
-              >
-                <Typography
-                  style={{
-                    fontFamily: "fantasy",
-                    fontSize: "20px",
-                    color: "orange",
-                    textDecoration:
-                      location.pathname === "/mycart" ? "underline" : "none",
-                  }}
-                >
-                  My Cart
-                </Typography>
-              </Button>
+              
             </Container>
           </Container>
+
+          <IconButton
+            onClick={() => {
+              navigate("/mycart");
+            }}
+          >
+            <ShoppingCartIcon
+              style={{ color: "white" }}
+              sx={{ mr: 1.2, fontSize: 28 }}
+              alt="mycart"
+            />
+          </IconButton>
 
           <IconButton>
             <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />

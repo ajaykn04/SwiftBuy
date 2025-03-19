@@ -13,7 +13,8 @@ const Navbar = () => {
 
   useEffect(() => {
     try {
-      console.log(data.role);
+      data.role
+      // console.log(data.role)
     } catch (error) {
       setHasError(true);
     }

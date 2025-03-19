@@ -55,7 +55,7 @@ const MyOrder = () => {
       ) : empty ? (
         <center>
           <Typography style={{ fontSize: 17, marginTop: "50vh" }}>
-            No current orders
+            No current orders☹️
           </Typography>
         </center>
       ) : (

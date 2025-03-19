@@ -157,9 +157,10 @@ const Navbar = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  if (searchQuery.trim() !== "") {
-                    handleKeyDown(event);
-                  }
+                  // if (searchQuery.trim() !== "") {
+                  //   handleKeyDown(event);
+                  // }
+                  handleKeyDown(event);
                 }}
                 sx={{
                   maxWidth: "400px",
@@ -260,7 +261,7 @@ const Navbar = () => {
             <ShoppingCartIcon
               style={{ color: "white" }}
               sx={{ mr: 1.2, fontSize: 28 }}
-              alt="Wishlist"
+              alt="mycart"
             />
           </IconButton>
 

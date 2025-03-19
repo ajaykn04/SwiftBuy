@@ -335,7 +335,7 @@ const MyCart = () => {
           <Box
             sx={{
               width: "18%",
-              height: 700,
+              height: "89vh",
               mt: "1vh",
               position: "sticky",
               top: "10vh",
