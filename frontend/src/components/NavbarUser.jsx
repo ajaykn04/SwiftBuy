@@ -39,7 +39,7 @@ const NavbarUser = () => {
         <StyledToolbar>
           <Avatar
             sx={{ width: 55, height: 55, mr: 3, mt: -4, mb: -4 }}
-            alt="OSP"
+            alt="SwiftBuy"
             src="/logo1.png"
           />
           <Typography
@@ -50,7 +50,7 @@ const NavbarUser = () => {
               marginLeft: -12,
             }}
           >
-            OSP
+            SwiftBuy
           </Typography>
           <Typography
             style={{

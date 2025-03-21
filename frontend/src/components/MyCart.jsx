@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Box,
@@ -28,6 +28,8 @@ const MyCart = () => {
   const [empty, setEmpty] = useState(true);
   const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
+  var Price = 0;
+  var Index = 1;
 
   useEffect(() => {
     const apiUrl = `${api_url}/user/getcart/${data._id}`;
@@ -145,9 +147,8 @@ const MyCart = () => {
                           }}
                         />
                       </Box>
-                      <Box sx={{ mt: 13.5, ml: 6 }}>
+                      <Box sx={{ mt: 11.8, ml: 6 }}>
                         <Typography
-                          className="productname"
                           sx={{
                             fontFamily: "fantasy",
                             color: "white",
@@ -193,6 +194,38 @@ const MyCart = () => {
                               : `${product.product.reviews.length} Ratings`}
                           </Typography>
                         </Box>
+                        <Button
+                          onClick={async () => {
+                            try {
+                              await axios.delete(
+                                `${api_url}/user/cart/delitem/${data._id}/${product.product._id}`
+                              );
+                              window.location.reload(true);
+                            } catch (error) {
+                              console.error(error);
+                            }
+                          }}
+                          variant=""
+                          sx={{
+                            ml: -2,
+                            mt: 1,
+                            color: "transparent",
+                            "&:hover .remove_cart": {
+                              color: "red",
+                            },
+                          }}
+                        >
+                          <Typography
+                            className="remove_cart"
+                            color="white"
+                            sx={{
+                              fontFamily: "fantasy",
+                              textTransform: "none",
+                            }}
+                          >
+                            Remove
+                          </Typography>
+                        </Button>
                       </Box>
                     </TableCell>
                     <TableCell>
@@ -312,7 +345,15 @@ const MyCart = () => {
                           +
                         </Button>
                       </Box>
-                      <Typography sx={{ color: "red",minHeight: "25px", mb:-4.5,mt:.5,ml:.5 }}>
+                      <Typography
+                        sx={{
+                          color: "red",
+                          minHeight: "25px",
+                          mb: -4.5,
+                          mt: 0.5,
+                          ml: 0.5,
+                        }}
+                      >
                         {product.available}
                       </Typography>
                     </TableCell>
@@ -342,18 +383,103 @@ const MyCart = () => {
               borderLeft: "1px solid white",
             }}
           >
-            <Typography
+            <Box
               sx={{
-                ml: 1,
-                fontFamily: "fantasy",
-                color: "white",
-                fontWeight: "bold",
-                fontSize: "3vh",
-                width: "300px",
+                borderBottom: "1px solid white",
+                width: "25.65vw",
               }}
             >
-              SUMMARY
-            </Typography>
+              <Typography
+                sx={{
+                  ml: 3,
+                  mb: 1.4,
+                  mt: 0.25,
+                  fontFamily: "fantasy",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "3vh",
+                  width: "300px",
+                }}
+              >
+                SUMMARY
+              </Typography>
+            </Box>
+
+            {products.forEach((product, index) => {
+              Price += product.product.price * product.quantity;
+              Index += index;
+              console.log(product);
+            })}
+            <Box
+              sx={{
+                minWidth: 350,
+                mt: 2,
+                ml: 3,
+              }}
+            >
+              <Typography
+                sx={{ fontFamily: "cursive", fontWeight: "bold", fontSize: 23 }}
+              >
+                Total Items :<span style={{ color: "orange" }}> {Index}</span>
+                <br />
+                <br />
+                Delivery : Free
+                <br />
+                <br />
+                Payment : Cash On Delivery
+                <br />
+                <br />
+                Tax Payable :<span style={{ color: "orange" }}> ₹0</span>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                &nbsp;Estimated Total :
+                <span style={{ color: "darkorange" }}> ₹{Price}</span>
+                <br />
+                <Button
+                  variant="contained"
+                  sx={{
+                    mt: 3,
+                    ml: 1,
+                    fontSize: "20px",
+                    padding: "15px 30px",
+                    minWidth: "350px",
+                    backgroundColor: "orangered",
+                  }}
+                  onClick={async () => {
+                    try {
+                      // First, send all purchase requests
+                      for (const product of products) {
+                        await axios.post(
+                          `${api_url}/product/buy/${data._id}/${product.product._id}/${product.quantity}`
+                        );
+                      }
+                  
+                      // Then, delete items from the cart
+                      for (const product of products) {
+                        await axios.delete(
+                          `${api_url}/user/cart/delitem/${data._id}/${product.product._id}`
+                        );
+                      }
+                  
+                      // Now reload the page after everything is complete
+                      window.location.reload(true);
+                      console.log("Order confirmed");
+                    } catch (error) {
+                      console.error("Error ordering product:", error);
+                    }
+                  }}
+                  
+                >
+                  CheckOut
+                </Button>
+              </Typography>
+            </Box>
           </Box>
         </Box>
       )}

@@ -39,7 +39,7 @@ const NavbarDeliveryagent = () => {
         <StyledToolbar>
           <Avatar
             sx={{ width: 55, height: 55, mr: 3, mt: -4, mb: -4 }}
-            alt="OSP"
+            alt="SwiftBuy"
             src="/logo1.png"
           />
           <div
@@ -67,7 +67,7 @@ const NavbarDeliveryagent = () => {
                 color: "white",
               }}
             >
-              OSP
+              SwiftBuy
             </Typography>
           </div>
           {/* <Typography

@@ -40,7 +40,6 @@ const DetailedProduct = () => {
     }
   }, [state?._id]);
 
-
   useEffect(() => {
     if (productData?._id) {
       const fetchReviews = async () => {
