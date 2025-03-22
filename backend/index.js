@@ -73,6 +73,7 @@ app.post("/user/register/", async (req, res) => {
         user.admin = false;
         user.merchant = false;
         user.cart = [];
+        user.wishlist = [];
         user.password = CryptoJS.SHA256(user.password).toString(CryptoJS.enc.Hex)
         var existing_user = await userModel.findOne({email: user.email});
         if (!existing_user) {
@@ -268,6 +269,8 @@ app.get("/product/getreviews/:productId", async (req, res) => {
         console.log(error);
     }
 });
+
+
 app.post("/product/addtocart/:userId/:productId", async (req, res) => {
     try {
         var userId = req.params.userId;
@@ -455,6 +458,54 @@ app.get("/product/getfeatured", async (req, res) => {
         console.log(error);
     }
 });
+
+app.post("/product/addtowishlist/:userId/:productId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var user = await userModel.findById(userId);
+        var wishlistItem = user.wishlist.find(item => item.product == productId);
+        if (wishlistItem == undefined) {
+            user.wishlist.unshift({product: productId})
+            await user.save();
+            res.send({ message: "Product Added To Wishlist" })
+        }
+        else{
+            res.send({ message: "Product Is Already In Wishlist" })
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+app.get("/user/getwishlist/:userId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var user = await userModel.findById(userId);
+        await user.populate("wishlist.product")
+
+        res.send(user.wishlist)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.delete("/user/wishlist/delitem/:userId/:productId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var user = await userModel.findById(userId);
+        user.wishlist = user.wishlist.filter(entry => entry.product != productId);
+        await user.save();
+        res.send({ message: "Product Removed From Wishlist" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
 
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 

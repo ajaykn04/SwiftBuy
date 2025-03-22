@@ -5,6 +5,10 @@ const cartSchema = mongoose.Schema({
     quantity: Number
 });
 
+const wishlistSchema = mongoose.Schema({
+    product: {type: mongoose.Schema.Types.ObjectId, ref: "product"}
+});
+
 var userSchema = mongoose.Schema({
     username: String,
     email: String,
@@ -12,7 +16,8 @@ var userSchema = mongoose.Schema({
     age: Number,
     password: String,
     role: String,
-    cart: [cartSchema]
+    cart: [cartSchema],
+    wishlist: [wishlistSchema]
 })
 
 var userModel = mongoose.model("user", userSchema);
