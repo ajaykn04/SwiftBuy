@@ -117,10 +117,11 @@ const DetailedProduct = () => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 marginRight: "5vw",
+                marginLeft:"2vw",
               }}
             >
               <Typography
-                variant="h3"
+                variant="h4"
                 style={{
                   fontFamily: "cursive",
                   fontWeight: "bold",
@@ -135,6 +136,7 @@ const DetailedProduct = () => {
                 readOnly
                 precision={0.1}
                 sx={{
+                  fontSize: 20,
                   mb: 1,
                   mt: 1,
                   "& .MuiRating-iconFilled": {
@@ -149,7 +151,7 @@ const DetailedProduct = () => {
                 }}
               />
               <Typography
-                variant="body1"
+                variant="body2"
                 style={{
                   fontFamily: "cursive",
                   fontWeight: "bold",
@@ -164,7 +166,7 @@ const DetailedProduct = () => {
                   border: "4px solid white",
                   borderRadius: "15px",
                   marginTop: 20,
-                  width: "500px",
+                  width: "400px",
                   height: "auto",
                   objectFit: "cover",
                 }}
@@ -174,10 +176,11 @@ const DetailedProduct = () => {
                   variant="contained"
                   style={{ marginTop: 20, marginLeft: -21 }}
                   sx={{
-                    fontSize: "20px",
+                    fontSize: "18px",
                     padding: "15px 30px",
-                    minWidth: "230px",
+                    maxWidth: "200px",
                     backgroundColor: "orange",
+                    maxHeight: "50px",
                     // "&:hover": { backgroundColor: "darkorange" },
                   }}
                   onClick={async () => {
@@ -194,12 +197,13 @@ const DetailedProduct = () => {
                 </Button>
                 <Button
                   variant="contained"
-                  style={{ marginTop: 20, marginLeft: 40 }}
+                  style={{ marginTop: 20, marginLeft: 30 }}
                   sx={{
-                    fontSize: "20px",
+                    fontSize: "18px",
                     padding: "15px 30px",
-                    minWidth: "230px",
+                    minWidth: "200px",
                     backgroundColor: "orangered",
+                    maxHeight: "50px",
                     // "&:hover": { backgroundColor: "darkorange" },
                   }}
                   onClick={async () => {
@@ -223,7 +227,7 @@ const DetailedProduct = () => {
                   borderRadius: "15px",
                   backgroundColor: "black",
                   marginTop: 21,
-                  width: "95%",
+                  width: "77%",
                   marginLeft: 1,
                   padding: "20px",
                 }}
@@ -296,6 +300,7 @@ const DetailedProduct = () => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 marginTop: 210,
+                marginLeft:"-7vw",
                 overflowY: "auto",
                 overflowX: "hidden",
                 maxHeight: 960,
@@ -310,7 +315,7 @@ const DetailedProduct = () => {
                 }}
               >
                 <Typography
-                  variant="h4"
+                  variant="h5"
                   style={{
                     fontFamily: "cursive",
                     fontWeight: "bold",
@@ -319,7 +324,7 @@ const DetailedProduct = () => {
                   Description
                 </Typography>
                 <Typography
-                  variant="h6"
+                  variant="body1"
                   style={{
                     marginTop: 10,
                     fontFamily: "cursive",
@@ -331,8 +336,6 @@ const DetailedProduct = () => {
                 </Typography>
               </Box>
               <Box sx={{ mt: 10, ml: 5 }}>
-                {" "}
-                {/*view all review*/}
                 {reviews.map((comment, index) => (
                   <Box key={index}>
                     <Divider
@@ -345,7 +348,7 @@ const DetailedProduct = () => {
                       }}
                     />
                     <Typography
-                      variant="h6"
+                      variant="body1"
                       sx={{ marginBottom: "0px", mt: -2 }}
                     >
                       @{comment.username}
@@ -355,8 +358,9 @@ const DetailedProduct = () => {
                       value={comment.rating}
                       readOnly
                       sx={{
-                        mb: 1,
+                        mb: 2,
                         mt: 1,
+                        fontSize:20,
                         "& .MuiRating-iconFilled": {
                           color: "#FFAD18",
                         },
@@ -369,7 +373,7 @@ const DetailedProduct = () => {
                       }}
                     />
                     <Typography
-                      variant="body1"
+                      variant="body2"
                       sx={{
                         marginBottom: 5,
                         mt: -1,
