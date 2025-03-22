@@ -14,6 +14,7 @@ var CryptoJS = require('crypto-js');
 var userModel = require("./models/user");
 var productModel = require("./models/product");
 var orderModel = require("./models/order")
+var miscModel = require("./models/misc")
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -505,7 +506,50 @@ app.delete("/user/wishlist/delitem/:userId/:productId", async (req, res) => {
     }
 });
 
+app.post("/misc/categories/add/:name", async (req, res) => {
+    try {
+        var name = req.params.name;
+        var misc = await miscModel.findOne();
+        if (misc.categories.filter(item => item === name).length == 0){
+            misc.categories.push(name);
+            await misc.save()
+            res.send({message: "Category Added"});
+        }
+        else {
+            res.send({message:"Category Already Exists"})
+        }
+    } catch (error) {
+        console.log(error);
+    }
+});
 
+app.delete("/misc/categories/delete/:name", async (req, res) => {
+    try {
+        var name = req.params.name;
+        var misc = await miscModel.findOne();
+        misc.categories = misc.categories.filter(item => item !== name)
+        await misc.save()
+        res.send({message: "Category Deleted"})
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.get("/misc/categories/get", async (req, res) => {
+    try {
+        res.send((await miscModel.findOne()).categories)
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.get("/misc", async (req, res) => {
+    try {
+        res.send(await miscModel.findOne())
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 app.use('/images/products', express.static(path.join(__dirname, 'images/products')));
 
