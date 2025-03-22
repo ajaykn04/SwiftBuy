@@ -459,14 +459,14 @@ const MyCart = () => {
                           `${api_url}/product/buy/${data._id}/${product.product._id}/${product.quantity}`
                         );
                       }
-                  
+
                       // Then, delete items from the cart
                       for (const product of products) {
                         await axios.delete(
                           `${api_url}/user/cart/delitem/${data._id}/${product.product._id}`
                         );
                       }
-                  
+
                       // Now reload the page after everything is complete
                       window.location.reload(true);
                       console.log("Order confirmed");
@@ -474,7 +474,6 @@ const MyCart = () => {
                       console.error("Error ordering product:", error);
                     }
                   }}
-                  
                 >
                   CheckOut
                 </Button>

@@ -303,7 +303,7 @@ const DetailedProduct = () => {
                 marginLeft:"-7vw",
                 overflowY: "auto",
                 overflowX: "hidden",
-                maxHeight: 960,
+                maxHeight: 800,
                 minWidth: 650,
                 scrollbarWidth: "thin",
               }}

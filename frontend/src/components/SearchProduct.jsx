@@ -12,7 +12,9 @@ import {
   Paper,
   Rating,
   Typography,
+  IconButton,
 } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 import Navbar from "./Navbar";
 
@@ -25,6 +27,8 @@ const SearchProduct = () => {
   const searchvalue = useLocation();
   const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
+  const [wishlist, setWishlist] = useState([]);
+  var [wish, setWish] = useState([]);
 
   useEffect(() => {
     // if (data._id) {
@@ -43,6 +47,25 @@ const SearchProduct = () => {
       });
     // }
   }, []);
+
+  useEffect(() => {
+    const apiUrl = `${api_url}/user/getwishlist/${data._id}`;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setWishlist(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setWish(wishlist.map((product) => product.product._id));
+  }, [wishlist]);
 
   return (
     <div>
@@ -65,14 +88,14 @@ const SearchProduct = () => {
             No results found🥹 */}
           </Typography>
         </center>
-      ) : test ? (
-        <List sx={{ marginTop: "10vh" }}>
+      ) : (
+        <List sx={{ marginTop: "7.2vh" }}>
           {products.map((product, index) => (
             <Box
               key={index}
               sx={{
                 maxWidth: 1500,
-                mx: "auto", 
+                mx: "auto",
               }}
             >
               <ListItem
@@ -114,7 +137,7 @@ const SearchProduct = () => {
                       }}
                     />
                   </Box>
-                  <Box sx={{ mt: 8, ml: 6 }}>
+                  <Box sx={{ mt: 8, ml: 10 }}>
                     <Typography
                       className="productname"
                       sx={{
@@ -168,128 +191,49 @@ const SearchProduct = () => {
                     </Typography>
                   </Box>
                 </Button>
+                <IconButton
+                  sx={{ ml: "-85vw" ,
+                    mt:"-20vh"
+                  }}
+                  onClick={async () => {
+                    if (wish.includes(String(product._id))) {
+                      try {
+                        const res = await axios.delete(
+                          `${api_url}/user/wishlist/delitem/${data._id}/${product._id}`
+                        );
+                        setWish(wish.filter((id) => id !== product._id));
+                      } catch (error) {
+                        console.error(
+                          "Error deleting product from wishlist:",
+                          error
+                        );
+                      }
+                    } else {
+                      try {
+                        await axios.post(
+                          `${api_url}/product/addtowishlist/${data._id}/${product._id}`
+                        );
+                        setWish([...wish, product._id]);
+                      } catch (error) {
+                        console.error(
+                          "Error adding product to wishlist:",
+                          error
+                        );
+                      }
+                    }
+                  }}
+                  color="error"
+                >
+                  {wish.includes(String(product._id)) ? (
+                    <Favorite />
+                  ) : (
+                    <FavoriteBorder />
+                  )}
+                </IconButton>
               </ListItem>
             </Box>
           ))}
         </List>
-      ) : (
-        <Grid container spacing={2} sx={{ mt: "70px" }}>
-          {products.map((product, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={15}
-              md={3}
-              lg={2.3}
-              key={index}
-              sx={{ ml: "9px", mt: -2 }}
-            >
-              <Paper
-                elevation={3}
-                sx={{
-                  padding: 1,
-                  backgroundColor: "currentcolor",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  height: "325px",
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    overflow: "hidden",
-                    borderColor: "white",
-                    borderRadius: "15px",
-                    width: "255px",
-                    height: "325px",
-                    "&:hover": {
-                      borderColor: "darkorange",
-                    },
-                  }}
-                  onClick={() => {
-                    navigate("/detproduct", { state: product });
-                  }}
-                  style={{
-                    fontSize: "20px",
-                    fontFamily: "fantasy",
-                    color: "black",
-                  }}
-                >
-                  <Container
-                    style={{
-                      backgroundColor: "currentcolor",
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <img
-                      src={`${api_url}/${product.image}`}
-                      alt={product.name}
-                      style={{
-                        marginLeft: "-39px",
-                        marginTop: "-10px",
-                        width: "261px",
-                        height: "260px",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <Typography
-                      variant="subtitle1"
-                      fontFamily={"cursive"}
-                      sx={{
-                        ml: -1.5,
-                        mt: 1,
-                        color: "white",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {product.name}
-                    </Typography>
-
-                    <Typography
-                      variant="subtitle1"
-                      fontFamily={"cursive"}
-                      sx={{
-                        ml: 18,
-                        mt: 0.5,
-                        mb: -2.9,
-                        color: "yellow",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      ₹{product.price}
-                    </Typography>
-
-                    <Rating
-                      name={`rating-${index}`}
-                      value={product.rating || 0}
-                      readOnly
-                      precision={0.1}
-                      sx={{
-                        ml: -2,
-                        mb: 1,
-                        mt: -0.5,
-                        "& .MuiRating-iconFilled": {
-                          color: "#FFAD18",
-                        },
-                        "& .MuiRating-iconEmpty": {
-                          color: "grey",
-                        },
-                        "& .MuiRating-icon:hover": {
-                          borderColor: "darkorange",
-                        },
-                      }}
-                    />
-                  </Container>
-                </Button>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
       )}
     </div>
   );

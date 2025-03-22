@@ -14,6 +14,8 @@ import Dashboard from "./components/Dashboard";
 import DetailedProduct from "./components/DetailedProduct";
 import MyCart from "./components/MyCart";
 import MyOrder from "./components/MyOrder";
+import Wishlist from "./components/Wishlist";
+import Test from "./components/Test";
 
 function App() {
   const [data, setData] = useState({
@@ -43,6 +45,8 @@ function App() {
             <Route path="/detproduct" element={<DetailedProduct />} />
             <Route path="/mycart" element={<MyCart />} />
             <Route path="/user/orders" element={<MyOrder />} />
+            <Route path="/user/wishlist" element={<Wishlist />} />
+            <Route path="/test" element={<Test />} />
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

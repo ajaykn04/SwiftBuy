@@ -7,30 +7,33 @@ import {
   Container,
   Divider,
   Grid,
+  IconButton,
   List,
   ListItem,
   Paper,
   Rating,
   Typography,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+
 import Navbar from "./Navbar";
 
-const MyOrder = () => {
+const Wishlist = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
   const [empty, setEmpty] = useState(true);
   const [test, setTest] = useState(true);
-  const searchvalue = useLocation();
   const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
-    const apiUrl = `${api_url}/user/orders/${data._id}`;
+    const apiUrl = `${api_url}/user/getwishlist/${data._id}`;
     axios
       .get(apiUrl)
       .then((response) => {
-        setOrders(response.data);
+        setProducts(response.data);
+
         setEmpty(response.data.length === 0);
       })
       .catch((error) => {
@@ -40,7 +43,7 @@ const MyOrder = () => {
         setLoading(false);
       });
   }, []);
-
+  console.log(products);
   return (
     <div>
       <Navbar />
@@ -50,17 +53,17 @@ const MyOrder = () => {
           <br />
           <br />
           <br />
-          loading
+          Loading...
         </center>
       ) : empty ? (
         <center>
           <Typography style={{ fontSize: 17, marginTop: "50vh" }}>
-            No current orders☹️
+            Nothing Here
           </Typography>
         </center>
       ) : (
         <List sx={{ marginTop: "7.2vh" }}>
-          {orders.map((order, index) => (
+          {products.map((product, index) => (
             <Box
               key={index}
               sx={{
@@ -87,20 +90,19 @@ const MyOrder = () => {
                     cursor: "pointer",
                     borderRadius: "20px",
                     border: "none",
-                    "&:hover .ordername": {
+                    "&:hover .productname": {
                       color: "darkorange",
                     },
                   }}
                   style={{ color: "orange" }}
                   onClick={() => {
-                    const a={_id:order.product}
-                    navigate("/detproduct", { state: a });
+                    navigate("/detproduct", { state: product.product });
                   }}
                 >
                   <Box>
                     <img
-                      src={`${api_url}/${order.image}`}
-                      alt={order.name}
+                      src={`${api_url}/${product.product.image}`}
+                      alt={product.product.name}
                       style={{
                         width: 150,
                         height: "auto",
@@ -110,7 +112,7 @@ const MyOrder = () => {
                   </Box>
                   <Box sx={{ mt: 8, ml: 6 }}>
                     <Typography
-                      className="ordername"
+                      className="productname"
                       sx={{
                         fontFamily: "fantasy",
                         color: "white",
@@ -118,16 +120,66 @@ const MyOrder = () => {
                         mt: -10,
                       }}
                     >
-                      {order.name}
+                      {product.product.name}
                     </Typography>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Box
+                        sx={{
+                          mt: 1,
+                          display: "flex",
+                          alignItems: "center",
+                          backgroundColor: "#222",
+                          color: "white",
+                          borderRadius: "8px",
+                          padding: "4px 8px",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                          width: "fit-content",
+                        }}
+                      >
+                        <Typography sx={{ mr: 0.5, color: "#FFAD18" }}>
+                          {parseFloat(product.product.rating.toFixed(1)) || 0}{" "}
+                          ⭐
+                        </Typography>
+                      </Box>
+                      <Typography
+                        sx={{
+                          color: "white",
+                          fontFamily: "cursive",
+                          ml: 1,
+                          mt: 0.8,
+                        }}
+                      >
+                        {product.product.reviews.length === 0
+                          ? "No Rating"
+                          : product.product.reviews.length === 1
+                          ? "1 Rating"
+                          : `${product.product.reviews.length} Ratings`}
+                      </Typography>
+                    </Box>
 
                     <Typography
                       sx={{ mt: 1.5, fontFamily: "cursive", color: "yellow" }}
                     >
-                      ₹{order.amount}
+                      ₹{product.product.price}
                     </Typography>
                   </Box>
                 </Button>
+                <IconButton onClick={async()=>{
+                  try {
+                    const res = await axios.delete(
+                      `${api_url}/user/wishlist/delitem/${data._id}/${product.product._id}`
+                    );
+                    window.location.reload(true);
+                  } catch (error) {
+                    console.error(
+                      "Error deleting product from wishlist:",
+                      error
+                    );
+                  }
+                }} sx={{ mt: "-15vh" }} color="inherit">
+                  <CloseIcon sx={{ fontSize: 40 }} />
+                </IconButton>
               </ListItem>
             </Box>
           ))}
@@ -137,4 +189,4 @@ const MyOrder = () => {
   );
 };
 
-export default MyOrder;
+export default Wishlist;

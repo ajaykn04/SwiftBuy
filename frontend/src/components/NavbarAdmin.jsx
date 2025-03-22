@@ -265,7 +265,11 @@ const Navbar = () => {
             />
           </IconButton>
 
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              navigate("/user/wishlist");
+            }}
+          >
             <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
           </IconButton>
           <IconButton onClick={handleProfileClick}>

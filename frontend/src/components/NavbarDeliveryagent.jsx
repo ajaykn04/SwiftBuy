@@ -94,7 +94,7 @@ const NavbarDeliveryagent = () => {
           >
             <Container
               sx={{
-                ml: 20, 
+                ml: 20,
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "3rem",
@@ -136,7 +136,6 @@ const NavbarDeliveryagent = () => {
               }}
             >
               <TextField
-                
                 variant="outlined"
                 placeholder="Search for Products"
                 value={searchQuery}
@@ -205,7 +204,6 @@ const NavbarDeliveryagent = () => {
                   My Orders
                 </Typography>
               </Button>
-              
             </Container>
           </Container>
 
@@ -221,7 +219,11 @@ const NavbarDeliveryagent = () => {
             />
           </IconButton>
 
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              navigate("/user/wishlist");
+            }}
+          >
             <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
           </IconButton>
           <IconButton onClick={handleProfileClick}>
