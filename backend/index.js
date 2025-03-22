@@ -358,8 +358,47 @@ app.post("/product/buy/:userId/:productId/:quantity", async (req, res) => {
             "image": productDetails.image,
             "product": productId
         }
-        order = await orderModel(order).save()
-        res.send({ message: "Product Order Placed" })
+        if (productDetails.stock < quantity){
+            res.send("Requested Quantity Not In Stock")
+        }
+        else{
+            productDetails.stock -= quantity
+            await productDetails.save()
+            order = await orderModel(order).save()
+            res.send({ message: "Product Order Placed" })
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+app.post("/user/cartcheckout/:userId", async (req, res) => {
+    try {
+        var userId = req.params.userId;
+        var productId = req.params.productId;
+        var productDetails = await productModel.findById(productId)
+        var quantity = parseInt(req.params.quantity);
+        var user = await userModel.findById(userId);
+        var order = {
+            "name": productDetails.name,
+            "userId": userId,
+            "amount": productDetails.price * quantity,
+            "quantity": quantity,
+            "status": "Processing",
+            "image": productDetails.image,
+            "product": productId
+        }
+        if (productDetails.stock < quantity){
+            res.send("Requested Quantity Not In Stock")
+        }
+        else{
+            productDetails.stock -= quantity
+            await productDetails.save()
+            order = await orderModel(order).save()
+            res.send({ message: "Product Order Placed" })
+        }
 
     } catch (error) {
         console.log(error);
@@ -370,6 +409,46 @@ app.get("/user/orders/:userId", async (req, res) => {
     try {
         var userId = req.params.userId
         var data = await orderModel.find({userId: userId})
+        res.send(data)
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+app.post("/product/makefeatured/:productId", async (req, res) => {
+    try {
+        var productId = req.params.productId;
+        var product = await productModel.findById(productId);
+        product.featured = true;
+        product.save();
+
+        res.send({ message: "Added Product to Featured" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+app.post("/product/removefeatured/:productId", async (req, res) => {
+    try {
+        var productId = req.params.productId;
+        var product = await productModel.findById(productId);
+        product.featured = false;
+        product.save();
+
+        res.send({ message: "Removed Product From Featured" })
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+app.get("/product/getfeatured", async (req, res) => {
+    try {
+        var data = await productModel.find({ featured: true });
         res.send(data)
 
     } catch (error) {
