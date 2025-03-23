@@ -227,25 +227,28 @@ const NavbarMerchant = () => {
           </Container>
 
           <IconButton
+            color="inherit"
+            sx={{ mr: 1.2 }}
             onClick={() => {
               navigate("/mycart");
             }}
           >
             <ShoppingCartIcon
               style={{ color: "white" }}
-              sx={{ mr: 1.2, fontSize: 28 }}
+              sx={{ fontSize: 28 }}
               alt="mycart"
             />
           </IconButton>
 
           <IconButton
+            color="error"
             onClick={() => {
               navigate("/user/wishlist");
             }}
           >
             <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
           </IconButton>
-          <IconButton onClick={handleProfileClick}>
+          <IconButton color="inherit" onClick={handleProfileClick}>
             <Avatar alt="Profile" src="/defaultlogin.png" />
           </IconButton>
         </StyledToolbar>

@@ -14,7 +14,7 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { FavoriteBorder } from "@mui/icons-material";
 
 import Navbar from "./Navbar";
 
@@ -192,9 +192,7 @@ const SearchProduct = () => {
                   </Box>
                 </Button>
                 <IconButton
-                  sx={{ ml: "-85vw" ,
-                    mt:"-20vh"
-                  }}
+                  sx={{ ml: -163, mt: -20 }}
                   onClick={async () => {
                     if (wish.includes(String(product._id))) {
                       try {
@@ -225,9 +223,13 @@ const SearchProduct = () => {
                   color="error"
                 >
                   {wish.includes(String(product._id)) ? (
-                    <Favorite />
+                    <img
+                      style={{ width: 30, marginLeft: 2 }}
+                      alt="Wishlist"
+                      src="/heart.png"
+                    />
                   ) : (
-                    <FavoriteBorder />
+                    <FavoriteBorder fontSize="large" />
                   )}
                 </IconButton>
               </ListItem>

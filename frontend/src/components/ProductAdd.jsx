@@ -24,8 +24,22 @@ const ProductAdd = () => {
     category: "",
     image: "",
   });
-  const toeditproduct = useLocation();
   const api_url = import.meta.env.VITE_API_URL;
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const apiUrl = `${api_url}/misc/categories/get`;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      })
+      .finally(() => {});
+    // }
+  }, []);
+  const toeditproduct = useLocation();
   useEffect(() => {
     if (toeditproduct.state != null) {
       setProduct({
@@ -263,11 +277,9 @@ const ProductAdd = () => {
                 },
               }}
             >
-              <MenuItem value="select">select 1</MenuItem>
-              <MenuItem value="select">select 2</MenuItem>
-              <MenuItem value="select">select 3</MenuItem>
-              <MenuItem value="select">select4</MenuItem>
-              <MenuItem value="select">select5</MenuItem>
+              {categories.map((category, index) => (
+                <MenuItem value={category}>{category}</MenuItem>
+              ))}
             </Select>
             {errors.category && (
               <FormHelperText sx={{ color: "red" }}>

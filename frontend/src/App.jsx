@@ -16,6 +16,7 @@ import MyCart from "./components/MyCart";
 import MyOrder from "./components/MyOrder";
 import Wishlist from "./components/Wishlist";
 import Test from "./components/Test";
+import AdminTools from "./components/AdminTools";
 
 function App() {
   const [data, setData] = useState({
@@ -47,6 +48,7 @@ function App() {
             <Route path="/user/orders" element={<MyOrder />} />
             <Route path="/user/wishlist" element={<Wishlist />} />
             <Route path="/test" element={<Test />} />
+            <Route path="/admintools" element={<AdminTools />} />
           </Routes>
         </AppContext.Provider>
       </BrowserRouter>

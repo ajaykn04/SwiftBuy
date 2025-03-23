@@ -12,6 +12,7 @@ import {
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import EngineeringIcon from "@mui/icons-material/Engineering";
 
 const StyledToolbar = styled(Toolbar)`
   background-color: black;
@@ -255,24 +256,38 @@ const Navbar = () => {
 
           <IconButton
             onClick={() => {
+              navigate("/admintools");
+            }}
+            sx={{ mr: 0.8 }}
+            color="inherit"
+          >
+            🛠️
+          </IconButton>
+          <IconButton
+            sx={{ mr: 1.2 }}
+            color="inherit"
+            onClick={() => {
               navigate("/mycart");
             }}
           >
             <ShoppingCartIcon
               style={{ color: "white" }}
-              sx={{ mr: 1.2, fontSize: 28 }}
+              sx={{ fontSize: 28 }}
               alt="mycart"
             />
           </IconButton>
 
           <IconButton
+            color="error"
             onClick={() => {
               navigate("/user/wishlist");
             }}
           >
             <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
           </IconButton>
-          <IconButton onClick={handleProfileClick}>
+          <IconButton 
+          color="inherit"
+          onClick={handleProfileClick}>
             <Avatar alt="Profile" src="/defaultlogin.png" />
           </IconButton>
         </StyledToolbar>
