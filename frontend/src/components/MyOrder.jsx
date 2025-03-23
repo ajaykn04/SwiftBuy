@@ -50,7 +50,7 @@ const MyOrder = () => {
           <br />
           <br />
           <br />
-          loading
+          Loading...
         </center>
       ) : empty ? (
         <center>
