@@ -82,10 +82,6 @@ const SearchProduct = () => {
         <center>
           <Typography style={{ fontSize: 17, marginTop: "50vh" }}>
             No results found🫠
-            {/* No results found😓<br />
-            No results found😰<br />
-            No results found🥺<br />
-            No results found🥹 */}
           </Typography>
         </center>
       ) : (
@@ -192,7 +188,7 @@ const SearchProduct = () => {
                   </Box>
                 </Button>
                 <IconButton
-                  sx={{ ml: -163, mt: -20 }}
+                  sx={{ ml: -160, mt: -11 }}
                   onClick={async () => {
                     if (wish.includes(String(product._id))) {
                       try {

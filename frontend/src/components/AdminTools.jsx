@@ -151,17 +151,14 @@ const AdminTools = () => {
                           setInputValue(category);
                           setShowDropdown(false);
                         }}
-                        sx={{ padding: "8px 12px", cursor: "pointer" }}
+                        sx={{ padding: "0px 12px", cursor: "pointer" }}
                       >
                         {category}
-                      </MenuItem>
-                      <IconButton
+                        <IconButton
                         sx={{
-                          position: "fixed",
-                          ml: "680px",
-                          mt: "-40px",
+                          ml: "auto",
+                          mt: "auto",
                           color: "black",
-                          zIndex: 1,
                         }}
                         onClick={async () => {
                           try {
@@ -176,6 +173,8 @@ const AdminTools = () => {
                       >
                         <DeleteIcon />
                       </IconButton>
+                      </MenuItem>
+                      
                     </div>
                   ))
                 ) : (
