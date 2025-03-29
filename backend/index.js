@@ -211,16 +211,29 @@ app.delete("/product/delete/:id", async (req, res) => {
     }
 })
 
-app.get("/product/search/:word", async (req, res) => {
+app.get("/product/search/:word?", async (req, res) => {
     try {
-        var word = req.params.word
-        var data = await productModel.find({ name: new RegExp(".*" + word + ".*", "i") })
+        var word="";
+        word = req.params.word;
+        var query = word && word.trim() !== "" ? { name: new RegExp(".*" + word + ".*", "i") } : {};
+        var data = await productModel.find(query);
         res.send(data)
 
     } catch (error) {
         console.log(error);
     }
 });
+
+// app.get("/product/search/:word", async (req, res) => {
+//     try {
+//         var word = req.params.word
+//         var data = await productModel.find({ name: new RegExp(".*" + word + ".*", "i") })
+//         res.send(data)
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
 
 app.post("/product/addreview/:productId", async (req, res) => {
     try {
