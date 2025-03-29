@@ -17,10 +17,10 @@ import axios from "axios";
 const Products = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const api_url = import.meta.env.VITE_API_URL;
   var [featured, setFeatured] = useState([]);
   const [featuredlist, setFeaturedlist] = useState([]);
   const [loading, setLoading] = useState(true);
+  const api_url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -123,8 +123,7 @@ const Products = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((product, index) => {
-              
+            {products.map((product, index) => (
               <TableRow key={index}>
                 <TableCell sx={{ fontFamily: "cursive", color: "white" }}>
                   <Button
@@ -167,7 +166,7 @@ const Products = () => {
                     onClick={async () => {
                       if (featured.includes(String(product._id))) {
                         try {
-                          await axios.delete(
+                          await axios.post(
                             `${api_url}/product/removefeatured/${product._id}`
                           );
                           setFeatured(
@@ -218,7 +217,7 @@ const Products = () => {
                   </Button>
                 </TableCell>
               </TableRow>
-            })}
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
