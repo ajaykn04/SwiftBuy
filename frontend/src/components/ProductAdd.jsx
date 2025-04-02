@@ -141,22 +141,13 @@ const ProductAdd = () => {
           height: "80vh",
         }}
       >
-        <Box sx={styles.box_style}>
-          {/* <img
-            src="/logo1.png"
-            alt="Login Icon"
-            style={{
-              width: "100px",
-              marginBottom: "-.5rem",
-              marginTop: "-2.5rem",
-            }}
-          /> */}
+        <Box sx={styles.box_style} maxHeight={"650px"}>
           <Typography
             fontFamily={"fantasy"}
             variant="h4"
             color="white"
-            mb={2}
-            mt={-2}
+            mb={1.5}
+            mt={-3.5}
             // gutterBottom
           >
             ADD PRODUCT
@@ -178,7 +169,7 @@ const ProductAdd = () => {
           />
           <TextField
             required
-            style={{ marginTop: 3 }}
+            style={{ marginTop: 0 }}
             fullWidth
             multiline
             rows={4}
@@ -198,7 +189,7 @@ const ProductAdd = () => {
           />
           <TextField
             required
-            style={{ marginTop: 3, marginBottom: 18 }}
+            style={{ marginTop: 0 }}
             fullWidth
             multiline
             rows={4}
@@ -216,7 +207,7 @@ const ProductAdd = () => {
 
           <TextField
             required
-            style={{ marginTop: -7 }}
+            style={{ marginTop: 0 }}
             fullWidth
             name="price"
             type="number"
@@ -232,7 +223,7 @@ const ProductAdd = () => {
           />
 
           <FormControl
-            style={{ marginTop: 3 }}
+            style={{ marginTop: 0 }}
             variant="outlined"
             required
             fullWidth
@@ -293,7 +284,7 @@ const ProductAdd = () => {
           </FormControl>
 
           <TextField
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 7 }}
             required
             fullWidth
             label="Stock"
@@ -309,7 +300,7 @@ const ProductAdd = () => {
           />
 
           <TextField
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 0 }}
             required
             fullWidth
             name="image"
@@ -325,6 +316,7 @@ const ProductAdd = () => {
           <Button
             variant="contained"
             sx={{
+              fontSize:15,
               mt: 0.4,
               mb: -2.5,
               backgroundColor: "orange",

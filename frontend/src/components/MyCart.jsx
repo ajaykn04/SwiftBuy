@@ -38,6 +38,7 @@ const MyCart = () => {
       .get(apiUrl)
       .then((response) => {
         setProducts(response.data);
+        console.log(response.data);
         setEmpty(response.data.length === 0);
       })
       .catch((error) => {
