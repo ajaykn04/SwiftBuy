@@ -111,27 +111,13 @@ const MyProduct = () => {
                   height: "325px",
                 }}
               >
-                {/* <IconButton
-                  sx={{
-                    position: "fixed",
-                    ml: "160px",
-                    mt: "280px",
-                    color: "white",
-                    zIndex: 1,
-                  }}
-                  onClick={() => {
-                    updateValue(product);
-                  }}
-                >
-                  <EditIcon />
-                </IconButton> */}
                 <IconButton
                   sx={{
                     position: "fixed",
-                    ml: 24,
-                    mt: 35,
+                    ml: 26,
+                    mt: 35.5,
                     color: "white",
-                    zIndex: 1,
+                    zIndex: 1,                                                  //dddddddddddddddddddd
                   }}
                   onClick={() => handleDelete(product._id)}
                 >
@@ -192,18 +178,7 @@ const MyProduct = () => {
                       {product.name}
                     </Typography>
 
-                    <Typography
-                      variant="subtitle1"
-                      fontFamily={"cursive"}
-                      sx={{
-                        ml: 18,
-                        mt: -0.4,
-                        color: "yellow",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      ₹{product.price}
-                    </Typography>
+                    
 
                     <Rating
                       name={`rating-${index}`}
@@ -223,7 +198,19 @@ const MyProduct = () => {
                           borderColor: "darkorange",
                         },
                       }}
-                    />
+                    /><Typography
+                    variant="subtitle1"
+                    fontFamily={"cursive"}
+                    sx={{
+                                                                          //ddddddddddddddddddd
+                      ml: 13.5,
+                      mt: -4.2,
+                      color: "yellow",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ₹{product.price}
+                  </Typography>
                   </Container>
                 </Button>
               </Paper>

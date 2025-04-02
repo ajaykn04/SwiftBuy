@@ -282,7 +282,7 @@ const ProductAdd = () => {
               }}
             >
               {categories.map((category, index) => (
-                <MenuItem value={category}>{category}</MenuItem>
+                <MenuItem key={index} value={category}>{category}</MenuItem>
               ))}
             </Select>
             {errors.category && (
