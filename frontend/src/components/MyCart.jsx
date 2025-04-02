@@ -362,7 +362,7 @@ const MyCart = () => {
                           color: "red",
                           minHeight: "25px",
                           mb: -4.5,
-                          mt: 1``,
+                          mt: 1,
                           ml: 0.5,
                         }}
                       >
