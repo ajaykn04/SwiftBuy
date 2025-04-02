@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "./Navbar";
-import { Box, IconButton, TextField, MenuItem } from "@mui/material";
+import { Box, IconButton, TextField, MenuItem, Typography, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 const AdminTools = () => {
   const api_url = import.meta.env.VITE_API_URL;
@@ -25,6 +26,7 @@ const AdminTools = () => {
   const [filteredCategories, setFilteredCategories] = useState(categories);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -61,7 +63,7 @@ const AdminTools = () => {
           justifyContent: "center",
         }}
       >
-        {/* Main Box */}
+        {/* category Box */}
         <Box
           sx={{
             display: "flex",
@@ -76,8 +78,8 @@ const AdminTools = () => {
           }}
         >
           <IconButton
-          onClick={async()=>{
-            try {
+            onClick={async () => {
+              try {
                 await axios.post(
                   `${api_url}/misc/categories/add/${inputValue}`
                 );
@@ -85,7 +87,7 @@ const AdminTools = () => {
               } catch (error) {
                 console.error(error);
               }
-          }}
+            }}
             sx={{
               mt: -1,
               backgroundColor: "orange",
@@ -155,26 +157,25 @@ const AdminTools = () => {
                       >
                         {category}
                         <IconButton
-                        sx={{
-                          ml: "auto",
-                          mt: "auto",
-                          color: "black",
-                        }}
-                        onClick={async () => {
-                          try {
-                            await axios.delete(
-                              `${api_url}/misc/categories/delete/${category}`
-                            );
-                            window.location.reload(true);
-                          } catch (error) {
-                            console.error(error);
-                          }
-                        }}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
+                          sx={{
+                            ml: "auto",
+                            mt: "auto",
+                            color: "black",
+                          }}
+                          onClick={async () => {
+                            try {
+                              await axios.delete(
+                                `${api_url}/misc/categories/delete/${category}`
+                              );
+                              window.location.reload(true);
+                            } catch (error) {
+                              console.error(error);
+                            }
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
                       </MenuItem>
-                      
                     </div>
                   ))
                 ) : (
@@ -189,6 +190,66 @@ const AdminTools = () => {
             )}
           </Box>
         </Box>
+        <Box
+              sx={{
+                ml:7,
+                mt:5,
+                display: "flex",
+                justifyContent: "flex-start",
+                gap: "7rem",
+                flex: 1,
+              }}
+            >
+              <Button
+                variant="text"
+                onClick={() => {
+                  navigate("/admin/users");
+                }}
+                style={{
+                  marginLeft: -50,
+                  marginRight: 25,
+                  fontSize: "20px",
+                  fontFamily: "fantasy",
+                  color: "black",
+                  backgroundColor:"darkorange",
+                  minWidth:100,
+                }}
+              >
+                <Typography
+                  style={{
+                    fontFamily: "fantasy",
+                    fontSize: "20px",
+                    color: "#472B00 ",
+                  }}
+                >
+                  USERS
+                </Typography>
+              </Button>
+
+              <Button
+                variant="text"
+                onClick={() => {
+                  navigate("/admin/products");
+                }}
+                style={{
+                  marginLeft: -25,
+                  fontSize: "20px",
+                  fontFamily: "fantasy",
+                  color: "black",
+                  backgroundColor:"darkorange"
+                }}
+              >
+                <Typography
+                  style={{
+                    fontFamily: "fantasy",
+                    fontSize: "20px",
+                    color: "#472B00 ",
+                  }}
+                >
+                  PRODUCTS
+                </Typography>
+              </Button>
+            </Box>
       </Box>
     </div>
   );

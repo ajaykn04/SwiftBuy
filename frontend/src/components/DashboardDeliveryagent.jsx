@@ -40,7 +40,7 @@ const DashboardDeliveryagent = () => {
   const handleSlideChange = (index) => {
     setSelectedIndex(index);
   };
-  const images = ["/1.jpg", "/2.jpg", "/3.jpg", "/4.jpg", "/5.jpg", "/6.jpg"];
+  const images = ["/1.jpg", "/2.jpg", "/3.jpg", "/4.jpg", "/5.jpg", "/6.jpg","/7.jpg"];
   return (
     <div>
       <Navbar />
@@ -318,17 +318,18 @@ const DashboardDeliveryagent = () => {
                         alignItems: "flex-start",
                       }}
                     >
-                      <img
-                        src={`${api_url}/${product.image}`}
-                        alt={product.name}
-                        style={{
-                          marginLeft: "-39px",
-                          marginTop: "-10px",
-                          width: "261px",
-                          height: "260px",
-                          objectFit: "cover",
-                        }}
-                      />
+                      <Box sx={{ minHeight: "200px" }}>
+                        <img
+                          src={`${api_url}/${product.image}`}
+                          alt={product.name}
+                          style={{
+                            marginLeft: "-10px",
+                            width: "200px",
+                            height: "auto",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </Box>
                       <Typography
                         variant="subtitle1"
                         fontFamily={"cursive"}
@@ -337,6 +338,7 @@ const DashboardDeliveryagent = () => {
                           mt: 1,
                           color: "white",
                           fontWeight: "bold",
+                          textAlign: "left",
                         }}
                       >
                         {product.name}
@@ -346,7 +348,7 @@ const DashboardDeliveryagent = () => {
                         variant="subtitle1"
                         fontFamily={"cursive"}
                         sx={{
-                          ml: 18,
+                          ml: 15,
                           mt: 0.5,
                           mb: -2.9,
                           color: "yellow",

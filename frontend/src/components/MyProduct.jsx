@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
+  Box,
   Button,
   Container,
   Grid,
@@ -114,8 +115,8 @@ const MyProduct = () => {
                 <IconButton
                   sx={{
                     position: "fixed",
-                    ml: 26,
-                    mt: 35.5,
+                    ml: 25.5,
+                    mt: 34.5,
                     color: "white",
                     zIndex: 1,                                                  //dddddddddddddddddddd
                   }}
@@ -154,17 +155,19 @@ const MyProduct = () => {
                       alignItems: "flex-start",
                     }}
                   >
-                    <img
-                      src={`${api_url}/${product.image}`}
-                      alt={product.name}
-                      style={{
-                        marginLeft: "-39px",
-                        marginTop: "-10px",
-                        width: "261px",
-                        height: "260px",
-                        objectFit: "cover",
-                      }}
-                    />
+                    <Box
+                      sx={{minHeight:"200px",maxHeight:"200px"}}>
+                      <img
+                        src={`${api_url}/${product.image}`}
+                        alt={product.name}
+                        style={{
+                          marginLeft: "-10px",
+                          width: "200px",
+                          height: "auto",
+                          objectFit: "cover",
+                        }}
+                      />
+                      </Box>
                     <Typography
                       variant="subtitle1"
                       fontFamily={"cursive"}
@@ -173,6 +176,7 @@ const MyProduct = () => {
                         mt: 1,
                         color: "white",
                         fontWeight: "bold",
+                        textAlign: "left",
                       }}
                     >
                       {product.name}
@@ -203,8 +207,8 @@ const MyProduct = () => {
                     fontFamily={"cursive"}
                     sx={{
                                                                           //ddddddddddddddddddd
-                      ml: 13.5,
-                      mt: -4.2,
+                      ml: -1.5,
+                      mt: -1,
                       color: "yellow",
                       fontWeight: "bold",
                     }}
