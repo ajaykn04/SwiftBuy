@@ -217,6 +217,7 @@ app.get("/product/search/:word?", async (req, res) => {
         word = req.params.word;
         var query = word && word.trim() !== "" ? { name: new RegExp(".*" + word + ".*", "i") } : {};
         var data = await productModel.find(query);
+        
         res.send(data)
 
     } catch (error) {
