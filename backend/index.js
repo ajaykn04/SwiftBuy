@@ -192,6 +192,7 @@ app.get("/merchant/products/:id", async (req, res) => {
     }
 });
 
+
 app.delete("/product/delete/:id", async (req, res) => {
     try {
         var id = req.params.id;
@@ -199,6 +200,14 @@ app.delete("/product/delete/:id", async (req, res) => {
         if (del != null) {
             fs.unlink(del.image, () => {
             });
+            await userModel.updateMany(
+                { "cart.product": id },
+                { $pull: { cart: { product: id } } }
+            );
+            await userModel.updateMany(
+                { "wishlist.product": id },
+                { $pull: { wishlist: { product: id } } }
+            );
             res.send({message: "Product Deleted"});
         } else {
             res.status(404);
@@ -211,13 +220,32 @@ app.delete("/product/delete/:id", async (req, res) => {
     }
 })
 
+//app.delete("/product/delete/:id", async (req, res) => {
+//    try {
+//        var id = req.params.id;
+//        var del = await productModel.findByIdAndDelete(id);
+//        if (del != null) {
+//            fs.unlink(del.image, () => {
+//            });
+//            res.send({message: "Product Deleted"});
+//        } else {
+//            res.status(404);
+//            res.send({message: "Failed To Delete Product"});
+//        }
+//
+//    } catch (error) {
+//        res.status(404);
+//        res.send({message: "Failed To Delete Product"});
+//    }
+//})
+
 app.get("/product/search/:word?", async (req, res) => {
     try {
         var word="";
         word = req.params.word;
         var query = word && word.trim() !== "" ? { name: new RegExp(".*" + word + ".*", "i") } : {};
         var data = await productModel.find(query);
-        
+
         res.send(data)
 
     } catch (error) {
