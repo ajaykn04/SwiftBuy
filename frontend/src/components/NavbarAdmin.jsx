@@ -81,10 +81,10 @@ const Navbar = () => {
           >
             <Container
               sx={{
-                ml: 17, //comon 1
+                ml: 10, //comon 1
                 display: "flex",
                 justifyContent: "flex-start",
-                gap: "3rem",
+                gap: "2rem",
                 flex: 1,
               }}
             >
@@ -193,7 +193,7 @@ const Navbar = () => {
               sx={{
                 display: "flex",
                 justifyContent: "flex-start",
-                gap: "3rem",
+                gap: "2rem",
                 flex: 1,
               }}
             >

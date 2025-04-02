@@ -83,7 +83,7 @@ const NavbarMerchant = () => {
                 ml: 16, //comon 1
                 display: "flex",
                 justifyContent: "flex-start",
-                gap: "3rem",
+                gap: "2rem",
                 flex: 1,
               }}
             >
@@ -192,7 +192,7 @@ const NavbarMerchant = () => {
               sx={{
                 display: "flex",
                 justifyContent: "flex-start",
-                gap: "3rem",
+                gap: "2rem",
                 flex: 1,
               }}
             >
