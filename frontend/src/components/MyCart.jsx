@@ -28,6 +28,7 @@ const MyCart = () => {
   const [empty, setEmpty] = useState(true);
   const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
+  const [checkout, setCheckout] = useState(true);
   var Price = 0;
   var Index = 1;
 
@@ -47,6 +48,14 @@ const MyCart = () => {
       });
     // }
   }, []);
+
+  useEffect(() => {
+    products.forEach((product) => {
+      if (product.product.stock < product.quantity) {
+        setCheckout(false);
+      }
+    });
+  }, [products]);
 
   return (
     <div>
@@ -282,6 +291,9 @@ const MyCart = () => {
                                 await axios.post(
                                   `${api_url}/user/cart/updateitemquantity/${data._id}/${product.product._id}/${product.quantity}`
                                 );
+                                if (checkout === false) {
+                                  window.location.reload(true);
+                                }
                               } catch (error) {
                                 console.error(error);
                               }
@@ -356,18 +368,18 @@ const MyCart = () => {
                       >
                         {product.available}
                       </Typography>
-                      {product.product.stock<product.quantity &&(
+                      {product.product.stock < product.quantity && (
                         <Typography
-                        sx={{
-                          color: "red",
-                          minHeight: "25px",
-                          mb: -4.5,
-                          mt: 1,
-                          ml: 0.5,
-                        }}
-                      >
-                        Not available
-                      </Typography>
+                          sx={{
+                            color: "red",
+                            minHeight: "25px",
+                            mb: -4.5,
+                            mt: 1,
+                            ml: 0.5,
+                          }}
+                        >
+                          Not available
+                        </Typography>
                       )}
                     </TableCell>
                     <TableCell>
@@ -454,42 +466,56 @@ const MyCart = () => {
                 &nbsp;Estimated Total :
                 <span style={{ color: "darkorange" }}> ₹{Price}</span>
                 <br />
-                <Button
-                  variant="contained"
-                  sx={{
-                    mt: 3,
-                    ml: 1,
-                    fontSize: "20px",
-                    padding: "15px 30px",
-                    minWidth: "350px",
-                    backgroundColor: "orangered",
-                  }}
-                  onClick={async () => {
-                    try {
-                      // First, send all purchase requests
-                      for (const product of products) {
-                        await axios.post(
-                          `${api_url}/product/buy/${data._id}/${product.product._id}/${product.quantity}`
-                        );
-                      }
+                {checkout ? (
+                  <Button
+                    variant="contained"
+                    sx={{
+                      mt: 3,
+                      ml: 1,
+                      fontSize: "20px",
+                      padding: "15px 30px",
+                      minWidth: "350px",
+                      backgroundColor: "orangered",
+                    }}
+                    onClick={async () => {
+                      try {
+                        for (const product of products) {
+                          await axios.post(
+                            `${api_url}/product/buy/${data._id}/${product.product._id}/${product.quantity}`
+                          );
+                        }
 
-                      // Then, delete items from the cart
-                      for (const product of products) {
-                        await axios.delete(
-                          `${api_url}/user/cart/delitem/${data._id}/${product.product._id}`
-                        );
-                      }
+                        for (const product of products) {
+                          await axios.delete(
+                            `${api_url}/user/cart/delitem/${data._id}/${product.product._id}`
+                          );
+                        }
 
-                      // Now reload the page after everything is complete
-                      window.location.reload(true);
-                      console.log("Order confirmed");
-                    } catch (error) {
-                      console.error("Error ordering product:", error);
-                    }
-                  }}
-                >
-                  CheckOut
-                </Button>
+                        window.location.reload(true);
+                        console.log("Order confirmed");
+                      } catch (error) {
+                        console.error("Error ordering product:", error);
+                      }
+                    }}
+                  >
+                    CheckOut
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    sx={{
+                      mt: 3,
+                      ml: 1,
+                      fontSize: "20px",
+                      padding: "15px 30px",
+                      minWidth: "350px",
+                      backgroundColor: "gray",
+                      cursor: "not-allowed",
+                    }}
+                  >
+                    CheckOut
+                  </Button>
+                )}
               </Typography>
             </Box>
           </Box>
