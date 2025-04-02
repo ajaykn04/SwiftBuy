@@ -31,6 +31,7 @@ const MyOrder = () => {
       .get(apiUrl)
       .then((response) => {
         setOrders(response.data);
+        console.log(response.data)
         setEmpty(response.data.length === 0);
       })
       .catch((error) => {
@@ -78,7 +79,7 @@ const MyOrder = () => {
                   borderBottom: "1px solid gray",
                 }}
               >
-                <Button
+                {/* <Button
                   key={index}
                   component="div"
                   sx={{
@@ -96,7 +97,7 @@ const MyOrder = () => {
                     const a={_id:order.product}
                     navigate("/detproduct", { state: a });
                   }}
-                >
+                > */}
                   <Box>
                     <img
                       src={`${api_url}/${order.image}`}
@@ -122,12 +123,26 @@ const MyOrder = () => {
                     </Typography>
 
                     <Typography
-                      sx={{ mt: 1.5, fontFamily: "cursive", color: "yellow" }}
+                      sx={{ mt: 1, fontFamily: "cursive", color: "yellow" }}
                     >
                       ₹{order.amount}
                     </Typography>
+                    <Typography
+                      sx={{ mt: -3,ml:12, fontFamily: "cursive" }}
+                    >
+                      Quantity : {order.quantity}
+                    </Typography>
+                    <Typography
+                      sx={{ mt: 0.5,ml:0, fontFamily: "cursive" }}
+                    >
+                      Place At : {order.placedAt.split("T")[0]}
+                    </Typography><Typography
+                      sx={{ mt: .9,ml:0, fontFamily: "cursive", color: "orange" }}
+                    >
+                      Status : {order.status}
+                    </Typography>
                   </Box>
-                </Button>
+                {/* </Button> */}
               </ListItem>
             </Box>
           ))}

@@ -356,6 +356,19 @@ const MyCart = () => {
                       >
                         {product.available}
                       </Typography>
+                      {product.product.stock<product.quantity &&(
+                        <Typography
+                        sx={{
+                          color: "red",
+                          minHeight: "25px",
+                          mb: -4.5,
+                          mt: 1``,
+                          ml: 0.5,
+                        }}
+                      >
+                        Not available
+                      </Typography>
+                      )}
                     </TableCell>
                     <TableCell>
                       <Typography

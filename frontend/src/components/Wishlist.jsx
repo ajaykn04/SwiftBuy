@@ -110,7 +110,7 @@ const Wishlist = () => {
                       }}
                     />
                   </Box>
-                  <Box sx={{ mt: 8, ml: 6 }}>
+                  <Box sx={{ mt: 5, ml: 6 }}>
                     <Typography
                       className="productname"
                       sx={{
@@ -165,21 +165,41 @@ const Wishlist = () => {
                     </Typography>
                   </Box>
                 </Button>
-                <IconButton onClick={async()=>{
-                  try {
-                    const res = await axios.delete(
-                      `${api_url}/user/wishlist/delitem/${data._id}/${product.product._id}`
-                    );
-                    window.location.reload(true);
-                  } catch (error) {
-                    console.error(
-                      "Error deleting product from wishlist:",
-                      error
-                    );
-                  }
-                }} sx={{ mt: "-15vh" }} color="inherit">
-                  <CloseIcon sx={{ fontSize: 40 }} />
-                </IconButton>
+                <Button
+                  onClick={async () => {
+                    try {
+                      await axios.delete(
+                        `${api_url}/user/wishlist/delitem/${data._id}/${product.product._id}`
+                      );
+                      window.location.reload(true);
+                    } catch (error) {
+                      console.error(
+                        "Error deleting product from wishlist:",
+                        error
+                      );
+                    }
+                  }}
+                  variant=""
+                  sx={{
+                    ml: -158.5,
+                    mt: 15.5,
+                    color: "transparent",
+                    "&:hover .remove_cart": {
+                      color: "red",
+                    },
+                  }}
+                >
+                  <Typography
+                    className="remove_cart"
+                    color="white"
+                    sx={{
+                      fontFamily: "fantasy",
+                      textTransform: "none",
+                    }}
+                  >
+                    Remove
+                  </Typography>
+                </Button>
               </ListItem>
             </Box>
           ))}

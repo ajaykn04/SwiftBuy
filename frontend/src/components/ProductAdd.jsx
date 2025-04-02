@@ -23,6 +23,7 @@ const ProductAdd = () => {
     price: "",
     category: "",
     image: "",
+    stock: 0,
   });
   const api_url = import.meta.env.VITE_API_URL;
   const [categories, setCategories] = useState([]);
@@ -50,6 +51,7 @@ const ProductAdd = () => {
         category: toeditproduct.state.value.category,
         image: toeditproduct.state.value.image,
         price: toeditproduct.state.value.price,
+        stock: toeditproduct.state.value.stock,
       });
     }
   }, []);
@@ -65,6 +67,7 @@ const ProductAdd = () => {
     category: false,
     price: false,
     image: false,
+    stock: false,
   });
   const [generalError, setGeneralError] = useState("");
 
@@ -87,6 +90,7 @@ const ProductAdd = () => {
       category: product.category === "",
       price: product.price === "",
       image: !image,
+      stock: null,
     };
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
@@ -287,6 +291,22 @@ const ProductAdd = () => {
               </FormHelperText>
             )}
           </FormControl>
+
+          <TextField
+            style={{ marginTop: 10 }}
+            required
+            fullWidth
+            label="Stock"
+            name="stock"
+            type="number"
+            variant="outlined"
+            margin="normal"
+            onChange={inputHandler}
+            error={errors.stock}
+            helperText={errors.stock ? "Stock is required" : ""}
+            InputLabelProps={{ style: { color: "white" } }}
+            InputProps={styles.textfield}
+          />
 
           <TextField
             style={{ marginTop: 10 }}

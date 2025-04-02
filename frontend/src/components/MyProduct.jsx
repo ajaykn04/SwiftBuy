@@ -197,7 +197,7 @@ const MyProduct = () => {
                       fontFamily={"cursive"}
                       sx={{
                         ml: 18,
-                        mt: -3.4,
+                        mt: -0.4,
                         color: "yellow",
                         fontWeight: "bold",
                       }}
