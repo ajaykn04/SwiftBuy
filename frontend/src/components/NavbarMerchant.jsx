@@ -226,7 +226,7 @@ const NavbarMerchant = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/mycart");
+                  navigate("/user/orders");
                 }}
                 style={{
                   marginLeft: -25,
@@ -241,7 +241,7 @@ const NavbarMerchant = () => {
                     fontSize: "20px",
                     color: "orange",
                     textDecoration:
-                      location.pathname === "/mycart" ? "underline" : "none",
+                      location.pathname === "/user/orders" ? "underline" : "none",
                   }}
                 >
                   MY ORDERS

@@ -189,29 +189,6 @@ const NavbarUser = () => {
                   My Orders
                 </Typography>
               </Button>
-              {/* <Button
-                variant="text"
-                onClick={() => {
-                  navigate("/mycart");
-                }}
-                style={{
-                  fontSize: "20px",
-                  fontFamily: "fantasy",
-                  color: "black",
-                }}
-              >
-                <Typography
-                  style={{
-                    fontFamily: "fantasy",
-                    fontSize: "20px",
-                    color: "orange",
-                    textDecoration:
-                      location.pathname === "/mycart" ? "underline" : "none",
-                  }}
-                >
-                  My Cart
-                </Typography>
-              </Button> */}
             </Container>
           </Container>
 
