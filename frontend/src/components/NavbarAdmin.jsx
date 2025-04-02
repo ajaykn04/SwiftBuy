@@ -200,7 +200,7 @@ const Navbar = () => {
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admin/users");
+                  navigate("/merchant/products");
                 }}
                 style={{
                   marginLeft: -50,
@@ -216,19 +216,19 @@ const Navbar = () => {
                     fontSize: "20px",
                     color: "orange",
                     textDecoration:
-                      location.pathname === "/admin/users"
+                      location.pathname === "/merchant/products"
                         ? "underline"
                         : "none",
                   }}
                 >
-                  USERS
+                  MY PRODUCTS
                 </Typography>
               </Button>
 
               <Button
                 variant="text"
                 onClick={() => {
-                  navigate("/admin/products");
+                  navigate("/mycart");
                 }}
                 style={{
                   marginLeft: -25,
@@ -243,12 +243,12 @@ const Navbar = () => {
                     fontSize: "20px",
                     color: "orange",
                     textDecoration:
-                      location.pathname === "/admin/products"
+                      location.pathname === "/mycart"
                         ? "underline"
                         : "none",
                   }}
                 >
-                  PRODUCTS
+                  MY ORDERS
                 </Typography>
               </Button>
             </Container>
