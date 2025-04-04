@@ -40,7 +40,15 @@ const DashboardUser = () => {
   const handleSlideChange = (index) => {
     setSelectedIndex(index);
   };
-  const images = ["/1.jpg", "/2.jpg", "/3.jpg", "/4.jpg", "/5.jpg", "/6.jpg","/7.jpg"];
+  const images = [
+    "/1.jpg",
+    "/2.jpg",
+    "/3.jpg",
+    "/4.jpg",
+    "/5.jpg",
+    "/6.jpg",
+    "/7.jpg",
+  ];
 
   return (
     <div>
@@ -53,109 +61,6 @@ const DashboardUser = () => {
         <center>Loading...</center>
       ) : (
         <Box>
-          {/* <Carousel
-                      autoPlay
-                      interval={2500}
-                      infiniteLoop
-                      showThumbs={false}
-                      showStatus={false}
-                      stopOnHover={false}
-                      showIndicators={true}
-                      swipeable={true}
-                      centerMode={true}
-                      centerSlidePercentage={36.5}
-                      selectedItem={selectedIndex}
-                      onChange={handleSlideChange}
-                    >
-                      {products.map((product, index) => (
-                        <div
-                          key={index}
-                          style={{
-                            padding: "50px",
-                            transform:
-                              index === selectedIndex ? "scale(1.1)" : "scale(.9)",
-                            transition: "transform 0.5s ease-in-out",
-                          }}
-                        >
-                          <Grid
-                            item
-                            xs={12}
-                            sm={15}
-                            md={4}
-                            lg={2.3}
-                            sx={{ mt: -4, ml: 1.1 }}
-                          >
-                            <Paper
-                              elevation={3}
-                              sx={{
-                                padding: 1,
-                                backgroundColor: "currentcolor",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "space-between",
-                              }}
-                            >
-                              <Container
-                                style={{
-                                  backgroundColor: "currentcolor",
-                                  flex: 1,
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  justifyContent: "center",
-                                  alignItems: "center",
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    backgroundColor: "black",
-                                    height: "40vh",
-                                    borderRadius: "2.5vw",
-                                    width: "35vw",
-                                    boxShadow: "4px 4px 4px rgb(47, 37, 25)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    overflow: "hidden",
-                                  }}
-                                >
-                                  <Box
-                                    className="carousel-item"
-                                    sx={{
-                                      height: "100%",
-                                      width: "100%",
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "center",
-                                    }}
-                                  >
-                                    <Button
-                                      onClick={() => {}}
-                                      variant="outlined"
-                                      style={{
-                                        padding: 0,
-                                        border: "none",
-                                        background: "transparent",
-                                        color: "black",
-                                      }}
-                                    >
-                                      <img
-                                        src="/loading.jpg"
-                                        // src={`${api_url}/${product.image}`}
-                                        style={{
-                                          height: "auto",
-                                          width: "100%",
-                                          objectFit: "cover",
-                                        }}
-                                      />
-                                    </Button>
-                                  </Box>
-                                </Box>
-                              </Container>
-                            </Paper>
-                          </Grid>
-                        </div>
-                      ))}
-                    </Carousel> */}
           <Carousel
             autoPlay
             interval={2500}
@@ -319,18 +224,17 @@ const DashboardUser = () => {
                         alignItems: "flex-start",
                       }}
                     >
-                      <Box
-                      sx={{minHeight:"200px"}}>
-                      <img
-                        src={`${api_url}/${product.image}`}
-                        alt={product.name}
-                        style={{
-                          marginLeft: "-10px",
-                          width: "200px",
-                          height: "auto",
-                          objectFit: "cover",
-                        }}
-                      />
+                      <Box sx={{ minHeight: "200px" }}>
+                        <img
+                          src={`${api_url}/${product.image}`}
+                          alt={product.name}
+                          style={{
+                            marginLeft: "-10px",
+                            width: "200px",
+                            height: "auto",
+                            objectFit: "cover",
+                          }}
+                        />
                       </Box>
                       <Typography
                         variant="subtitle1"

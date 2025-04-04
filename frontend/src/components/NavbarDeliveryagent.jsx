@@ -70,20 +70,6 @@ const NavbarDeliveryagent = () => {
               SwiftBuy
             </Typography>
           </div>
-          {/* <Typography
-              style={{
-                width: "150px",
-                fontSize: "13px",
-                fontFamily: "fantasy",
-                color: "white",
-                textAlign: "center",
-                display: "flex",
-                lineHeight: "1.2",
-              }}
-            >
-              Shop with us <br />
-              save your time
-            </Typography> */}
           <Container
             sx={{
               display: "flex",
@@ -128,7 +114,7 @@ const NavbarDeliveryagent = () => {
 
             <Container
               sx={{
-                ml: -35, //comon 1
+                ml: -35,
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -141,9 +127,6 @@ const NavbarDeliveryagent = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  // if (searchQuery.trim() !== "") {
-                  //   handleKeyDown(event);
-                  // }
                   handleKeyDown(event);
                 }}
                 sx={{

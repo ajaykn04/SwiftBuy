@@ -27,8 +27,8 @@ const DetailedProduct = () => {
   const [open, setOpen] = useState(false);
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") return; // Prevent closing if clicked outside
-    setOpen(false); // Close Notification
+    if (reason === "clickaway") return;
+    setOpen(false);
   };
   const [severity, setSeverity] = useState("");
   const [message, setMessage] = useState("");
@@ -199,7 +199,6 @@ const DetailedProduct = () => {
                     maxWidth: "200px",
                     backgroundColor: "orange",
                     maxHeight: "50px",
-                    // "&:hover": { backgroundColor: "darkorange" },
                   }}
                   onClick={async () => {
                     setSeverity("success");
@@ -225,7 +224,6 @@ const DetailedProduct = () => {
                     minWidth: "200px",
                     backgroundColor: "orangered",
                     maxHeight: "50px",
-                    // "&:hover": { backgroundColor: "darkorange" },
                   }}
                   onClick={async () => {
                     setSeverity("success");

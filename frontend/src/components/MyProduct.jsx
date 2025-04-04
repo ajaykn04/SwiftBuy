@@ -29,8 +29,8 @@ const MyProduct = () => {
   const [message, setMessage] = useState("");
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") return; // Prevent closing if clicked outside
-    setOpen(false); // Close Notification
+    if (reason === "clickaway") return;
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -139,7 +139,7 @@ const MyProduct = () => {
                         ml: 25.5,
                         mt: 34.5,
                         color: "white",
-                        zIndex: 1, //dddddddddddddddddddd
+                        zIndex: 1,
                       }}
                       onClick={async () => {
                         handleDelete(product._id);
@@ -230,7 +230,6 @@ const MyProduct = () => {
                           variant="subtitle1"
                           fontFamily={"cursive"}
                           sx={{
-                            //ddddddddddddddddddd
                             ml: -1.5,
                             mt: -1,
                             color: "yellow",

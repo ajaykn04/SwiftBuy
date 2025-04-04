@@ -1,6 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import Navbar from "./Navbar";
-import { Box, IconButton, TextField, MenuItem, Typography, Button } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  TextField,
+  MenuItem,
+  Typography,
+  Button,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,7 +27,6 @@ const AdminTools = () => {
         console.error("Error fetching data:", error);
       })
       .finally(() => {});
-    // }
   }, []);
   const [inputValue, setInputValue] = useState("");
   const [filteredCategories, setFilteredCategories] = useState(categories);
@@ -63,7 +69,6 @@ const AdminTools = () => {
           justifyContent: "center",
         }}
       >
-        {/* category Box */}
         <Box
           sx={{
             display: "flex",
@@ -100,7 +105,6 @@ const AdminTools = () => {
             <AddIcon />
           </IconButton>
 
-          {/* Wrapper for TextField & Dropdown */}
           <Box sx={{ position: "relative", width: "100%" }} ref={dropdownRef}>
             <TextField
               variant="outlined"
@@ -116,7 +120,6 @@ const AdminTools = () => {
               }}
             />
 
-            {/* Dropdown List */}
             {showDropdown && (
               <Box
                 sx={{
@@ -191,65 +194,65 @@ const AdminTools = () => {
           </Box>
         </Box>
         <Box
-              sx={{
-                ml:7,
-                mt:5,
-                display: "flex",
-                justifyContent: "flex-start",
-                gap: "7rem",
-                flex: 1,
+          sx={{
+            ml: 7,
+            mt: 5,
+            display: "flex",
+            justifyContent: "flex-start",
+            gap: "7rem",
+            flex: 1,
+          }}
+        >
+          <Button
+            variant="text"
+            onClick={() => {
+              navigate("/admin/users");
+            }}
+            style={{
+              marginLeft: -50,
+              marginRight: 25,
+              fontSize: "20px",
+              fontFamily: "fantasy",
+              color: "black",
+              backgroundColor: "darkorange",
+              minWidth: 100,
+            }}
+          >
+            <Typography
+              style={{
+                fontFamily: "fantasy",
+                fontSize: "20px",
+                color: "#472B00 ",
               }}
             >
-              <Button
-                variant="text"
-                onClick={() => {
-                  navigate("/admin/users");
-                }}
-                style={{
-                  marginLeft: -50,
-                  marginRight: 25,
-                  fontSize: "20px",
-                  fontFamily: "fantasy",
-                  color: "black",
-                  backgroundColor:"darkorange",
-                  minWidth:100,
-                }}
-              >
-                <Typography
-                  style={{
-                    fontFamily: "fantasy",
-                    fontSize: "20px",
-                    color: "#472B00 ",
-                  }}
-                >
-                  USERS
-                </Typography>
-              </Button>
+              USERS
+            </Typography>
+          </Button>
 
-              <Button
-                variant="text"
-                onClick={() => {
-                  navigate("/admin/products");
-                }}
-                style={{
-                  marginLeft: -25,
-                  fontSize: "20px",
-                  fontFamily: "fantasy",
-                  color: "black",
-                  backgroundColor:"darkorange"
-                }}
-              >
-                <Typography
-                  style={{
-                    fontFamily: "fantasy",
-                    fontSize: "20px",
-                    color: "#472B00 ",
-                  }}
-                >
-                  PRODUCTS
-                </Typography>
-              </Button>
-            </Box>
+          <Button
+            variant="text"
+            onClick={() => {
+              navigate("/admin/products");
+            }}
+            style={{
+              marginLeft: -25,
+              fontSize: "20px",
+              fontFamily: "fantasy",
+              color: "black",
+              backgroundColor: "darkorange",
+            }}
+          >
+            <Typography
+              style={{
+                fontFamily: "fantasy",
+                fontSize: "20px",
+                color: "#472B00 ",
+              }}
+            >
+              PRODUCTS
+            </Typography>
+          </Button>
+        </Box>
       </Box>
     </div>
   );

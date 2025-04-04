@@ -37,8 +37,8 @@ const MyCart = () => {
   const [message, setMessage] = useState("");
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") return; // Prevent closing if clicked outside
-    setOpen(false); // Close Notification
+    if (reason === "clickaway") return;
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -56,7 +56,6 @@ const MyCart = () => {
       .finally(() => {
         setLoading(false);
       });
-    // }
   }, []);
 
   useEffect(() => {
@@ -512,10 +511,10 @@ const MyCart = () => {
                         }
 
                         window.location.reload(true);
-                        
-                      setSeverity("success");
-                      setMessage(`${Index} items Ordered`);
-                      setOpen(true);
+
+                        setSeverity("success");
+                        setMessage(`${Index} items Ordered`);
+                        setOpen(true);
                         console.log("Order confirmed");
                       } catch (error) {
                         console.error("Error ordering product:", error);

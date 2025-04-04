@@ -8,10 +8,10 @@ const [severity, setSeverity] = useState("");
 const [message, setMessage] = useState("");
 
 const handleClose = (event, reason) => {
-if (reason === "clickaway") return; // Prevent closing if clicked outside
-setOpen(false); // Close Notification
+if (reason === "clickaway") return;
+setOpen(false); 
 };
-
+                                                    //THIS FILE IS FOR REFERENCE ONLY (for CustomNotification)
 
 
 

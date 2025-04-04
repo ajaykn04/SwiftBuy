@@ -31,7 +31,6 @@ const SearchProduct = () => {
   var [wish, setWish] = useState([]);
 
   useEffect(() => {
-    // if (data._id) {
     const apiUrl = `${api_url}/product/search/${searchvalue.state.query}`;
     axios
       .get(apiUrl)
@@ -45,7 +44,6 @@ const SearchProduct = () => {
       .finally(() => {
         setLoading(false);
       });
-    // }
   }, []);
 
   useEffect(() => {

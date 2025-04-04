@@ -25,15 +25,13 @@ const Profile = () => {
   const [generalError, setGeneralError] = useState("");
   const api_url = import.meta.env.VITE_API_URL;
   const [open, setOpen] = useState(false);
-const [severity, setSeverity] = useState("");
-const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("");
+  const [message, setMessage] = useState("");
 
-const handleClose = (event, reason) => {
-if (reason === "clickaway") return; // Prevent closing if clicked outside
-setOpen(false); // Close Notification
-};
-
-
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") return;
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData"))) {
@@ -94,7 +92,13 @@ setOpen(false); // Close Notification
         }}
       >
         <Box mt={"4.5vh"} sx={styles.box_style}>
-        <CustomNotification severity={"success"}  sx={{mt:7,mr:-1}} message="Profile Updated" open={open} onClose={handleClose}  />
+          <CustomNotification
+            severity={"success"}
+            sx={{ mt: 7, mr: -1 }}
+            message="Profile Updated"
+            open={open}
+            onClose={handleClose}
+          />
           <IconButton
             sx={{ position: "fixed", ml: "16vw", mt: "-3vh", color: "white" }}
             onClick={logoutHandler}
@@ -171,7 +175,8 @@ setOpen(false); // Close Notification
               setSeverity("success");
               setMessage("Profile Updated");
               setOpen(true);
-              submitHandler();}}
+              submitHandler();
+            }}
           >
             Save Changes
           </Button>

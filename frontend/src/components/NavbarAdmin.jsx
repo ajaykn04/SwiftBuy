@@ -81,7 +81,7 @@ const Navbar = () => {
           >
             <Container
               sx={{
-                ml: 10, //comon 1
+                ml: 10,
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "2rem",
@@ -144,7 +144,7 @@ const Navbar = () => {
 
             <Container
               sx={{
-                ml: -16, //comon 1
+                ml: -16,
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -158,9 +158,6 @@ const Navbar = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  // if (searchQuery.trim() !== "") {
-                  //   handleKeyDown(event);
-                  // }
                   handleKeyDown(event);
                 }}
                 sx={{
@@ -285,9 +282,7 @@ const Navbar = () => {
           >
             <img style={{ width: 27 }} alt="Wishlist" src="/heart.png" />
           </IconButton>
-          <IconButton 
-          color="inherit"
-          onClick={handleProfileClick}>
+          <IconButton color="inherit" onClick={handleProfileClick}>
             <Avatar alt="Profile" src="/defaultlogin.png" />
           </IconButton>
         </StyledToolbar>

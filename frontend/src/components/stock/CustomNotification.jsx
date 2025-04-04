@@ -13,7 +13,7 @@ const CustomNotification = ({
   return (
     <Snackbar
       open={open}
-      autoHideDuration={3000} // Auto closes after 3 seconds
+      autoHideDuration={3000}
       onClose={onClose}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       TransitionComponent={(props) => <Slide {...props} direction="left" />}
@@ -35,8 +35,8 @@ const CustomNotification = ({
       >
         <Box
           sx={{
-            mt: mt||0,
-            mb: mb||0,
+            mt: mt || 0,
+            mb: mb || 0,
             display: "flex",
             flexDirection: "row",
             alignItems: "center",

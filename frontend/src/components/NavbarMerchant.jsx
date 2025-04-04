@@ -80,7 +80,7 @@ const NavbarMerchant = () => {
           >
             <Container
               sx={{
-                ml: 16, //comon 1
+                ml: 16,
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "2rem",
@@ -143,7 +143,7 @@ const NavbarMerchant = () => {
 
             <Container
               sx={{
-                ml: -16, //comon 1
+                ml: -16,
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -157,9 +157,6 @@ const NavbarMerchant = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  // if (searchQuery.trim() !== "") {
-                  //   handleKeyDown(event);
-                  // }
                   handleKeyDown(event);
                 }}
                 sx={{
@@ -241,7 +238,9 @@ const NavbarMerchant = () => {
                     fontSize: "20px",
                     color: "orange",
                     textDecoration:
-                      location.pathname === "/user/orders" ? "underline" : "none",
+                      location.pathname === "/user/orders"
+                        ? "underline"
+                        : "none",
                   }}
                 >
                   MY ORDERS

@@ -29,13 +29,13 @@ const ProductAdd = () => {
   const api_url = import.meta.env.VITE_API_URL;
   const [categories, setCategories] = useState([]);
   const [open, setOpen] = useState(false);
-const [severity, setSeverity] = useState("");
-const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("");
+  const [message, setMessage] = useState("");
 
-const handleClose = (event, reason) => {
-if (reason === "clickaway") return; // Prevent closing if clicked outside
-setOpen(false); // Close Notification
-};
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") return;
+    setOpen(false);
+  };
 
   useEffect(() => {
     const apiUrl = `${api_url}/misc/categories/get`;
@@ -48,7 +48,6 @@ setOpen(false); // Close Notification
         console.error("Error fetching data:", error);
       })
       .finally(() => {});
-    // }
   }, []);
   const toeditproduct = useLocation();
   useEffect(() => {
@@ -154,7 +153,13 @@ setOpen(false); // Close Notification
           height: "80vh",
         }}
       >
-        <CustomNotification severity={severity} sx={{mt:7,mr:-1}} message={message} open={open} onClose={handleClose} />
+        <CustomNotification
+          severity={severity}
+          sx={{ mt: 7, mr: -1 }}
+          message={message}
+          open={open}
+          onClose={handleClose}
+        />
         <Box sx={styles.box_style} maxHeight={"650px"}>
           <Typography
             fontFamily={"fantasy"}
@@ -162,7 +167,6 @@ setOpen(false); // Close Notification
             color="white"
             mb={1.5}
             mt={-3.5}
-            // gutterBottom
           >
             ADD PRODUCT
           </Typography>
@@ -287,7 +291,9 @@ setOpen(false); // Close Notification
               }}
             >
               {categories.map((category, index) => (
-                <MenuItem key={index} value={category}>{category}</MenuItem>
+                <MenuItem key={index} value={category}>
+                  {category}
+                </MenuItem>
               ))}
             </Select>
             {errors.category && (
@@ -330,7 +336,7 @@ setOpen(false); // Close Notification
           <Button
             variant="contained"
             sx={{
-              fontSize:15,
+              fontSize: 15,
               mt: 0.4,
               mb: -2.5,
               backgroundColor: "orange",

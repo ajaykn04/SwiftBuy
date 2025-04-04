@@ -76,7 +76,7 @@ const NavbarUser = () => {
           >
             <Container
               sx={{
-                ml: 15, //comon 1
+                ml: 15,
                 display: "flex",
                 justifyContent: "flex-start",
                 gap: "3rem",
@@ -110,7 +110,7 @@ const NavbarUser = () => {
 
             <Container
               sx={{
-                ml: -25, //comon 1
+                ml: -25,
                 mr: -2,
                 display: "flex",
                 justifyContent: "center",
@@ -124,9 +124,6 @@ const NavbarUser = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                 onKeyDown={() => {
-                  // if (searchQuery.trim() !== "") {
-                  //   handleKeyDown(event);
-                  // }
                   handleKeyDown(event);
                 }}
                 sx={{
@@ -169,7 +166,6 @@ const NavbarUser = () => {
                   navigate("/user/orders");
                 }}
                 style={{
-                  // marginLeft: -50,
                   fontSize: "20px",
                   fontFamily: "fantasy",
                   color: "black",
