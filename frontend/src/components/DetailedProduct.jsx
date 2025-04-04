@@ -9,8 +9,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { matchRoutes, useLocation } from "react-router-dom";
 import axios from "axios";
+import CustomNotification from "./stock/CustomNotification";
 const DetailedProduct = () => {
   const api_url = import.meta.env.VITE_API_URL;
   const data = JSON.parse(localStorage.getItem("userData"));
@@ -23,7 +24,14 @@ const DetailedProduct = () => {
     rating: 0,
     comment: "",
   });
+  const [open, setOpen] = useState(false);
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") return; // Prevent closing if clicked outside
+    setOpen(false); // Close Notification
+  };
+  const [severity, setSeverity] = useState("");
+  const [message, setMessage] = useState("");
   useEffect(() => {
     if (state?._id) {
       const fetchProduct = async () => {
@@ -110,6 +118,16 @@ const DetailedProduct = () => {
               marginBottom: "5vh",
             }}
           >
+            <CustomNotification
+              mt={-1.3}
+              mb={-1}
+              sx={{ mt: 7, mr: -1 }}
+              severity={severity}
+              message={message}
+              open={open}
+              onClose={handleClose}
+              image={`${api_url}/${productData.image}`}
+            />
             <Box
               style={{
                 flex: 1,
@@ -117,7 +135,7 @@ const DetailedProduct = () => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 marginRight: "5vw",
-                marginLeft:"2vw",
+                marginLeft: "2vw",
               }}
             >
               <Typography
@@ -184,6 +202,9 @@ const DetailedProduct = () => {
                     // "&:hover": { backgroundColor: "darkorange" },
                   }}
                   onClick={async () => {
+                    setSeverity("success");
+                    setMessage("Added to MyCart");
+                    setOpen(true);
                     try {
                       await axios.post(
                         `${api_url}/product/addtocart/${data._id}/${productData._id}`
@@ -207,6 +228,9 @@ const DetailedProduct = () => {
                     // "&:hover": { backgroundColor: "darkorange" },
                   }}
                   onClick={async () => {
+                    setSeverity("success");
+                    setMessage("Product Ordered");
+                    setOpen(true);
                     try {
                       await axios.post(
                         `${api_url}/product/buy/${data._id}/${productData._id}/1`
@@ -300,7 +324,7 @@ const DetailedProduct = () => {
                 flexDirection: "column",
                 alignItems: "flex-start",
                 marginTop: 210,
-                marginLeft:"-7vw",
+                marginLeft: "-7vw",
                 overflowY: "auto",
                 overflowX: "hidden",
                 maxHeight: 800,
@@ -360,7 +384,7 @@ const DetailedProduct = () => {
                       sx={{
                         mb: 2,
                         mt: 1,
-                        fontSize:20,
+                        fontSize: 20,
                         "& .MuiRating-iconFilled": {
                           color: "#FFAD18",
                         },

@@ -14,6 +14,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import styles from "../styles";
+import CustomNotification from "./stock/CustomNotification";
 
 const ProductAdd = () => {
   const [product, setProduct] = useState({
@@ -27,6 +28,15 @@ const ProductAdd = () => {
   });
   const api_url = import.meta.env.VITE_API_URL;
   const [categories, setCategories] = useState([]);
+  const [open, setOpen] = useState(false);
+const [severity, setSeverity] = useState("");
+const [message, setMessage] = useState("");
+
+const handleClose = (event, reason) => {
+if (reason === "clickaway") return; // Prevent closing if clicked outside
+setOpen(false); // Close Notification
+};
+
   useEffect(() => {
     const apiUrl = `${api_url}/misc/categories/get`;
     axios
@@ -97,6 +107,9 @@ const ProductAdd = () => {
   };
 
   const submitHandler = async () => {
+    setSeverity("success");
+    setMessage("Product Added");
+    setOpen(true);
     if (validateFields()) {
       const formData = new FormData();
       if (toeditproduct.state != null) {
@@ -141,6 +154,7 @@ const ProductAdd = () => {
           height: "80vh",
         }}
       >
+        <CustomNotification severity={severity} sx={{mt:7,mr:-1}} message={message} open={open} onClose={handleClose} />
         <Box sx={styles.box_style} maxHeight={"650px"}>
           <Typography
             fontFamily={"fantasy"}

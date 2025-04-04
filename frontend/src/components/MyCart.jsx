@@ -20,6 +20,7 @@ import {
   Typography,
 } from "@mui/material";
 import Navbar from "./Navbar";
+import CustomNotification from "./stock/CustomNotification";
 
 const MyCart = () => {
   const navigate = useNavigate();
@@ -31,6 +32,14 @@ const MyCart = () => {
   const [checkout, setCheckout] = useState(true);
   var Price = 0;
   var Index = 1;
+  const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") return; // Prevent closing if clicked outside
+    setOpen(false); // Close Notification
+  };
 
   useEffect(() => {
     const apiUrl = `${api_url}/user/getcart/${data._id}`;
@@ -85,6 +94,13 @@ const MyCart = () => {
             justifyContent: "space-between",
           }}
         >
+          <CustomNotification
+            severity={severity}
+            sx={{ mt: 7, mr: -1 }}
+            message={message}
+            open={open}
+            onClose={handleClose}
+          />
           <TableContainer>
             <Table>
               <TableHead>
@@ -479,6 +495,9 @@ const MyCart = () => {
                       backgroundColor: "orangered",
                     }}
                     onClick={async () => {
+                      setSeverity("success");
+                      setMessage(`${Index} items Ordered`);
+                      setOpen(true);
                       try {
                         for (const product of products) {
                           await axios.post(
@@ -493,6 +512,10 @@ const MyCart = () => {
                         }
 
                         window.location.reload(true);
+                        
+                      setSeverity("success");
+                      setMessage(`${Index} items Ordered`);
+                      setOpen(true);
                         console.log("Order confirmed");
                       } catch (error) {
                         console.error("Error ordering product:", error);

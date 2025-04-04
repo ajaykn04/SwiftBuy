@@ -5,6 +5,7 @@ import axios from "axios";
 import styles from "../styles";
 import Navbar from "./Navbar";
 import LogoutIcon from "@mui/icons-material/Logout";
+import CustomNotification from "./stock/CustomNotification";
 
 const Profile = () => {
   const [data, setData] = useState({
@@ -23,6 +24,16 @@ const Profile = () => {
   });
   const [generalError, setGeneralError] = useState("");
   const api_url = import.meta.env.VITE_API_URL;
+  const [open, setOpen] = useState(false);
+const [severity, setSeverity] = useState("");
+const [message, setMessage] = useState("");
+
+const handleClose = (event, reason) => {
+if (reason === "clickaway") return; // Prevent closing if clicked outside
+setOpen(false); // Close Notification
+};
+
+
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("userData"))) {
@@ -58,7 +69,6 @@ const Profile = () => {
         await axios.put(`${api_url}/user/edit/`, updatedProfile);
         console.log("Profile Updated");
         localStorage.setItem("userData", JSON.stringify(updatedProfile));
-        navigate("/dashboard");
       } catch (error) {
         console.error(error);
         setGeneralError("An error occurred while updating the profile.");
@@ -84,6 +94,7 @@ const Profile = () => {
         }}
       >
         <Box mt={"4.5vh"} sx={styles.box_style}>
+        <CustomNotification severity={"success"}  sx={{mt:7,mr:-1}} message="Profile Updated" open={open} onClose={handleClose}  />
           <IconButton
             sx={{ position: "fixed", ml: "16vw", mt: "-3vh", color: "white" }}
             onClick={logoutHandler}
@@ -156,7 +167,11 @@ const Profile = () => {
               backgroundColor: "orange",
               "&:hover": { backgroundColor: "orange" },
             }}
-            onClick={submitHandler}
+            onClick={async () => {
+              setSeverity("success");
+              setMessage("Profile Updated");
+              setOpen(true);
+              submitHandler();}}
           >
             Save Changes
           </Button>
