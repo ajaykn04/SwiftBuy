@@ -112,7 +112,8 @@ const MyOrder = () => {
                     Quantity : {order.quantity}
                   </Typography>
                   <Typography sx={{ mt: 0.5, ml: 0, fontFamily: "cursive" }}>
-                    Place At : {order.placedAt.split("T")[0]}
+                    Placed At : {order.placedAt.split("T")[0]}
+                    {console.log(order.placedAt)}
                   </Typography>
                   <Typography
                     sx={{
